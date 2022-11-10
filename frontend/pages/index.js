@@ -13,6 +13,8 @@ const Home = ({ buildTimestamp }) => {
   )
 }
 
+// How to add "dynamic" stuff to page to be set at build time
+/*
 export const getStaticProps = () => {
   return {
     props: {
@@ -20,5 +22,6 @@ export const getStaticProps = () => {
     }
   }
 }
+*/
 
 export default Home;
