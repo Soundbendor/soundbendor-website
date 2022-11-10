@@ -1,18 +1,19 @@
 import '../styles/globals.css'
 import Navbar from '../components/Navbar'
-import 'bootstrap/dist/css/bootstrap.css'
-import Head from 'next/head'
+import Header from '../components/Header'
+import Footer from '../components/Footer'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 function MyApp({ Component, pageProps }) {
   return (
   <>
-  <Head>
-    <meta name="viewport" contents="width=device-width, initial-scale=1" />
-  </Head>
+  <Header />
   <Navbar />
   <Component {...pageProps} />
+  <Footer />
   </>
   )
 }
 
 export default MyApp
+
