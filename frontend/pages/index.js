@@ -1,14 +1,13 @@
-import Head from 'next/head'
-import Image from 'next/image'
+// import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 
-const Home = ({ buildTimestamp }) => {
+const Home = () => {
   return (
     <div className={styles.container}>
 
-      <div class="container" id="logo-container">
-			<h1 class=""><img class="w-100" src="/soundbendorlogo.png" /></h1>
-		</div>
+      <div class='container' id='logo-container'>
+        <h1 class=''><img class='w-100' src='/soundbendorlogo.png' /></h1>
+      </div>
     </div>
   )
 }
@@ -24,4 +23,4 @@ export const getStaticProps = () => {
 }
 */
 
-export default Home;
+export default Home

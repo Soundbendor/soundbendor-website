@@ -1,7 +1,7 @@
 const Publications = () => {
-    return (
-        <h1>Publications</h1>
-    )
+  return (
+    <h1>Publications</h1>
+  )
 }
 
-export default Publications;
+export default Publications

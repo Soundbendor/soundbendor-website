@@ -1,7 +1,7 @@
 const Apply = () => {
-    return (
-        <h1>Apply</h1>
-    )
+  return (
+    <h1>Apply</h1>
+  )
 }
 
-export default Apply;
+export default Apply
