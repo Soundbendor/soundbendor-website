@@ -1,0 +1,12 @@
+export { default as Navigation } from "./Navigation";
+export { default as Footer } from "./Footer";
+export { default as Home } from "./Home";
+export { default as About } from "./About";
+export { default as Team } from "./Team";
+export { default as Projects } from "./Projects";
+export { default as Publications } from "./publications/Publications";
+export { default as Articles } from "./publications/Articles";
+export { default as Article } from "./publications/Article";
+export { default as News } from "./news/News";
+export { default as Events } from "./news/Events";
+export { default as Event } from "./news/Event";
