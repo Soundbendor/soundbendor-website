@@ -1,0 +1,67 @@
+{
+  "kind": "collectionType",
+  "collectionName": "people",
+  "info": {
+    "singularName": "person",
+    "pluralName": "people",
+    "displayName": "Person",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "FirstName": {
+      "type": "string"
+    },
+    "LastName": {
+      "type": "string"
+    },
+    "Title": {
+      "type": "string"
+    },
+    "Photo": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "email": {
+      "type": "email"
+    },
+    "GraduationYear": {
+      "type": "integer",
+      "max": 9999,
+      "min": 2000
+    },
+    "CurrentJob": {
+      "type": "string"
+    },
+    "degrees": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::degree.degree",
+      "inversedBy": "people"
+    },
+    "groups": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::group.group",
+      "inversedBy": "people"
+    },
+    "person_class": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::person-class.person-class"
+    },
+    "projects": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::project.project",
+      "mappedBy": "people"
+    }
+  }
+}
