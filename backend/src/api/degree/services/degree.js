@@ -1,9 +1,9 @@
-'use strict';
+'use strict'
 
 /**
  * degree service
  */
 
-const { createCoreService } = require('@strapi/strapi').factories;
+const { createCoreService } = require('@strapi/strapi').factories
 
-module.exports = createCoreService('api::degree.degree');
+module.exports = createCoreService('api::degree.degree')

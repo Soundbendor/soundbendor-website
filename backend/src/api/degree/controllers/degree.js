@@ -1,9 +1,9 @@
-'use strict';
+'use strict'
 
 /**
  * degree controller
  */
 
-const { createCoreController } = require('@strapi/strapi').factories;
+const { createCoreController } = require('@strapi/strapi').factories
 
-module.exports = createCoreController('api::degree.degree');
+module.exports = createCoreController('api::degree.degree')

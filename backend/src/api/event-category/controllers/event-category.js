@@ -1,9 +1,9 @@
-'use strict';
+'use strict'
 
 /**
  * event-category controller
  */
 
-const { createCoreController } = require('@strapi/strapi').factories;
+const { createCoreController } = require('@strapi/strapi').factories
 
-module.exports = createCoreController('api::event-category.event-category');
+module.exports = createCoreController('api::event-category.event-category')

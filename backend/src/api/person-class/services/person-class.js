@@ -1,9 +1,9 @@
-'use strict';
+'use strict'
 
 /**
  * person-class service
  */
 
-const { createCoreService } = require('@strapi/strapi').factories;
+const { createCoreService } = require('@strapi/strapi').factories
 
-module.exports = createCoreService('api::person-class.person-class');
+module.exports = createCoreService('api::person-class.person-class')

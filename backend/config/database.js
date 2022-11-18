@@ -1,6 +1,7 @@
-const path = require('path');
+/*
+const path = require('path')
 
-/*module.exports = ({ env }) => ({
+module.exports = ({ env }) => ({
   connection: {
     client: 'sqlite',
     connection: {
@@ -8,18 +9,17 @@ const path = require('path');
     },
     useNullAsDefault: true,
   },
-});*/
+}); */
 
 module.exports = ({ env }) => ({
   connection: {
     client: 'mysql',
     connection: {
-      host: 'soundbendordb.clvknrebnm28.us-east-1.rds.amazonaws.com',
-      port: 3306,
-      database: 'soundbendordb',
-      user: 'SoundBendorAdmin',
-      password: '2FYJKDwF4hzapd5qvgpnhbmkYX39Bh'
-    },
-  },
-});
-
+      host: env('DB_HOST', '0.0.0.0'),
+      port: env.int('DB_PORT', 3306),
+      database: env('DB_DB'),
+      user: env('DB_USER'),
+      password: env('DB_PASS')
+    }
+  }
+})
