@@ -1,9 +1,9 @@
 'use strict'
 
 /**
- * project router
+ * group router
  */
 
 const { createCoreRouter } = require('@strapi/strapi').factories
 
-module.exports = createCoreRouter('api::project.project')
+module.exports = createCoreRouter('api::group.group')

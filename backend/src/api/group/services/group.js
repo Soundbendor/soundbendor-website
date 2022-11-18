@@ -1,9 +1,9 @@
 'use strict'
 
 /**
- * project service
+ * group service
  */
 
 const { createCoreService } = require('@strapi/strapi').factories
 
-module.exports = createCoreService('api::project.project')
+module.exports = createCoreService('api::group.group')

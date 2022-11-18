@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "degrees",
+  "info": {
+    "singularName": "degree",
+    "pluralName": "degrees",
+    "displayName": "Degree"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Name": {
+      "type": "string"
+    },
+    "Suffix": {
+      "type": "string"
+    },
+    "Institution": {
+      "type": "string"
+    },
+    "people": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::person.person",
+      "mappedBy": "degrees"
+    }
+  }
+}

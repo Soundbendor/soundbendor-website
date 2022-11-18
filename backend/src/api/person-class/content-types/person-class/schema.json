@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "person_classes",
+  "info": {
+    "singularName": "person-class",
+    "pluralName": "person-classes",
+    "displayName": "Person Class"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Name": {
+      "type": "string"
+    }
+  }
+}
