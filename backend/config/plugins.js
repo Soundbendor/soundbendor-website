@@ -7,14 +7,14 @@ module.exports = ({ env }) => ({
         secretAccessKey: env('AWS_ACCESS_SECRET'),
         region: env('AWS_REGION'),
         params: {
-          Bucket: env('AWS_MEDIA_BUCKET'),
-        },
+          Bucket: env('AWS_MEDIA_BUCKET')
+        }
       },
       actionOptions: {
         upload: {},
         uploadStream: {},
-        delete: {},
-      },
-    },
-  },
+        delete: {}
+      }
+    }
+  }
 })
