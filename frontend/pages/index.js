@@ -1,12 +1,13 @@
 // import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+// import styles from '../styles/Home.module.css'
 
 const Home = () => {
   return (
-    <div className={styles.container}>
-
-      <div class='container' id='logo-container'>
-        <h1 class=''><img class='w-100' src='/soundbendorlogo.png' /></h1>
+    <div>
+      <div className='container' id='logo-container'>
+        <h1 className=''>
+          <img className='w-100' src='/soundbendorlogo.png' />
+        </h1>
       </div>
     </div>
   )
