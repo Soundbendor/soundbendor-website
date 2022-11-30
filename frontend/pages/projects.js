@@ -1,5 +1,5 @@
 import style from '../styles/Team.module.css'
-import { PersonCardPlaceholder } from '../components/Personcard'
+import { PersonCardPlaceholder, ProjectCardPlaceholder } from '../components/Projectcard'
 
 const Projects = () => {
   return (
@@ -12,13 +12,13 @@ const Projects = () => {
           <ul className={style.ul} >
             <div className='text-center'>
               <li className={style.li}>
-                <input type='text' id='person-search-input' placeholder='Search...'></input>
+                <input type='text' id='project-search-input' placeholder='Search...'></input>
               </li>
               <li className={style.li}>
-                <i className='search-icon'>SEARCH ICON PH</i>
+                <i className='search-icon'>O</i>
               </li>
-              <li className={style.li}>
-              <select className='dropdown-select'>
+              <li className={`${style.li} ${style.filtermenu}`}>
+              <select className='filter-select'>
                 <option value='Default'>Filter</option>
                 <option value='Class'>Class</option>
                 <option value='Degree'>Degree</option>
@@ -33,10 +33,11 @@ const Projects = () => {
 
       <div className='row bg-light py-5'>
         <div className={style.personcontainer}>
-          <PersonCardPlaceholder name='PHName' title='PHTitle' image='' />
-          <PersonCardPlaceholder name='PHName' title='PHTitle' image='' />
-          <PersonCardPlaceholder name='PHName' title='PHTitle' image='' />
-          <PersonCardPlaceholder name='PHName' title='PHTitle' image='' />
+          <ProjectCardPlaceholder projectName='PHName' projectAuthor='PHAuthor' projectDate='mm/dd/yy' />
+          <ProjectCardPlaceholder projectName='PHName' projectAuthor='PHAuthor' projectDate='mm/dd/yy' />
+          <ProjectCardPlaceholder projectName='PHName' projectAuthor='PHAuthor' projectDate='mm/dd/yy' />
+          <ProjectCardPlaceholder projectName='PHName' projectAuthor='PHAuthor' projectDate='mm/dd/yy' />
+          <ProjectCardPlaceholder projectName='PHName' projectAuthor='PHAuthor' projectDate='mm/dd/yy' />
         </div>
       </div>
     </>
