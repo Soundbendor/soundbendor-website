@@ -1,5 +1,5 @@
 import style from '../styles/Team.module.css'
-import { PersonCardPlaceholder } from '../components/person-card'
+import { PersonCardPlaceholder } from '../components/Personcard'
 
 const Team = () => {
   return (
@@ -33,10 +33,10 @@ const Team = () => {
 
       <div className='row bg-light py-5'>
         <div className={style.personcontainer}>
-          <PersonCardPlaceholder name='PHName' title='PHTitle' image='' />
-          <PersonCardPlaceholder name='PHName' title='PHTitle' image='' />
-          <PersonCardPlaceholder name='PHName' title='PHTitle' image='' />
-          <PersonCardPlaceholder name='PHName' title='PHTitle' image='' />
+          <PersonCardPlaceholder name='PHName' title='PHTitle' image='https://via.placeholder.com/150'/>
+          <PersonCardPlaceholder name='PHName' title='PHTitle' image='https://via.placeholder.com/150' />
+          <PersonCardPlaceholder name='PHName' title='PHTitle' image='https://via.placeholder.com/150' />
+          <PersonCardPlaceholder name='PHName' title='PHTitle' image='https://via.placeholder.com/150' />
         </div>
       </div>
     </>

@@ -1,4 +1,4 @@
-import style from '../styles/person-card.module.css'
+import style from '../styles/Personcard.module.css'
 
 const PersonCard = () => {
 	return (
@@ -17,8 +17,8 @@ const PersonCard = () => {
 const PersonCardPlaceholder = ({ name, title, image }) => {
   return (
 		<article className={style.card}>
-			<div className={style.container}>
-				<img></img>
+			<div>
+				<img src={image}></img>
 			</div>
 			<div>
 				<h5><strong>{name}</strong></h5>
