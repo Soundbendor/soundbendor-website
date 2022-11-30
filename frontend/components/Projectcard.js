@@ -1,4 +1,4 @@
-import style from '../styles/Personcard.module.css'
+import style from '../styles/Projectcard.module.css'
 
 const ProjectCard = () => {
 	return (
@@ -32,7 +32,7 @@ const ProjectCardPlaceholder = ({ projectName, projectAuthor, projectDate}) => {
 					<text x='50%' y='50%' fill='white' dy='.3em' dominantBaseline='middle' textAnchor='middle'>{projectName}</text>
 				</svg>
 			</div>
-			<div>
+			<div classname={style.bottom}>
 				<h5><strong>{projectName}</strong></h5>
 				<h6>{projectAuthor}</h6>
 				<h7>{projectDate}</h7>

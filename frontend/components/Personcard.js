@@ -32,8 +32,9 @@ const PersonCardPlaceholder = ({ name, title }) => {
 					<text x='50%' y='50%' fill='white' dy='.3em' dominantBaseline='middle' textAnchor='middle'>{name}</text>
 				</svg>
 			</div>
-			<div>
+			<div className={style.bottom}>
 				<h5><strong>{name}</strong></h5>
+				<hr className={style.horizontalbar}></hr>
 				<h6 className={style.title}>{title}</h6>
 			</div>
 		</article>

@@ -1,5 +1,5 @@
 import style from '../styles/Team.module.css'
-import { PersonCardPlaceholder, ProjectCardPlaceholder } from '../components/Projectcard'
+import { ProjectCardPlaceholder } from '../components/Projectcard'
 
 const Projects = () => {
   return (
