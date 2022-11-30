@@ -15,10 +15,10 @@ const Team = () => {
                 <input type='text' id='person-search-input' placeholder='Search...'></input>
               </li>
               <li className={style.li}>
-                <i className='search-icon'>SEARCH ICON PH</i>
+                <i className='search-icon'>O</i>
               </li>
-              <li className={style.li}>
-              <select className='dropdown-select'>
+              <li className={`${style.li} ${style.filtermenu}`}>
+              <select className='filter-select'>
                 <option value='Default'>Filter</option>
                 <option value='Class'>Class</option>
                 <option value='Degree'>Degree</option>
@@ -33,10 +33,10 @@ const Team = () => {
 
       <div className='row bg-light py-5'>
         <div className={style.personcontainer}>
-          <PersonCardPlaceholder name='PHName' title='PHTitle' image='https://via.placeholder.com/150'/>
-          <PersonCardPlaceholder name='PHName' title='PHTitle' image='https://via.placeholder.com/150' />
-          <PersonCardPlaceholder name='PHName' title='PHTitle' image='https://via.placeholder.com/150' />
-          <PersonCardPlaceholder name='PHName' title='PHTitle' image='https://via.placeholder.com/150' />
+          <PersonCardPlaceholder name='PHName' title='PHTitle' />
+          <PersonCardPlaceholder name='PHName' title='PHTitle' />
+          <PersonCardPlaceholder name='PHName' title='PHTitle' />
+          <PersonCardPlaceholder name='PHName' title='PHTitle' />
         </div>
       </div>
     </>
