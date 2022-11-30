@@ -4,18 +4,22 @@ import Link from 'next/link'
 
 const Navbar = () => {
   return (
-    <nav class='navbar sticky-top navbar-expand-md navbar-light bg-light'>
-      <div class='container-fluid'>
-        <Link class='navbar-brand' href='/'><img src='/db.png' alt='SoundBendor Labs' width='30' /></Link>
-        <button class='navbar-toggler' type='button' data-bs-toggle='collapse' data-bs-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle Navigation'><span class='navbar-toggler-icon' /></button>
-        <div class='collapse navbar-collapse' id='navbarSupportedContent'>
-          <ul class='navbar-nav me-auto mb-2 mb-lg-0'>
-            <Link href='/about' class='nav-link'><li class='nav-item'>About</li></Link>
-            <Link href='/team' class='nav-link'><li class='nav-item'>Team</li></Link>
-            <Link href='/projects' class='nav-link'><li class='nav-item'>Projects</li></Link>
-            <Link href='/publications' class='nav-link'><li class='nav-item'>Publications</li></Link>
-            <Link href='/news' class='nav-link'><li class='nav-item'>News</li></Link>
-            <Link href='/apply' class='nav-link'><li class='nav-item'>Apply</li></Link>
+    <nav className='navbar sticky-top navbar-expand-md navbar-light bg-light'>
+      <div className='container-fluid'>
+        <Link className='navbar-brand' href='/'>
+          <img src='/db.png' alt='SoundBendor Labs' width='30' />
+        </Link>
+        <button className='navbar-toggler' type='button' data-bs-toggle='collapse' data-bs-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle Navigation'>
+          <span className='navbar-toggler-icon' />
+        </button>
+        <div className='collapse navbar-collapse' id='navbarSupportedContent'>
+          <ul className='navbar-nav me-auto mb-2 mb-lg-0'>
+            <li className='nav-item'><Link href='/about' className='nav-link'>About</Link></li>
+            <li className='nav-item'><Link href='/team' className='nav-link'>Team</Link></li>
+            <li className='nav-item'><Link href='/projects' className='nav-link'>Projects</Link></li>
+            <li className='nav-item'><Link href='/publications' className='nav-link'>Publications</Link></li>
+            <li className='nav-item'><Link href='/news' className='nav-link'>News</Link></li>
+            <li className='nav-item'><Link href='/apply' className='nav-link'>Apply</Link></li>
           </ul>
         </div>
       </div>
