@@ -8,7 +8,7 @@ const Projects = () => {
         <div className='text-center'>
           <h1>Student Projects</h1>
         </div>
-        <div>
+        <div className='row py-4'>
           <ul className={style.ul} >
             <div className='text-center'>
               <li className={style.li}>
@@ -18,11 +18,11 @@ const Projects = () => {
                 <i className='search-icon'>O</i>
               </li>
               <li className={`${style.li} ${style.filtermenu}`}>
-              <select className='filter-select'>
-                <option value='Default'>Filter</option>
-                <option value='Class'>Class</option>
-                <option value='Degree'>Degree</option>
-                <option value='Group'>Group</option>
+                <select className='filter-select'>
+                  <option value='Default'>Filter</option>
+                  <option value='Class'>Class</option>
+                  <option value='Degree'>Degree</option>
+                  <option value='Group'>Group</option>
               </select>
               </li>
             </div>
@@ -31,7 +31,7 @@ const Projects = () => {
       </div>
 
 
-      <div className='row bg-light py-5'>
+      <div className='row'>
         <div className={style.personcontainer}>
           <ProjectCardPlaceholder projectName='PHName' projectAuthor='PHAuthor' projectDate='mm/dd/yy' />
           <ProjectCardPlaceholder projectName='PHName' projectAuthor='PHAuthor' projectDate='mm/dd/yy' />

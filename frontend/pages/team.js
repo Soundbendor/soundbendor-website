@@ -8,7 +8,7 @@ const Team = () => {
         <div className='text-center'>
           <h1>Team Members</h1>
         </div>
-        <div>
+        <div className='row py-4'>
           <ul className={style.ul} >
             <div className='text-center'>
               <li className={style.li}>
@@ -31,7 +31,7 @@ const Team = () => {
       </div>
 
 
-      <div className='row bg-light py-5'>
+      <div className='row'>
         <div className={style.personcontainer}>
           <PersonCardPlaceholder name='PHName' title='PHTitle' />
           <PersonCardPlaceholder name='PHName' title='PHTitle' />
