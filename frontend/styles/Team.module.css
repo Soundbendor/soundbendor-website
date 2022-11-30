@@ -5,3 +5,9 @@
 .li {
 	display: inline-block;
 }
+
+.personcontainer {
+	display: flex;
+	justify-content: space-around;
+	flex-wrap: wrap;
+}

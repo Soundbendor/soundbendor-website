@@ -1,0 +1,14 @@
+.container {
+	padding: 10px;
+}
+
+.card {
+	width: 180px;
+	height: 300px;
+
+  margin: 20px;
+  border-radius: 2px;
+
+	background: white;
+
+}
