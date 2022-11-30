@@ -26,9 +26,9 @@ const Footer = () => {
         <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-3">
           <h6 class="text-uppercase fw-bold mb-2">Links</h6>
           <ul class="list-group">
-            <li class="list-group-item bg-dark text-white pb-0 border-0"><a href="#!" class="text-reset">Oregon State University</a></li>
-            <li class="list-group-item bg-dark text-white pb-0 border-0"><a href="#!" class="text-reset">Oregon State-Cascades</a></li>
-            <li class="list-group-item bg-dark text-white border-0"><a href="#!" class="text-reset">School of EECS</a></li>
+            <li style={{ color: '#D73F09' }} class="list-group-item bg-dark pb-0 border-0"><a href="https://oregonstate.edu/" class="text-reset">Oregon State University</a></li>
+            <li style={{ color: '#D73F09' }} class="list-group-item bg-dark pb-0 border-0"><a href="https://eecs.oregonstate.edu/" class="text-reset">Oregon State-Cascades</a></li>
+            <li style={{ color: '#D73F09' }} class="list-group-item bg-dark border-0"><a href="https://eecs.oregonstate.edu/" class="text-reset">School of EECS</a></li>
           </ul>
         </div>
       </div>
