@@ -6,7 +6,7 @@ const Navbar = () => {
   return (
     <>
       <nav className='navbar sticky-top navbar-expand-md navbar-light bg-light'>
-        <div className='container-fluid'>
+        <div className='ml-2 container-fluid'>
           <Link className='navbar-brand' href='/'>
             <img src='/db.png' alt='SoundBendor Labs' width='30' />
           </Link>
