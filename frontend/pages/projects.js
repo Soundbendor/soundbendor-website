@@ -52,11 +52,11 @@ const Projects = () => {
               <div className='row'>
                 <div className='col'>
                   <div className={style.personcontainer}>
-                    <ProjectCardPlaceholder projectName='PHName' projectAuthor='PHAuthor' projectDate='mm/dd/yy' />
-                    <ProjectCardPlaceholder projectName='PHName' projectAuthor='PHAuthor' projectDate='mm/dd/yy' />
-                    <ProjectCardPlaceholder projectName='PHName' projectAuthor='PHAuthor' projectDate='mm/dd/yy' />
-                    <ProjectCardPlaceholder projectName='PHName' projectAuthor='PHAuthor' projectDate='mm/dd/yy' />
-                    <ProjectCardPlaceholder projectName='PHName' projectAuthor='PHAuthor' projectDate='mm/dd/yy' />
+                    <ProjectCardPlaceholder projectName='The' projectAuthor='PHAuthor' projectDate='mm/dd/yy' />
+                    <ProjectCardPlaceholder projectName='Quick' projectAuthor='PHAuthor' projectDate='mm/dd/yy' />
+                    <ProjectCardPlaceholder projectName='Brown' projectAuthor='PHAuthor' projectDate='mm/dd/yy' />
+                    <ProjectCardPlaceholder projectName='Fox' projectAuthor='PHAuthor' projectDate='mm/dd/yy' />
+                    <ProjectCardPlaceholder projectName='Jumped' projectAuthor='PHAuthor' projectDate='mm/dd/yy' />
                   </div>
                 </div>
               </div>
