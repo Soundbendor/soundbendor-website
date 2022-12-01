@@ -23,26 +23,26 @@ const Publications = () => {
           <div className='col'>
             <div className='container'>
               <div className='row'>
-                <ul className={style.ul} >
-                <div className='text-center'>
-                  <li className={style.li}>
-                    <input type='text' id='publication-search-input' placeholder='Search...'></input>
-                  </li>
-                  <li className={style.li}>
-                    <i className='search-icon'>O</i>
-                  </li>
-                  <li className={`${style.li} ${style.filtermenu}`}>
-                    <select className='filter-select'>
-                      <option value='10'>10</option>
-                      <option value='15'>15</option>
-                      <option value='20'>20</option>
-                      <option value='25'>25</option>
-                    </select>
-                  </li>
-                  <label>
-                    entries per page
-                  </label>
-                </div>
+                <ul className={style.ul}>
+                  <div className='text-center'>
+                    <li className={style.li}>
+                      <input type='text' id='publication-search-input' placeholder='Search...' />
+                    </li>
+                    <li className={style.li}>
+                      <i className='search-icon'>O</i>
+                    </li>
+                    <li className={`${style.li} ${style.filtermenu}`}>
+                      <select className='filter-select'>
+                        <option value='10'>10</option>
+                        <option value='15'>15</option>
+                        <option value='20'>20</option>
+                        <option value='25'>25</option>
+                      </select>
+                    </li>
+                    <label>
+                      entries per page
+                    </label>
+                  </div>
                 </ul>
               </div>
             </div>
@@ -84,5 +84,3 @@ const Publications = () => {
 }
 
 export default Publications
-
-

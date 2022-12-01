@@ -4,7 +4,7 @@ const ProjectCard = () => {
   return (
     <div className={style.card}>
       <div className={style.container}>
-        <img></img>
+        <img />
       </div>
       <div>
         <h5><strong>Name</strong></h5>

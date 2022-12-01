@@ -8,13 +8,11 @@
 
 .image {
   position: relative;
-  top: 0px;
   margin-bottom: 10px;
 }
 
 .bottom {
   position: relative;
-  bottom: 0px;
 }
 
 .horizontalbar {

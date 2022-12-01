@@ -1,6 +1,4 @@
-import style from '../styles/Paperentry.module.css'
-
-const Papercard = ({ year, paperURL, paperName, venue}) => {
+const Papercard = ( { year, paperURL, paperName, venue} ) => {
   return (
     <tr>
       <td>{year}</td>

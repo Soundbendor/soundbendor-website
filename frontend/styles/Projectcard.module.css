@@ -1,18 +1,15 @@
 .card {
   width: 320px;
   height: 300px;
-
   margin: 20px;
   margin-bottom: 30px;
 }
 
 .image {
   position: relative;
-  top: 0px;
   margin-bottom: 10px;
 }
 
 .bottom {
   position: relative;
-  bottom: 0px;
 }

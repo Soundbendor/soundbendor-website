@@ -25,7 +25,7 @@
 }
 
 .tablerow:nth-child(even) {
-  background-color: #dddddd;
+  background-color: #ddd;
 }
 
 .tablecol {
