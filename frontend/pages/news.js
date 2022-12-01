@@ -29,7 +29,7 @@ const News = () => {
                 <div class='card mb-4'>
                   <a href='#!'><img class='card-img-top' src='https://dummyimage.com/700x350/dee2e6/6c757d.jpg' alt='...' /></a>
                   <div class='card-body'>
-                    <div class='small text-muted'>January 1, 2022</div>
+                    <div class='small text-muted'>March 3, 2022</div>
                     <h2 style={{ color: '#D73F09' }} class='card-title h4'>Post Title 3</h2>
                     <p class='card-text'>Lorem ipsum dolor sit consectetur adipisicing elit. Reiciendis atque, nulla.</p>
                     <a class='btn btn-dark' href='#!'>Read more →</a>
@@ -39,7 +39,7 @@ const News = () => {
                 <div class='card mb-4'>
                   <a href='#!'><img class='card-img-top' src='https://dummyimage.com/700x350/dee2e6/6c757d.jpg' alt='...' /></a>
                   <div class='card-body'>
-                    <div class='small text-muted'>January 1, 2022</div>
+                    <div class='small text-muted'>April 4, 2022</div>
                     <h2 style={{ color: '#D73F09' }} class='card-title h4'>Post Title 4</h2>
                     <p class='card-text'>Lorem ipsum dolor adipisicing elit. Reiciendis aliquid atque, nulla.</p>
                     <a class='btn btn-dark' href='#!'>Read more →</a>
@@ -51,7 +51,7 @@ const News = () => {
                 <div class='card mb-4'>
                   <a href='#!'><img class='card-img-top' src='https://dummyimage.com/700x350/dee2e6/6c757d.jpg' alt='...' /></a>
                   <div class='card-body'>
-                    <div class='small text-muted'>January 1, 2022</div>
+                    <div class='small text-muted'>June 6, 2022</div>
                     <h2 style={{ color: '#D73F09' }} class='card-title h4'>Post Title 6</h2>
                     <p class='card-text'>Lorem ipsum dolor sit amet aliquid atque, nulla.</p>
                     <a class='btn btn-dark' href='#!'>Read more →</a>
@@ -61,7 +61,7 @@ const News = () => {
                 <div class='card mb-4'>
                   <a href='#!'><img class='card-img-top' src='https://dummyimage.com/700x350/dee2e6/6c757d.jpg' alt='...' /></a>
                   <div class='card-body'>
-                    <div class='small text-muted'>January 1, 2022</div>
+                    <div class='small text-muted'>July 7, 2022</div>
                     <h2 style={{ color: '#D73F09' }} class='card-title h4'>Post Title 7</h2>
                     <p class='card-text'>Lorem ipsum dolor sit amet, reiciendis aliquid atque, nulla.</p>
                     <a class='btn btn-dark' href='#!'>Read more →</a>
@@ -115,7 +115,7 @@ const News = () => {
             <div class='card mb-4'>
               <a href='#!'><img class='card-img-top' src='https://dummyimage.com/700x350/dee2e6/6c757d.jpg' alt='...' /></a>
               <div class='card-body'>
-                <div class='small text-muted'>January 1, 2022</div>
+                <div class='small text-muted'>February 2, 2022</div>
                 <h2 style={{ color: '#D73F09' }} class='card-title h4'>Post Title 2</h2>
                 <p class='card-text'>Reiciendis aliquid atque, nulla.</p>
                 <a class='btn btn-dark' href='#!'>Read more →</a>
@@ -125,7 +125,7 @@ const News = () => {
             <div class='card mb-4'>
               <a href='#!'><img class='card-img-top' src='https://dummyimage.com/700x350/dee2e6/6c757d.jpg' alt='...' /></a>
               <div class='card-body'>
-                <div class='small text-muted'>January 1, 2022</div>
+                <div class='small text-muted'>May 5, 2022</div>
                 <h2 style={{ color: '#D73F09' }} class='card-title h4'>Post Title 5</h2>
                 <p class='card-text'>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                 <a class='btn btn-dark' href='#!'>Read more →</a>
@@ -135,7 +135,7 @@ const News = () => {
             <div class='card mb-4'>
               <a href='#!'><img class='card-img-top' src='https://dummyimage.com/700x350/dee2e6/6c757d.jpg' alt='...' /></a>
               <div class='card-body'>
-                <div class='small text-muted'>January 1, 2022</div>
+                <div class='small text-muted'>August 8, 2022</div>
                 <h2 style={{ color: '#D73F09' }} class='card-title h4'>Post Title 8</h2>
                 <p class='card-text'>Lorem ipsum dolor sit amet</p>
                 <a class='btn btn-dark' href='#!'>Read more →</a>
