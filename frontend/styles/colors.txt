@@ -1,0 +1,12 @@
+OSU styleguide color palette hex codes
+
+#8E9089 (grey)
+#B7A99A (beige)
+#D73F09 (orange)
+#00859B (teal)
+#B8DDE1 (very light blue)
+#FFB500 (yellow)
+#FDD26E (light yellow)
+#4A773C (green)
+#C4D6A4 (light green)
+#7A6855 (brown)

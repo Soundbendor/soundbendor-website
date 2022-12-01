@@ -32,10 +32,10 @@ const ProjectCardPlaceholder = ({ projectURL, projectName, projectAuthor, projec
           <text x='50%' y='50%' fill='white' dy='.3em' dominantBaseline='middle' textAnchor='middle'>{projectName}</text>
         </svg>
       </div>
-      <div classname={style.bottom}>
+      <div className={style.bottom}>
         <h5><strong>{projectName}</strong></h5>
         <h6 className='beaverorange'>{projectAuthor}</h6>
-        <h7>{projectDate}</h7>
+        <h6>{projectDate}</h6>
       </div>
     </article>
   )
