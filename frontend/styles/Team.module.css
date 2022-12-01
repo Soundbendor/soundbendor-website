@@ -1,0 +1,33 @@
+.ul {
+  display: block;
+}
+
+.li {
+  display: inline-block;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.filtermenu {
+  margin-left: 100px;
+}
+
+.personcontainer {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.tablecontainer {
+  border-color: #dee2e6;
+  border-collapse: separate;
+  border-spacing: 150px 0;
+}
+
+.tablerow:nth-child(even) {
+  background-color: #ddd;
+}
+
+.tablecol {
+  text-align: center;
+}
