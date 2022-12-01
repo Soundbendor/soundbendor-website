@@ -33,10 +33,10 @@ const Projects = () => {
                   </li>
                   <li className={`${style.li} ${style.filtermenu}`}>
                     <select className='filter-select'>
-                      <option value='Default'>Filter</option>
-                      <option value='Class'>Class</option>
-                      <option value='Degree'>Degree</option>
-                      <option value='Group'>Group</option>
+                      <option value='Default'>Year</option>
+                      <option value='2022'>2022</option>
+                      <option value='2021'>2021</option>
+                      <option value='2020'>2020</option>
                     </select>
                   </li>
                 </div>

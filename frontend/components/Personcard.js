@@ -35,7 +35,7 @@ const PersonCardPlaceholder = ({ name, title }) => {
       <div className={style.bottom}>
         <h5><strong>{name}</strong></h5>
         <hr className={style.horizontalbar}></hr>
-        <h6 className={style.title}>{title}</h6>
+        <h6 className='beaverorange'>{title}</h6>
       </div>
     </article>
   )

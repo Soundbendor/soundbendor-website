@@ -14,7 +14,7 @@ const ProjectCard = () => {
   )
 }
 
-const ProjectCardPlaceholder = ({ projectName, projectAuthor, projectDate}) => {
+const ProjectCardPlaceholder = ({ projectURL, projectName, projectAuthor, projectDate}) => {
   return (
     <article className={style.card}>
       <div className={style.image}>
@@ -34,7 +34,7 @@ const ProjectCardPlaceholder = ({ projectName, projectAuthor, projectDate}) => {
       </div>
       <div classname={style.bottom}>
         <h5><strong>{projectName}</strong></h5>
-        <h6>{projectAuthor}</h6>
+        <h6 className='beaverorange'>{projectAuthor}</h6>
         <h7>{projectDate}</h7>
       </div>
     </article>

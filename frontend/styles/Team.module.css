@@ -19,8 +19,13 @@
 }
 
 .tablecontainer {
-  margin-left: auto;
-  margin-right: auto;
+  border-color: #dee2e6;
+  border-collapse: separate;
+  border-spacing: 150px 0;
+}
+
+.tablerow:nth-child(even) {
+  background-color: #dddddd;
 }
 
 .tablecol {

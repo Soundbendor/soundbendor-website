@@ -39,6 +39,9 @@ const Publications = () => {
                       <option value='25'>25</option>
                     </select>
                   </li>
+                  <label>
+                    entries per page
+                  </label>
                 </div>
                 </ul>
               </div>
@@ -53,17 +56,21 @@ const Publications = () => {
                 <div className='col'>
                   <div className={style.personcontainer}>
                     <table className={style.tablecontainer}>
-                      <tr className={style.tablecol}>
-                        <th>YEAR</th>
-                        <th>PAPER</th>
-                        <th>VENUE</th>
-                      </tr>
-                      <Papercard year='2022' paperURL='#' paperName='The' venue='ICFSP' />
-                      <Papercard year='2022' paperURL='#' paperName='Quick' venue='ICFSP' />
-                      <Papercard year='2022' paperURL='#' paperName='Brown' venue='IHIET-AI' />
-                      <Papercard year='2022' paperURL='#' paperName='Fox' venue='IHIET-AI' />
-                      <Papercard year='2022' paperURL='#' paperName='Jumped' venue='ICNLSP' />
-                      <Papercard year='2022' paperURL='#' paperName='Over' venue='ICNLSP' />
+                      <thead>
+                        <tr className={style.tablecol}>
+                          <th>YEAR</th>
+                          <th>PAPER</th>
+                          <th>VENUE</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <Papercard year='2022' paperURL='#' paperName='The' venue='ICFSP' />
+                        <Papercard year='2022' paperURL='#' paperName='Quick' venue='ICFSP' />
+                        <Papercard year='2022' paperURL='#' paperName='Brown' venue='IHIET-AI' />
+                        <Papercard year='2022' paperURL='#' paperName='Fox' venue='IHIET-AI' />
+                        <Papercard year='2022' paperURL='#' paperName='Jumped' venue='ICNLSP' />
+                        <Papercard year='2022' paperURL='#' paperName='Over' venue='ICNLSP' />
+                      </tbody>
                     </table>
                   </div>
                 </div>
