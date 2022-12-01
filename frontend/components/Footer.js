@@ -5,7 +5,7 @@ const Footer = () => {
       <section class=''>
         <div class='container text-white text-center text-md-start pt-3 mt-4'>
           <div class='row mt-3'>
-            <div class='col-md-1 col-lg-3 col-xl-3 mx-auto mb-3'>
+            <div class='col-md-3 col-lg-3 col-xl-3 mx-auto mb-3'>
               <img className='w-75' src='/footerlogo.png' />
             </div>
 

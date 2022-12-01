@@ -7,10 +7,10 @@ const Apply = () => {
           <div className='col'>
             <div className='container'>
               <div className='text-center text-white'>
-                <h1>Join Soundbendor!</h1>
+                <h1 class='fw-bolder'>Join Soundbendor!</h1>
                 <p>Soundbendor lab is actively recruiting students with interdisciplinary backgrounds in music and computer science who wish to combine these interests through graduate studies in artificial intelligence at Oregon State University.</p>
                 <h5><b>Applications Due</b></h5>
-                <ul id='applyul' class='list-group'>
+                <ul class='list-group'>
                   <li style={{ backgroundColor: '#D73F09' }} class='list-group-item border-0 text-white'><b>December 1, 2022 (Ph.D)</b></li>
                   <li style={{ backgroundColor: '#D73F09' }} class='list-group-item border-0 text-white'><b>January 1, 2023 (M.S.)</b></li>
                   <li style={{ backgroundColor: '#D73F09' }} class='list-group-item border-0 text-white'><b>February 1, 2023 (B.S.)</b></li>
