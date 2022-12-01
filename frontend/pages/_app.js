@@ -15,7 +15,9 @@ function MyApp ({ Component, pageProps }) {
       />
       <Header />
       <Navbar />
-      <Component {...pageProps} />
+      <div id='app-body-content'>
+        <Component {...pageProps} />
+      </div>
       <Footer />
     </>
   )
