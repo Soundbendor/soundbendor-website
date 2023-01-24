@@ -1,5 +1,5 @@
 import style from '../styles/Team.module.css'
-import Papercard from '../components/Paperentry.js'
+import Publicationentry from '../components/Publicationentry'
 
 const Publications = () => {
   return (
@@ -64,12 +64,12 @@ const Publications = () => {
                         </tr>
                       </thead>
                       <tbody>
-                        <Papercard year='2022' paperURL='#' paperName='The' venue='ICFSP' />
-                        <Papercard year='2022' paperURL='#' paperName='Quick' venue='ICFSP' />
-                        <Papercard year='2022' paperURL='#' paperName='Brown' venue='IHIET-AI' />
-                        <Papercard year='2022' paperURL='#' paperName='Fox' venue='IHIET-AI' />
-                        <Papercard year='2022' paperURL='#' paperName='Jumped' venue='ICNLSP' />
-                        <Papercard year='2022' paperURL='#' paperName='Over' venue='ICNLSP' />
+                        <Publicationentry year='2022' paperURL='#' paperName='The' venue='ICFSP' />
+                        <Publicationentry year='2022' paperURL='#' paperName='Quick' venue='ICFSP' />
+                        <Publicationentry year='2022' paperURL='#' paperName='Brown' venue='IHIET-AI' />
+                        <Publicationentry year='2022' paperURL='#' paperName='Fox' venue='IHIET-AI' />
+                        <Publicationentry year='2022' paperURL='#' paperName='Jumped' venue='ICNLSP' />
+                        <Publicationentry year='2022' paperURL='#' paperName='Over' venue='ICNLSP' />
                       </tbody>
                     </table>
                   </div>
