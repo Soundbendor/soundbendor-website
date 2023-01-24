@@ -1,4 +1,4 @@
-const Papercard = ({ year, paperURL, paperName, venue }) => {
+const Publicationentry = ({ year, paperURL, paperName, venue }) => {
   return (
     <tr>
       <td>{year}</td>
