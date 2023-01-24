@@ -16,5 +16,8 @@ module.exports = ({ env }) => ({
         delete: {}
       }
     }
-  }
+  },
+  'import-export-entries': {
+    enabled: true,
+  },
 })
