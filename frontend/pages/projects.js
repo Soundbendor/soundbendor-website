@@ -1,7 +1,12 @@
 import style from '../styles/Team.module.css'
 import { ProjectCardPlaceholder } from '../components/Projectcard'
+import ProjectService from '../models/projects'
 
 const Projects = () => {
+  const projects = ProjectService.getProjects()
+  const projectListDisplay = projects.map((project) =>
+    <ProjectCardPlaceholder key={project.id} project={project} />
+  )
   return (
     <>
       <div className='container-fluid px-0'>
@@ -52,11 +57,7 @@ const Projects = () => {
               <div className='row'>
                 <div className='col'>
                   <div className={style.personcontainer}>
-                    <ProjectCardPlaceholder projectName='The' projectAuthor='PHAuthor' projectDate='mm/dd/yy' />
-                    <ProjectCardPlaceholder projectName='Quick' projectAuthor='PHAuthor' projectDate='mm/dd/yy' />
-                    <ProjectCardPlaceholder projectName='Brown' projectAuthor='PHAuthor' projectDate='mm/dd/yy' />
-                    <ProjectCardPlaceholder projectName='Fox' projectAuthor='PHAuthor' projectDate='mm/dd/yy' />
-                    <ProjectCardPlaceholder projectName='Jumped' projectAuthor='PHAuthor' projectDate='mm/dd/yy' />
+                    {projectListDisplay}
                   </div>
                 </div>
               </div>
