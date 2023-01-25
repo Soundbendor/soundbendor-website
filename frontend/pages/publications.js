@@ -4,16 +4,11 @@ import Publicationentry from '../components/Publicationentry'
 const Publications = () => {
   return (
     <>
-      <div className='container-fluid px-0'>
         <div className='row py-5'>
           <div className='col'>
             <div className='container'>
-              <div className='row'>
-                <div className='col'>
-                  <div className='text-center'>
-                    <h1>Publications</h1>
-                  </div>
-                </div>
+              <div className='text-center'>
+                <h1>Publications</h1>
               </div>
             </div>
           </div>
@@ -23,27 +18,19 @@ const Publications = () => {
           <div className='col'>
             <div className='container'>
               <div className='row'>
-                <ul className={style.ul}>
                   <div className='text-center'>
-                    <li className={style.li}>
-                      <input type='text' id='publication-search-input' placeholder='Search...' />
-                    </li>
-                    <li className={style.li}>
-                      <i className='search-icon'>O</i>
-                    </li>
-                    <li className={`${style.li} ${style.filtermenu}`}>
-                      <select className='filter-select'>
-                        <option value='10'>10</option>
-                        <option value='15'>15</option>
-                        <option value='20'>20</option>
-                        <option value='25'>25</option>
+                    <div className='col'>
+                      <input type='search' class='form-control' id='publication-search-input' placeholder='Search...' />
+                    </div>
+                    <div className='col'>
+                      <select class='form-select'>
+                        <option selected>Entries shown per page</option>
+                        <option value='5'>5</option>
+                        <option value='5'>15</option>
+                        <option value='5'>20</option>
                       </select>
-                    </li>
-                    <label>
-                      entries per page
-                    </label>
+                    </div>
                   </div>
-                </ul>
               </div>
             </div>
           </div>
@@ -52,10 +39,8 @@ const Publications = () => {
         <div className='row py-5'>
           <div className='col'>
             <div className='container'>
-              <div className='row'>
-                <div className='col'>
                   <div className={style.personcontainer}>
-                    <table className='table'>
+                    <table className='table table-striped table-hover'>
                       <thead>
                         <tr>
                           <th scope='col'>YEAR</th>
@@ -72,11 +57,8 @@ const Publications = () => {
                     </table>
                   </div>
                 </div>
-              </div>
-            </div>
           </div>
         </div>
-      </div>
     </>
   )
 }
