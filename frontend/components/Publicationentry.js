@@ -1,10 +1,10 @@
-const Publicationentry = ({ year, paperURL, paperName, venue }) => {
+const Publicationentry = ({ year, pubURL, pubName, venue }) => {
   return (
-    <tr>
-      <td>{year}</td>
-      <td><a href={paperURL} className='beaverorange'>{paperName}</a></td>
-      <td>{venue}</td>
-    </tr>
+      <tr>
+        <td>{year}</td>
+        <td><a href={pubURL} className='beaverorange'>{pubName}</a></td>
+        <td>{venue}</td>
+      </tr>
   )
 }
 

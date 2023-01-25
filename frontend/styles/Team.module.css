@@ -21,7 +21,7 @@
 .tablecontainer {
   border-color: #dee2e6;
   border-collapse: separate;
-  border-spacing: 150px 0;
+  border-spacing: auto 0;
 }
 
 .tablerow:nth-child(even) {
