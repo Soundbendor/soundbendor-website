@@ -17,19 +17,19 @@ const Publications = () => {
         <div className='col'>
           <div className='container'>
             <div className='row'>
-                <div className='text-center'>
-                  <div className='col'>
-                    <input type='search' class='form-control' id='publication-search-input' placeholder='Search...' />
-                  </div>
-                  <div className='col'>
-                    <select class='form-select'>
-                      <option selected>Entries shown per page</option>
-                      <option value='5'>5</option>
-                      <option value='5'>15</option>
-                      <option value='5'>20</option>
-                    </select>
-                  </div>
+              <div className='text-center'>
+                <div className='col'>
+                  <input type='search' class='form-control' id='publication-search-input' placeholder='Search...' />
                 </div>
+                <div className='col'>
+                  <select class='form-select'>
+                    <option selected>Entries shown per page</option>
+                    <option value='5'>5</option>
+                    <option value='5'>15</option>
+                    <option value='5'>20</option>
+                  </select>
+                </div>
+              </div>
             </div>
           </div>
         </div>
