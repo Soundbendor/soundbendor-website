@@ -8,4 +8,4 @@ const Publicationentry = ({ year, pubURL, pubName, venue }) => {
   )
 }
 
-export default Publicationentry
+export default Papercard
