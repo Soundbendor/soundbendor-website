@@ -1,20 +1,20 @@
 import style from '../styles/Personcard.module.css'
 
-const PersonCard = () => {
+const PersonCard = ({ person }) => {
   return (
     <div className={style.card}>
       <div className={style.container}>
-        <img />
+        <img src={person.Photo}/>
       </div>
       <div>
-        <h5><strong>Name</strong></h5>
+        <h5><strong>{person.FirstName} {person.LastName}</strong></h5>
         <h6>Title</h6>
       </div>
     </div>
   )
 }
 
-const PersonCardPlaceholder = ({ name, title }) => {
+const PersonCardPlaceholder = ({ person }) => {
   return (
     <article className={style.card}>
       <div className={style.image}>
@@ -22,7 +22,7 @@ const PersonCardPlaceholder = ({ name, title }) => {
           className='bd-placeholder-img bd-placeholder-img-lg'
           width='240'
           height='240'
-          xmlns='http://www.w3.org/2000/svg'
+          xmlns={person.Photo}
           role='img'
           preserveAspectRatio='xMidYMid slice'
           focusable='false'
@@ -33,9 +33,9 @@ const PersonCardPlaceholder = ({ name, title }) => {
         </svg>
       </div>
       <div className={style.bottom}>
-        <h5><strong>{name}</strong></h5>
+        <h5><strong>{person.FirstName} {person.LastName}</strong></h5>
         <hr className={style.horizontalbar} />
-        <h6 className='beaverorange'>{title}</h6>
+        <h6 className='beaverorange'>{person.person_class}</h6>
       </div>
     </article>
   )

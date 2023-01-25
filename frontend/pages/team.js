@@ -1,7 +1,12 @@
 import style from '../styles/Team.module.css'
-import { PersonCardPlaceholder } from '../components/Personcard'
+import { PersonCardPlaceholder, PersonCard } from '../components/Personcard'
+import PersonService from '../models/people'
 
 const Team = () => {
+  const people = PersonService.getPeople()
+  const personListDisplay = people.map((person) =>
+  <PersonCard key={person.id} person={person} />
+  )
   return (
     <>
       <div className='container-fluid px-0'>
@@ -52,10 +57,7 @@ const Team = () => {
               <div className='row'>
                 <div className='col'>
                   <div className={style.personcontainer}>
-                    <PersonCardPlaceholder name='PHName' title='PHTitle' />
-                    <PersonCardPlaceholder name='PHName' title='PHTitle' />
-                    <PersonCardPlaceholder name='PHName' title='PHTitle' />
-                    <PersonCardPlaceholder name='PHName' title='PHTitle' />
+                    {personListDisplay}
                   </div>
                 </div>
               </div>
