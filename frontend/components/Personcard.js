@@ -29,7 +29,7 @@ const PersonCardPlaceholder = ({ person }) => {
         >
           <title>Placeholder</title>
           <rect width='100%' height='100%' fill='grey' />
-          <text x='50%' y='50%' fill='white' dy='.3em' dominantBaseline='middle' textAnchor='middle'>{name}</text>
+          <text x='50%' y='50%' fill='white' dy='.3em' dominantBaseline='middle' textAnchor='middle'>{person.LastName}</text>
         </svg>
       </div>
       <div className={style.bottom}>

@@ -4,7 +4,7 @@ import EventService from '../models/events'
 const News = () => {
   const events = EventService.getEvents()
   const eventListDisplay = events.map((event) =>
-  <Newscard key={event.id} event={event} />
+    <Newscard key={event.id} event={event} />
   )
   return (
     <div>

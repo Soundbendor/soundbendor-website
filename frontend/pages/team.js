@@ -1,11 +1,11 @@
 import style from '../styles/Team.module.css'
-import { PersonCardPlaceholder, PersonCard } from '../components/Personcard'
+import { PersonCard } from '../components/Personcard'
 import PersonService from '../models/people'
 
 const Team = () => {
   const people = PersonService.getPeople()
   const personListDisplay = people.map((person) =>
-  <PersonCard key={person.id} person={person} />
+    <PersonCard key={person.id} person={person} />
   )
   return (
     <>
