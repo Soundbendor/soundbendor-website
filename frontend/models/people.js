@@ -2,7 +2,7 @@ import content from '../data/database.json'
 
 function Person (rawData) {
   let p = {}
-  p= Object.assign(p, rawData)
+  p = Object.assign(p, rawData)
   p.RawData = rawData
   return p
 }
@@ -13,7 +13,7 @@ const PersonService = {
     if (people.length) {
       return people[0]
     }
-   },
+  },
   getRawPeople: function (kwargs) {
     return Object.values(content.data['api::person.person'])
   },

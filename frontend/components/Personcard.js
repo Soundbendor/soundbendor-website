@@ -4,7 +4,7 @@ const PersonCard = ({ person }) => {
   return (
     <div className={style.card}>
       <div className={style.container}>
-        <img src={person.Photo}/>
+        <img src={person.Photo} />
       </div>
       <div>
         <h5><strong>{person.FirstName} {person.LastName}</strong></h5>
