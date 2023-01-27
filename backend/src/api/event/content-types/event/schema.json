@@ -4,7 +4,8 @@
   "info": {
     "singularName": "event",
     "pluralName": "events",
-    "displayName": "Event"
+    "displayName": "Event",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -18,17 +19,21 @@
       "type": "richtext"
     },
     "FeaturedImg": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "EventTime": {
       "type": "datetime"
     },
     "PublishedDate": {
       "type": "datetime"
+    },
+    "EventURL": {
+      "type": "string"
     }
   }
 }
