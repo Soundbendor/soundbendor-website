@@ -1,9 +1,9 @@
-const Publicationentry = ({ year, pubURL, pubName, venue }) => {
+const Publicationentry = ({ publication }) => {
   return (
     <tr>
-      <td>{year}</td>
-      <td><a href={pubURL} className='beaverorange'>{pubName}</a></td>
-      <td>{venue}</td>
+      <td>{publication.createdAt}</td>
+      <td><a href='#' className='beaverorange'>{publication.Name}</a></td>
+      <td>{publication.Name}</td>
     </tr>
   )
 }

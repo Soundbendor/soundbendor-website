@@ -1,6 +1,12 @@
 import Publicationentry from '../components/Publicationentry'
+import PublicationService from '../models/publications'
 
 const Publications = () => {
+  const publications = PublicationService.getPublications()
+  console.log(publications)
+  const publicationsListDisplay = publications.map((publication) =>
+    <Publicationentry key={publication.id} publication={publication} />
+  )
   return (
     <>
       <div className='row py-5'>
@@ -22,7 +28,7 @@ const Publications = () => {
                   <input type='search' class='form-control' id='publication-search-input' placeholder='Search...' />
                 </div>
                 <div className='col'>
-                  <select class='form-select'>
+                  <select className='form-select'>
                     <option selected>Entries shown per page</option>
                     <option value='5'>5</option>
                     <option value='5'>15</option>
@@ -47,10 +53,7 @@ const Publications = () => {
                 </tr>
               </thead>
               <tbody>
-                <Publicationentry year='2022' pubURL='#' pubName='The quick brown fox jumps over the lazy dog' venue='ICFSP' />
-                <Publicationentry year='2022' pubURL='#' pubName='Jived fox nymph grabs quick waltz' venue='ICFSP' />
-                <Publicationentry year='2022' pubURL='#' pubName='Pack my box with five dozen liquor jugs' venue='ICFSP' />
-                <Publicationentry year='2022' pubURL='#' pubName='The five boxing wizards jump quickly' venue='ICFSP' />
+                {publicationsListDisplay}
               </tbody>
             </table>
           </div>
