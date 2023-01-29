@@ -18,17 +18,15 @@ const PublicationService = {
         return publications[0]
       }
   },
-  // gets list of publication data specified by the project api
+  // returns the object containing all publication objects
   getRawPublications: function (kwargs) {
-    return Object.values(content.data['api::project.project'])
+    return Object.values(content.data['api::publication.publication'])
   },
   getPublication: function (kwargs) {
     const rawpublication = this.getRawPublication(kwargs)
     let p
     if (rawpublication) {
-      if (rawpublication.project_type == 2) {
-        p = Publication(rawpublication)
-      }
+      p = Publication(rawpublication)
     } else {
       p = Publication({})
     }

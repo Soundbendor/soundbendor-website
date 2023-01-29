@@ -2,20 +2,17 @@ import Publicationentry from '../components/Publicationentry'
 import PublicationService from '../models/publications'
 
 const Publications = () => {
+  // call the getter function for publication objects
   const publications = PublicationService.getPublications()
-  console.log(publications)
+  // put each publication obj into an array for displaying in the HTML
   const publicationsListDisplay = publications.map((publication) =>
     <Publicationentry key={publication.id} publication={publication} />
   )
   return (
     <>
       <div className='row py-5'>
-        <div className='col'>
           <div className='container'>
-            <div className='text-center'>
-              <h1>Publications</h1>
-            </div>
-          </div>
+              <h1 className='text-center'>Publications</h1>
         </div>
       </div>
 
@@ -24,13 +21,13 @@ const Publications = () => {
           <div className='container'>
             <div className='row justify-content-between'>
               <div className='col-sm-4'>
-                <label for="pub-search" class='form-label'>Search for specific publications</label>
-                <input type='search' class='form-control' id='pub-search' placeholder='Year, title, venue...' />
+                <label for="pub-search" className='form-label'>Search for specific publications</label>
+                <input type='search' className='form-control' id='pub-search' placeholder='Year, title, venue...' />
               </div>
               <div className='col-sm-4'>
-                <label for="Entries" class='form-label'>Entries shown per page</label>
-                <select class='form-select' id='Entries'>
-                  <option selected>5</option>
+                <label for="Entries" className='form-label'>Entries shown per page</label>
+                <select className='form-select' id='Entries'>
+                  <option defaultValue>5</option>
                   <option>10</option>
                   <option>15</option>
                   <option>20</option>
