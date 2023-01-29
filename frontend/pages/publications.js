@@ -25,7 +25,7 @@ const Publications = () => {
                 <input type='search' className='form-control' id='pub-search' placeholder='Year, title, venue...' />
               </div>
               <div className='col-sm-4'>
-                <label for="Entries" className='form-label'>Entries shown per page</label>
+                <label for='Entries' className='form-label'>Entries shown per page</label>
                 <select className='form-select' id='Entries'>
                   <option defaultValue>5</option>
                   <option>10</option>
