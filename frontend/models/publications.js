@@ -15,8 +15,8 @@ const PublicationService = {
   getRawPublication: function (kwargs) {
     const publications = this.getRawPublications(kwargs)
     if (publications.length) {
-        return publications[0]
-      }
+      return publications[0]
+    }
   },
   // returns the object containing all publication objects
   getRawPublications: function (kwargs) {
