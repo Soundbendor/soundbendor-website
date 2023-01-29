@@ -23,18 +23,18 @@ const Publications = () => {
         <div className='col'>
           <div className='container'>
             <div className='row justify-content-between'>
-                <div className='col-sm-4'>
+              <div className='col-sm-4'>
                 <label for="pub-search" class='form-label'>Search for specific publications</label>
-                  <input type='search' class='form-control' id='pub-search' placeholder='Year, title, venue...' />
-                </div>
-                <div className='col-sm-4'>
-                  <label for="Entries" class='form-label'>Entries shown per page</label>
-                  <select class='form-select' id='Entries'>
-                    <option selected>5</option>
-                    <option>10</option>
-                    <option>15</option>
-                    <option>20</option>
-                  </select>
+                <input type='search' class='form-control' id='pub-search' placeholder='Year, title, venue...' />
+              </div>
+              <div className='col-sm-4'>
+                <label for="Entries" class='form-label'>Entries shown per page</label>
+                <select class='form-select' id='Entries'>
+                  <option selected>5</option>
+                  <option>10</option>
+                  <option>15</option>
+                  <option>20</option>
+                </select>
               </div>
             </div>
           </div>
