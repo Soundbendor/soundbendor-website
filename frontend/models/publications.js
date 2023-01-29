@@ -1,6 +1,6 @@
 import content from '../data/database.json'
 
-// Takes in grouped data from an api and updates 
+// Takes in grouped data from an api and updates
 // the content in p (list of publications)
 function Publication (rawData) {
   let p = {}
