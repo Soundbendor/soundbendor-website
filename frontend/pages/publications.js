@@ -22,19 +22,19 @@ const Publications = () => {
       <div className='row'>
         <div className='col'>
           <div className='container'>
-            <div className='row'>
-              <div className='text-center'>
-                <div className='col'>
-                  <input type='search' class='form-control' id='publication-search-input' placeholder='Search...' />
+            <div className='row justify-content-between'>
+                <div className='col-sm-4'>
+                <label for="pub-search" class='form-label'>Search for specific publications</label>
+                  <input type='search' class='form-control' id='pub-search' placeholder='Year, title, venue...' />
                 </div>
-                <div className='col'>
-                  <select className='form-select'>
-                    <option selected>Entries shown per page</option>
-                    <option value='5'>5</option>
-                    <option value='5'>15</option>
-                    <option value='5'>20</option>
+                <div className='col-sm-4'>
+                  <label for="Entries" class='form-label'>Entries shown per page</label>
+                  <select class='form-select' id='Entries'>
+                    <option selected>5</option>
+                    <option>10</option>
+                    <option>15</option>
+                    <option>20</option>
                   </select>
-                </div>
               </div>
             </div>
           </div>

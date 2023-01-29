@@ -18,6 +18,7 @@ const PublicationService = {
         return publications[0]
       }
   },
+  // gets list of publication data specified by the project api
   getRawPublications: function (kwargs) {
     return Object.values(content.data['api::project.project'])
   },
@@ -36,9 +37,6 @@ const PublicationService = {
   getPublications: function (kwargs) {
     const publications = this.getRawPublications(kwargs)
     return publications.map(publication => Publication(publication))
-      // Because publications are in the same api as projects, we need
-      // to filter the IDs by looking at the project_type property.
-      // 1 is projects, 2 is publications
   }
 }
 
