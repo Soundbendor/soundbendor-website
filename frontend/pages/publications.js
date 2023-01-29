@@ -11,8 +11,8 @@ const Publications = () => {
   return (
     <>
       <div className='row py-5'>
-          <div className='container'>
-              <h1 className='text-center'>Publications</h1>
+        <div className='container'>
+          <h1 className='text-center'>Publications</h1>
         </div>
       </div>
 
@@ -21,7 +21,7 @@ const Publications = () => {
           <div className='container'>
             <div className='row justify-content-between'>
               <div className='col-sm-4'>
-                <label for="pub-search" className='form-label'>Search for specific publications</label>
+                <label for='pub-search' className='form-label'>Search for specific publications</label>
                 <input type='search' className='form-control' id='pub-search' placeholder='Year, title, venue...' />
               </div>
               <div className='col-sm-4'>
