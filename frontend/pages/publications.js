@@ -1,34 +1,37 @@
 import Publicationentry from '../components/Publicationentry'
+import PublicationService from '../models/publications'
 
 const Publications = () => {
+  // call the getter function for publication objects
+  const publications = PublicationService.getPublications()
+  // put each publication obj into an array for displaying in the HTML
+  const publicationsListDisplay = publications.map((publication) =>
+    <Publicationentry key={publication.id} publication={publication} />
+  )
   return (
     <>
       <div className='row py-5'>
-        <div className='col'>
-          <div className='container'>
-            <div className='text-center'>
-              <h1>Publications</h1>
-            </div>
-          </div>
+        <div className='container'>
+          <h1 className='text-center'>Publications</h1>
         </div>
       </div>
 
       <div className='row'>
         <div className='col'>
           <div className='container'>
-            <div className='row'>
-              <div className='text-center'>
-                <div className='col'>
-                  <input type='search' class='form-control' id='publication-search-input' placeholder='Search...' />
-                </div>
-                <div className='col'>
-                  <select class='form-select'>
-                    <option selected>Entries shown per page</option>
-                    <option value='5'>5</option>
-                    <option value='5'>15</option>
-                    <option value='5'>20</option>
-                  </select>
-                </div>
+            <div className='row justify-content-between'>
+              <div className='col-sm-4'>
+                <label for='pub-search' className='form-label'>Search for specific publications</label>
+                <input type='search' className='form-control' id='pub-search' placeholder='Year, title, venue...' />
+              </div>
+              <div className='col-sm-4'>
+                <label for='Entries' className='form-label'>Entries shown per page</label>
+                <select className='form-select' id='Entries'>
+                  <option defaultValue>5</option>
+                  <option>10</option>
+                  <option>15</option>
+                  <option>20</option>
+                </select>
               </div>
             </div>
           </div>
@@ -47,10 +50,7 @@ const Publications = () => {
                 </tr>
               </thead>
               <tbody>
-                <Publicationentry year='2022' pubURL='#' pubName='The quick brown fox jumps over the lazy dog' venue='ICFSP' />
-                <Publicationentry year='2022' pubURL='#' pubName='Jived fox nymph grabs quick waltz' venue='ICFSP' />
-                <Publicationentry year='2022' pubURL='#' pubName='Pack my box with five dozen liquor jugs' venue='ICFSP' />
-                <Publicationentry year='2022' pubURL='#' pubName='The five boxing wizards jump quickly' venue='ICFSP' />
+                {publicationsListDisplay}
               </tbody>
             </table>
           </div>
