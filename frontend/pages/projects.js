@@ -3,11 +3,9 @@ import { ProjectCardPlaceholder } from '../components/Projectcard'
 import ProjectService from '../models/projects'
 
 const Projects = () => {
-
   const projects = ProjectService.getProjects()
-  const firstProject = projects[0]
   const projectYears = ProjectService.getProjectYears()
-  const projectSearchPlaceholder = '(e.g., '+projects[0].Name+')'
+  const projectSearchPlaceholder = '(e.g., ' + projects[0].Name + ')'
   const projectListDisplay = projects.map((project) =>
     <ProjectCardPlaceholder key={project.id} project={project} />
   )
@@ -32,31 +30,31 @@ const Projects = () => {
         </div>
 
         <div className='row'>
-        <div className='col'>
-          <div className='container'>
-            <div className='row justify-content-between'>
-              <div className='col-sm-8'>
-                <label htmlFor='project-search' className='form-label'>Search by Name</label>
-                <input type='search' className='form-control' id='project-search' placeholder={projectSearchPlaceholder} />
-              </div>
-              <div className='col-sm-4'>
-                <label htmlFor='project-year' className='form-label'>Search By Year</label>
-                <select className='form-select' id='project-year'>
-                  <option defaultValue value=""></option>
-                  {projectYearListDisplay}
-                </select>
+          <div className='col'>
+            <div className='container'>
+              <div className='row justify-content-between'>
+                <div className='col-sm-8'>
+                  <label htmlFor='project-search' className='form-label'>Search by Name</label>
+                  <input type='search' className='form-control' id='project-search' placeholder={projectSearchPlaceholder} />
+                </div>
+                <div className='col-sm-4'>
+                  <label htmlFor='project-year' className='form-label'>Search By Year</label>
+                  <select className='form-select' id='project-year'>
+                    <option defaultValue value='' />
+                    {projectYearListDisplay}
+                  </select>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
         <div className='row py-5'>
           <div className='col'>
             <div className='container'>
               <div className='row'>
                 <div className='col'>
-                  <div className={style.personcontainer} >
+                  <div className={style.personcontainer}>
                     {projectListDisplay}
                   </div>
                 </div>
