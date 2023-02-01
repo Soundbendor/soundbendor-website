@@ -35,6 +35,11 @@ const ProjectService = {
   getProjects: function (kwargs) {
     const projects = this.getRawProjects(kwargs)
     return projects.map(project => Project(project))
+  },
+  getProjectYears: function(kwargs) {
+    const projects = this.getRawProjects(kwargs)
+    const years = projects.map(project => (new Date(project.InitialPublishedDate)).getFullYear())
+    return years.filter((item, index, arrRef) => arrRef.indexOf(item) === index)
   }
 }
 
