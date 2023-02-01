@@ -1,81 +1,58 @@
-import style from '../styles/Team.module.css'
-import Papercard from '../components/Paperentry.js'
+import Publicationentry from '../components/Publicationentry'
+import PublicationService from '../models/publications'
 
 const Publications = () => {
+  // call the getter function for publication objects
+  const publications = PublicationService.getPublications()
+  // put each publication obj into an array for displaying in the HTML
+  const publicationsListDisplay = publications.map((publication) =>
+    <Publicationentry key={publication.id} publication={publication} />
+  )
   return (
     <>
-      <div className='container-fluid px-0'>
-        <div className='row py-5'>
-          <div className='col'>
-            <div className='container'>
-              <div className='row'>
-                <div className='col'>
-                  <div className='text-center'>
-                    <h1>Publications</h1>
-                  </div>
-                </div>
+      <div className='row py-5'>
+        <div className='container'>
+          <h1 className='text-center'>Publications</h1>
+        </div>
+      </div>
+
+      <div className='row'>
+        <div className='col'>
+          <div className='container'>
+            <div className='row justify-content-between'>
+              <div className='col-sm-4'>
+                <label for='pub-search' className='form-label'>Search for specific publications</label>
+                <input type='search' className='form-control' id='pub-search' placeholder='Year, title, venue...' />
+              </div>
+              <div className='col-sm-4'>
+                <label for='Entries' className='form-label'>Entries shown per page</label>
+                <select className='form-select' id='Entries'>
+                  <option defaultValue>5</option>
+                  <option>10</option>
+                  <option>15</option>
+                  <option>20</option>
+                </select>
               </div>
             </div>
           </div>
         </div>
+      </div>
 
-        <div className='row'>
-          <div className='col'>
-            <div className='container'>
-              <div className='row'>
-                <ul className={style.ul}>
-                  <div className='text-center'>
-                    <li className={style.li}>
-                      <input type='text' id='publication-search-input' placeholder='Search...' />
-                    </li>
-                    <li className={style.li}>
-                      <i className='search-icon'>O</i>
-                    </li>
-                    <li className={`${style.li} ${style.filtermenu}`}>
-                      <select className='filter-select'>
-                        <option value='10'>10</option>
-                        <option value='15'>15</option>
-                        <option value='20'>20</option>
-                        <option value='25'>25</option>
-                      </select>
-                    </li>
-                    <label>
-                      entries per page
-                    </label>
-                  </div>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className='row py-5'>
-          <div className='col'>
-            <div className='container'>
-              <div className='row'>
-                <div className='col'>
-                  <div className={style.personcontainer}>
-                    <table className={style.tablecontainer}>
-                      <thead>
-                        <tr className={style.tablecol}>
-                          <th>YEAR</th>
-                          <th>PAPER</th>
-                          <th>VENUE</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <Papercard year='2022' paperURL='#' paperName='The' venue='ICFSP' />
-                        <Papercard year='2022' paperURL='#' paperName='Quick' venue='ICFSP' />
-                        <Papercard year='2022' paperURL='#' paperName='Brown' venue='IHIET-AI' />
-                        <Papercard year='2022' paperURL='#' paperName='Fox' venue='IHIET-AI' />
-                        <Papercard year='2022' paperURL='#' paperName='Jumped' venue='ICNLSP' />
-                        <Papercard year='2022' paperURL='#' paperName='Over' venue='ICNLSP' />
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </div>
+      <div className='row py-5'>
+        <div className='col'>
+          <div className='container'>
+            <table className='table table-striped table-hover'>
+              <thead>
+                <tr>
+                  <th scope='col'>YEAR</th>
+                  <th scope='col'>PAPER</th>
+                  <th scope='col'>VENUE</th>
+                </tr>
+              </thead>
+              <tbody>
+                {publicationsListDisplay}
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
