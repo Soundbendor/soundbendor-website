@@ -46,26 +46,26 @@ Accordingly, we have abstracted out the basics of the model layer to the \_\_bas
 ### Implementing the \_\_base model
 To implement the \_\_base model, first create a new file for the type of service you wish to make.  Include the BaseService at the top of the new file.  You can optionally create a custom object which your data can be stored within, if you wish.  For the most simple implementations, should look like:
 ```javascript
-import BaseService from './\_\_base'
+import BaseService from './__base'
 const ExampleService = BaseService.constructDefaultService(databaseIdentifer, singularName[, pluralName[, customObject[, filterFunctions]]])
 module.exports = ExampleService
 ```
 
 A few examples include:
 ```javascript
-import BaseService from './\_\_base'
+import BaseService from './__base'
 const EventService = BaseService.constructDefaultService('api::event.event', 'event')
 module.exports = EventService
 ```
 
 ```javascript
-import BaseService from './\_\_base'
+import BaseService from './__base'
 const CategoryService = BaseService.constructDefaultService('api::category.category', 'category', 'categories')
 module.exports = CategoryService
 ```
 
 ```javascript
-import BaseService from './\_\_base'
+import BaseService from './__base'
 import ImageService from './images'
 
 function Person (rawData) {
@@ -83,7 +83,7 @@ module.exports = PersonService
 
 Or you can manually build your service while still accessing the underlying necessary functions for a service and including additional functions:
 ```javascript
-import BaseService from './\_\_base'
+import BaseService from './__base'
 
 // Constructor -- decorates the data
 function Project (rawData) {
@@ -124,7 +124,7 @@ Here's the benefits of having this \_\_base model: things will just work consist
 For example, lets say you want to get an event from an EventService that uses the \_\_base model.
 
 ```javascript
-import BaseService from './\_\_base'
+import BaseService from './__base'
 const EventService = BaseService.constructDefaultService('api::event.event', 'event')
 module.exports = EventService
 ```
@@ -153,11 +153,11 @@ and the get an array of events that meet that criteria
 #### Filter Functions
 By default the \_\_base model supports the following filtering:
 ```
-Equals:               {property_name}\_\_eq
-Less Than:            {property_name}\_\_lt
-Less Than Eq. to:     {property_name}\_\_lte
-greater Than:         {property_name}\_\_gt
-greater Than Eq. to:  {property_name}\_\_gte
+Equals:               {property_name}__eq
+Less Than:            {property_name}__lt
+Less Than Eq. to:     {property_name}__lte
+greater Than:         {property_name}__gt
+greater Than Eq. to:  {property_name}__gte
 ```
 The filter functions can be extended for each service if necessary.
 
