@@ -35,9 +35,9 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
-# Developers Notes
+## Developers Notes
 
-## \_\_base model
+### \_\_base Model Briefly
 
 A problem exists for developers that the model layer is often repeating rote code unnecessarily.  This can be frustrating for developers.
 Accordingly, we have abstracted out the basics of the model layer to the \_\_base model
@@ -120,7 +120,7 @@ module.exports = ProjectService
 ### Using functions from services that use the \_\_base model
 Here's the benefits of having this \_\_base model: things will just work consistently.
 
-#### Example 1: Get one object based on ID being equal to a certain value.
+#### Example 1: Get one object based on ID being equal to a certain value
 For example, lets say you want to get an event from an EventService that uses the \_\_base model.
 
 ```javascript
@@ -137,9 +137,9 @@ import EventService from '../models/events'
 const events = EventService.getEvent({'Id__eq': 15})
 ...
 ````
-and you will receive exactly 1 event that is Id == 15
+and you will receive exactly 1 event that is ID == 15
 
-#### Example 2: Get many objects based on published date occurring after a certain value.
+#### Example 2: Get many objects based on published date occurring after a certain value
 Lets say you want to get ALL EVENTS (plural) that were published after a certain date, you could do the following:
 
 ```javascript
@@ -150,18 +150,18 @@ const events = EventService.getEvents({'PublishedDate__gt': '2020-05-27'})
 ````
 and the get an array of events that meet that criteria
 
-#### Filter Functions
+### Filter Functions
 By default the \_\_base model supports the following filtering:
-```
-Equals:               {property_name}__eq
-Less Than:            {property_name}__lt
-Less Than Eq. to:     {property_name}__lte
-greater Than:         {property_name}__gt
-greater Than Eq. to:  {property_name}__gte
-```
-The filter functions can be extended for each service if necessary.
 
-#### Sorting
+- Equals:               {property_name}\_\_eq
+- Less Than:            {property_name}\_\_lt
+- Less Than Eq. to:     {property_name}\_\_lte
+- greater Than:         {property_name}\_\_gt
+- greater Than Eq. to:  {property_name}\_\_gte
+
+The filter functions can be extended for each service if necessary.  Further examples below.
+
+### Sorting
 In addition to filtering, we have included a pre-filter sort and a post-filter sort.  To use those, you can include the keywords "presortBy", "presortDirection", "postsortBy", and "postsortDirection" accordingly (see examples).
 
 Example: Lets say you want to get ALL EVENTS (plural) that were published after a certain date, sorted by published date ascending, you could do the following:
@@ -181,9 +181,9 @@ const events = EventService.getEvents({'PublishedDate__gt': '2020-05-27', 'posts
 ...
 ````
 
-We understand that there may be efficiencies to sorting at different times, so presort filtering and postsort filtering are both available 
+We understand that there may be efficiencies to sorting at different times, so presort filtering and postsort filtering are both available.
 
-#### Pagination (Limiting the number of records)
+### Pagination (Limiting the number of records)
 In addition to filtering and sorting, we have included the ability to limit the number of records shown.  We use keywords "page" and "pageSize" to make this happen.
 
 Example:
@@ -202,5 +202,10 @@ import EventService from '../models/events'
 const events = EventService.getEvents({'postsortBy':'PublishedDate', 'postsortDirection': -1, 'pageSize':3, 'page': 2}) // will default page value to 1
 ...
 ````
-Assume that there were 10 events [A, B, C, D, E, F, G, H, I, J].  The post sort would order the data by PublishedDate in a descending manner.  Lets assume that the data is now sorted as [H, I, B, D, E, A, C, G, F, J] as a result of the postsort.  Then the pagination would limit the results to exactly 3 results corresponding to the second set of 3 results, which would yield [D, E, A].  Had the 'page' value been 3, it would have resulted in [C,G,F].  Had the 'page' value been 4, it would have resulted in [J].  Had the 'page' value been 5, it would have resulted in [], because there are not enough records to have a 5th page.  
+Assume that there were 10 events [A, B, C, D, E, F, G, H, I, J].  The post sort would order the data by PublishedDate in a descending manner.  
+Lets assume that the data is now sorted as [H, I, B, D, E, A, C, G, F, J] as a result of the postsort.  
+Then the pagination would limit the results to exactly 3 results corresponding to the second set of 3 results, which would yield [D, E, A].  
+Had the 'page' value been 3, it would have resulted in [C,G,F].  
+Had the 'page' value been 4, it would have resulted in [J].  
+Had the 'page' value been 5, it would have resulted in [], because there are not enough records to have a 5th page.  
 
