@@ -30,7 +30,6 @@ function filterData (data, kwargs, filterFunctions) {
   let myData = data
   for (const key in kwargs) {
     if (key.match(/^.+__\w{2,3}$/)) {
-      console.log(key + ' matches a filter')
       const filterInfo = key.split('__')
       const propName = filterInfo[0]
       const funcName = filterInfo[1]
