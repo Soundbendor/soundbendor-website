@@ -187,7 +187,7 @@ We understand that there may be efficiencies to sorting at different times, so p
 In addition to filtering and sorting, we have included the ability to limit the number of records shown.  We use keywords "page" and "pageSize" to make this happen.
 
 Example:
-
+```javascript
 import EventService from '../models/events'
 ...
 const events = EventService.getEvents({'pageSize':2}) // will default page value to 1
@@ -196,7 +196,7 @@ const events = EventService.getEvents({'pageSize':2}) // will default page value
 this will limit the results to TWO results because page size is 2.
 
 Example:
-
+```javascript
 import EventService from '../models/events'
 ...
 const events = EventService.getEvents({'postsortBy':'PublishedDate', 'postsortDirection': -1, 'pageSize':3, 'page': 2}) // will default page value to 1

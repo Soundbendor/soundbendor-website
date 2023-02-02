@@ -42,12 +42,12 @@ function filterData (data, kwargs, filterFunctions) {
   return myData
 }
 
-function paginateData (data, kwargs){
+function paginateData (data, kwargs) {
   let myData = data
 
-  if ('pageSize' in kwargs && !isNaN(kwargs.pageSize)){
-    if (!('page' in kwargs)) kwargs.page = 1;
-    myData = myData.slice((kwargs.page-1)*kwargs.pageSize, (kwargs.page)*kwargs.pageSize)
+  if ('pageSize' in kwargs && !isNaN(kwargs.pageSize)) {
+    if (!('page' in kwargs)) kwargs.page = 1
+    myData = myData.slice((kwargs.page - 1) * kwargs.pageSize, (kwargs.page) * kwargs.pageSize)
   }
 
   return myData
@@ -76,7 +76,7 @@ const BaseService = {
     if (!datatype) {
       datatype = BaseService.defaultDataConstructor
     }
-    let response = {}
+    const response = {}
     const singularNameCap = capitalizeString(singularName)
     const pluralNameCap = capitalizeString(pluralName)
     response['getRaw' + pluralNameCap] = BaseService.getRawData(databaseId, filterFunctions)
