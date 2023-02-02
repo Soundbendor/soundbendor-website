@@ -153,11 +153,11 @@ and the get an array of events that meet that criteria
 #### Filter Functions
 By default the \_\_base model supports the following filtering:
 ```
-Equals:					{property_name}\_\_eq
-Less Than:				{property_name}\_\_lt
-Less Than Eq. to:		{property_name}\_\_lte
-greater Than:			{property_name}\_\_gt
-greater Than Eq. to:	{property_name}\_\_gte
+Equals:               {property_name}\_\_eq
+Less Than:            {property_name}\_\_lt
+Less Than Eq. to:     {property_name}\_\_lte
+greater Than:         {property_name}\_\_gt
+greater Than Eq. to:  {property_name}\_\_gte
 ```
 The filter functions can be extended for each service if necessary.
 
