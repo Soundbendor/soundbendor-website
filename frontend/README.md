@@ -183,6 +183,24 @@ const events = EventService.getEvents({'PublishedDate__gt': '2020-05-27', 'posts
 
 We understand that there may be efficiencies to sorting at different times, so presort filtering and postsort filtering are both available 
 
-#### TO DO -- Pagination
+#### Pagination (Limiting the number of records)
+In addition to filtering and sorting, we have included the ability to limit the number of records shown.  We use keywords "page" and "pageSize" to make this happen.
 
+Example:
+
+import EventService from '../models/events'
+...
+const events = EventService.getEvents({'pageSize':2}) // will default page value to 1
+...
+````
+this will limit the results to TWO results because page size is 2.
+
+Example:
+
+import EventService from '../models/events'
+...
+const events = EventService.getEvents({'postsortBy':'PublishedDate', 'postsortDirection': -1, 'pageSize':3, 'page': 2}) // will default page value to 1
+...
+````
+Assume that there were 10 events [A, B, C, D, E, F, G, H, I, J].  The post sort would order the data by PublishedDate in a descending manner.  Lets assume that the data is now sorted as [H, I, B, D, E, A, C, G, F, J] as a result of the postsort.  Then the pagination would limit the results to exactly 3 results corresponding to the second set of 3 results, which would yield [D, E, A].  Had the 'page' value been 3, it would have resulted in [C,G,F].  Had the 'page' value been 4, it would have resulted in [J].  Had the 'page' value been 5, it would have resulted in [], because there are not enough records to have a 5th page.  
 

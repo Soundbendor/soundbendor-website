@@ -42,6 +42,17 @@ function filterData (data, kwargs, filterFunctions) {
   return myData
 }
 
+function paginateData (data, kwargs){
+  let myData = data
+
+  if ('pageSize' in kwargs && !isNaN(kwargs.pageSize)){
+    if (!('page' in kwargs)) kwargs.page = 1;
+    myData = myData.slice((kwargs.page-1)*kwargs.pageSize, (kwargs.page)*kwargs.pageSize)
+  }
+
+  return myData
+}
+
 function capitalizeString (s) {
   return s.charAt(0).toUpperCase() + s.slice(1)
 }
@@ -50,6 +61,7 @@ const BaseService = {
   filterFunctions: FilterFunctions,
   defaultDataConstructor: function (rawData) {
     let d = {}
+    // we do this so that we do not have the same reference to an object in memory and create race conditions
     d = Object.assign(d, rawData)
     d.RawData = rawData
     return d
@@ -64,7 +76,7 @@ const BaseService = {
     if (!datatype) {
       datatype = BaseService.defaultDataConstructor
     }
-    const response = {}
+    let response = {}
     const singularNameCap = capitalizeString(singularName)
     const pluralNameCap = capitalizeString(pluralName)
     response['getRaw' + pluralNameCap] = BaseService.getRawData(databaseId, filterFunctions)
@@ -94,6 +106,7 @@ const BaseService = {
         sortData(rawData, kwargs, 'presortBy', 'presortDirection')
         rawData = filterData(rawData, kwargs, filterFunctions)
         sortData(rawData, kwargs, 'postsortBy', 'postsortDirection')
+        rawData = paginateData(rawData, kwargs)
       }
       return rawData
     }
