@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "build": "next build",
+    "export": "next build && next export",
     "prestart": "node prestart",
     "start": "next dev",
     "lint": "next lint"
