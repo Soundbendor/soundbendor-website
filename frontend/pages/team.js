@@ -1,14 +1,11 @@
 import style from '../styles/Team.module.css'
 import { PersonCard } from '../components/Personcard'
 import PersonService from '../models/people'
-import ImageService from '../models/images'
 
 const Team = () => {
   const people = PersonService.getPeople()
-  const images = ImageService.getImages()
-  const image = images[3]
   const personListDisplay = people.map((person) =>
-    <PersonCard key={person.id} person={person} image={image}/>
+    <PersonCard key={person.id} person={person} />
   )
   return (
     <>

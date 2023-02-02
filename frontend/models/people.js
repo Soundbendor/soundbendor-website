@@ -1,36 +1,14 @@
-import content from '../data/database.json'
+import BaseService from './__base'
+import ImageService from './images'
 
 function Person (rawData) {
   let p = {}
   p = Object.assign(p, rawData)
   p.RawData = rawData
+  p.photoImage = ImageService.getImage({ id__eq: p.Photo })
   return p
 }
 
-const PersonService = {
-  getRawPerson: function (kwargs) {
-    const people = this.getRawPeople(kwargs)
-    if (people.length) {
-      return people[0]
-    }
-  },
-  getRawPeople: function (kwargs) {
-    return Object.values(content.data['api::person.person'])
-  },
-  getPerson: function (kwargs) {
-    const rawperson = this.getRawPerson(kwargs)
-    let p
-    if (rawperson) {
-      p = Person(rawperson)
-    } else {
-      p = Person({})
-    }
-    return p
-  },
-  getPeople: function (kwargs) {
-    const people = this.getRawPeople(kwargs)
-    return people.map(person => Person(person))
-  }
-}
+const PersonService = BaseService.constructDefaultService('api::person.person', 'person', 'people', Person)
 
 module.exports = PersonService

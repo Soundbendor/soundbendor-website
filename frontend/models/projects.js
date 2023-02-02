@@ -1,4 +1,4 @@
-import content from '../data/database.json'
+import BaseService from './__base'
 
 // Constructor -- decorates the data
 function Project (rawData) {
@@ -11,31 +11,17 @@ function Project (rawData) {
 }
 
 const ProjectService = {
-  // returns a single project object, else undefined
+  getRawProjects: BaseService.getRawData('api::project.project'),
   getRawProject: function (kwargs) {
-    const projects = this.getRawProjects(kwargs)
-    if (projects.length) {
-      return projects[0]
-    }
-  },
-  // returns array of project objects
-  getRawProjects: function (kwargs) {
-    return Object.values(content.data['api::project.project'])
+    return BaseService.getRawDatum(ProjectService.getRawProjects, kwargs)
   },
   getProject: function (kwargs) {
-    const rawproject = this.getRawProject(kwargs)
-    let p
-    if (rawproject) {
-      p = Project(rawproject)
-    } else {
-      p = Project({})
-    }
-    return p
+    return BaseService.getDatum(ProjectService.getRawProject, Project, kwargs)
   },
   getProjects: function (kwargs) {
-    const projects = this.getRawProjects(kwargs)
-    return projects.map(project => Project(project))
+    return BaseService.getData(ProjectService.getRawProjects, Project, kwargs)
   },
+  // Custom function to get the total number of years for a project
   getProjectYears: function (kwargs) {
     const projects = this.getRawProjects(kwargs)
     const years = projects.map(project => (new Date(project.InitialPublishedDate)).getFullYear())
