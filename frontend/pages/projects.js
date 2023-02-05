@@ -27,7 +27,7 @@ const Projects = () => {
     const yearField = document.getElementById('project-year')
     const filters = {}
     if (searchField.value) {
-      filters.Name__like = searchField.value
+      filters.x__searchNameAndDescription = searchField.value
     }
     if (yearField.value) {
       filters.InitialPublishedDate__sw = yearField.value

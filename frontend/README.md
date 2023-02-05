@@ -153,13 +153,38 @@ and the get an array of events that meet that criteria
 ### Filter Functions
 By default the \_\_base model supports the following filtering:
 
-- Equals:               {property_name}\_\_eq
-- Less Than:            {property_name}\_\_lt
-- Less Than Eq. to:     {property_name}\_\_lte
-- greater Than:         {property_name}\_\_gt
-- greater Than Eq. to:  {property_name}\_\_gte
+- Equals:               {property_name}\_\_eq     -- whether any content is equal to the searching term
+- Less Than:            {property_name}\_\_lt     -- whether any content is less than the searching term
+- Less Than Eq. To:     {property_name}\_\_lte    -- whether any content is less than or equal to the searching term
+- Greater Than:         {property_name}\_\_gt     -- whether any content is greater than the searching term
+- Greater Than Eq. To:  {property_name}\_\_gte    -- whether any content is greater than or equal to the searching term
+- Like:                 {property_name}\_\_like   -- whether any content contains the substring or number searched
+- Starts With:          {property_name}\_\_sw     -- whether any content starts with the searching term
+- Ends With:            {property_name}\_\_ew     -- whether any content ends with the searching term
 
-The filter functions can be extended for each service if necessary.  Further examples below.
+The filter functions can be extended for each service if necessary.  For Example:
+
+```javascript
+...
+var projectFilterFunctions = Object.assign({}, BaseService.filterFunctions) // this extends the base filter functions
+projectFilterFunctions.searchNameAndDescription = (key, value, obj) => obj.Name.includes(value) || obj.Description.includes(value)
+
+const ProjectService = {
+  getRawProjects: BaseService.getRawData('api::project.project', projectFilterFunctions), //this sets the project specific filter functions
+  ...
+}
+```
+
+This could then be implemented using:
+
+```javascript
+  import ProjectService from '../models/projects'
+  ...
+  var filters = {}
+  filters['x__searchNameAndDescription'] = searchField.value
+  ProjectService.getProjects(filters)
+```
+
 
 ### Sorting
 In addition to filtering, we have included a pre-filter sort and a post-filter sort.  To use those, you can include the keywords "presortBy", "presortDirection", "postsortBy", and "postsortDirection" accordingly (see examples).

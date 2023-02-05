@@ -24,7 +24,7 @@ const FilterFunctions = {
   lte: (key, value, obj) => obj[key] <= value,
   gt: (key, value, obj) => obj[key] > value,
   gte: (key, value, obj) => obj[key] >= value,
-  like: (key, value, obj) => { console.log(obj[key]); console.log(obj[key].includes(value)); return obj[key].includes(value) },
+  like: (key, value, obj) => obj[key].includes(value),
   sw: (key, value, obj) => obj[key].startsWith(value),
   ew: (key, value, obj) => obj[key].endsWith(value)
 }
@@ -32,17 +32,13 @@ const FilterFunctions = {
 function filterData (data, kwargs, filterFunctions) {
   let myData = data
   for (const key in kwargs) {
-    if (key.match(/^.+__\w{2,4}$/)) {
+    if (key.match(/^.+__\w+$/)) {
       const filterInfo = key.split('__')
       const propName = filterInfo[0]
       const funcName = filterInfo[1]
       const propValue = kwargs[key]
       if (funcName in filterFunctions) {
-        console.log(propName)
-        console.log(funcName)
-        console.log(propValue)
         myData = myData.filter(filterFunctions[funcName].bind(null, propName, propValue))
-        console.log(myData)
       }
     }
   }
@@ -114,7 +110,6 @@ const BaseService = {
         rawData = filterData(rawData, kwargs, filterFunctions)
         sortData(rawData, kwargs, 'postsortBy', 'postsortDirection')
         rawData = paginateData(rawData, kwargs)
-        console.log(rawData)
       }
       return rawData
     }
