@@ -10,8 +10,11 @@ function Project (rawData) {
   return p
 }
 
+const projectFilterFunctions = Object.assign({}, BaseService.filterFunctions)
+projectFilterFunctions.searchNameAndDescription = (key, value, obj) => obj.Name.includes(value) || obj.Description.includes(value)
+
 const ProjectService = {
-  getRawProjects: BaseService.getRawData('api::project.project'),
+  getRawProjects: BaseService.getRawData('api::project.project', projectFilterFunctions),
   getRawProject: function (kwargs) {
     return BaseService.getRawDatum(ProjectService.getRawProjects, kwargs)
   },

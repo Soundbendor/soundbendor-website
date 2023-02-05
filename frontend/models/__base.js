@@ -23,13 +23,16 @@ const FilterFunctions = {
   lt: (key, value, obj) => obj[key] < value,
   lte: (key, value, obj) => obj[key] <= value,
   gt: (key, value, obj) => obj[key] > value,
-  gte: (key, value, obj) => obj[key] >= value
+  gte: (key, value, obj) => obj[key] >= value,
+  like: (key, value, obj) => obj[key].includes(value),
+  sw: (key, value, obj) => obj[key].startsWith(value),
+  ew: (key, value, obj) => obj[key].endsWith(value)
 }
 
 function filterData (data, kwargs, filterFunctions) {
   let myData = data
   for (const key in kwargs) {
-    if (key.match(/^.+__\w{2,3}$/)) {
+    if (key.match(/^.+__\w+$/)) {
       const filterInfo = key.split('__')
       const propName = filterInfo[0]
       const funcName = filterInfo[1]
