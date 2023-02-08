@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import style from '../styles/Team.module.css'
-import { ProjectCardPlaceholder } from '../components/Projectcard'
+import { ProjectCard } from '../components/Projectcard'
 import ProjectService from '../models/projects'
 
 const createProjectListDisplay = (projects) => {
   return projects.map((project) =>
-    <ProjectCardPlaceholder key={project.id} project={project} />
+    <ProjectCard key={project.id} project={project} />
   )
 }
 
