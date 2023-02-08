@@ -4,7 +4,7 @@ const ProjectCard = ({ project }) => {
   return (
     <article className={style.card}>
       <iframe width="320" height="180"
-src={project.projectLink}>
+src={project.projectLink} allowFullScreen>
 </iframe>
       <div className={style.bottom}>
         <h5><strong>{project.Name}</strong></h5>
