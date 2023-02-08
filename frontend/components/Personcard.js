@@ -14,7 +14,7 @@ const PersonCard = ({ person }) => {
       <div className={style.bottom}>
         <h5><strong>{person.FirstName} {person.LastName}</strong></h5>
         <hr className={style.horizontalbar} />
-        <h6 className='beaverorange'>{person.person_class} | {person.Photo}</h6>
+        <h6 className='beaverorange'>{person.personClass.name}</h6>
       </div>
     </article>
   )
