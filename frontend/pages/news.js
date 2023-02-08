@@ -7,20 +7,20 @@ const News = () => {
     <Newscard key={event.id} event={event} />
   )
   return (
-      <div className='container-fluid px-0'>
-        <div className='row py-5'>
-          <div className='col'>
-            <div className='container'>
-              <div className='row'>
-                <div className='col'>
-                  <div className='text-center'>
-                    <h1>News</h1>
-                  </div>
+    <div className='container-fluid px-0'>
+      <div className='row py-5'>
+        <div className='col'>
+          <div className='container'>
+            <div className='row'>
+              <div className='col'>
+                <div className='text-center'>
+                  <h1>News</h1>
                 </div>
               </div>
             </div>
           </div>
         </div>
+      </div>
       <div className='container'>
         <div className='row justify-content-center'>
           <div className='col-10'>
