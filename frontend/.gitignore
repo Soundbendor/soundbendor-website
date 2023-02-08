@@ -37,3 +37,6 @@ yarn-error.log*
 next-env.d.ts
 
 /data/*.json
+
+#Zach's copy script
+copy_to_windows.sh
