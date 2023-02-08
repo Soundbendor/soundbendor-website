@@ -8,7 +8,7 @@ const Newscard = ({ event }) => {
           </div>
           <div className='col-6 align-items-center'>
             <div className='small text-muted'>{event.formattedEventTime}</div>
-            <h2 style={{ color: '#D73F09' }} className='card-title h4'>{event.Name}</h2>
+            <h2 className='card-title h4 beaverorange'>{event.Name}</h2>
             <p className='card-text'>{event.Content}</p>
             <a className='btn btn-dark' href={event.EventURL}>Read more →</a>
           </div>
