@@ -6,6 +6,8 @@ function Event (rawData) {
   e = Object.assign(e, rawData)
   e.RawData = rawData
   e.FeaturedImgImage = ImageService.getImage({ id__eq: e.FeaturedImg })
+  const myDate = new Date(e.EventTime)
+  e.formattedEventTime = (myDate.getMonth() + 1) + '/' + myDate.getDate() + '/' + myDate.getFullYear()
   return e
 }
 
