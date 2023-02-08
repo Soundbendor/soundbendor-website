@@ -3,10 +3,11 @@ import style from '../styles/Projectcard.module.css'
 const ProjectCard = ({ project }) => {
   return (
     <article className={style.card}>
-      <iframe width='320' height='180' src={project.projectLink} allowFullScreen> </iframe>
+      <div class="embed-responsive embed-responsive-16by9">
+        <iframe class='embed-responsive-item' src={project.projectLink} allowFullScreen> </iframe>
+      </div>
       <div className={style.bottom}>
-        <h5><strong>{project.Name}</strong></h5>
-        {/* <h6 className='beaverorange'>{project.}</h6> */}
+        <h5 className='beaverorange'><strong>{project.Name}</strong></h5>
         <p className='text-muted'>{project.formattedInitialPublishedDate}</p>
       </div>
     </article>
