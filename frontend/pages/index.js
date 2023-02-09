@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { Carousel, CarouselItemPlaceholder } from '../components/Carousel'
+import Layout from '../components/Layout'
 
 const LogoFocus = () => {
   return (
@@ -118,6 +119,11 @@ const Home = () => {
   )
 }
 
+Home.getLayout = function getLayout (page) {
+  return (
+    <Layout>{page}</Layout>
+  )
+}
 // How to add "dynamic" stuff to page to be set at build time
 /*
 export const getStaticProps = () => {

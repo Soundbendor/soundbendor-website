@@ -1,4 +1,5 @@
 import { CarouselItemPlaceholder } from '../components/Carousel'
+import Layout from '../components/Layout'
 
 const About = () => {
   return (
@@ -53,6 +54,12 @@ const About = () => {
 
       </div>
     </>
+  )
+}
+
+About.getLayout = function getLayout (page) {
+  return (
+    <Layout>{page}</Layout>
   )
 }
 

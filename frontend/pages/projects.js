@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import style from '../styles/Team.module.css'
+import Layout from '../components/Layout'
 import { ProjectCard } from '../components/Projectcard'
 import ProjectService from '../models/projects'
 
@@ -87,6 +88,12 @@ const Projects = () => {
         </div>
       </div>
     </>
+  )
+}
+
+Projects.getLayout = function getLayout (page) {
+  return (
+    <Layout>{page}</Layout>
   )
 }
 
