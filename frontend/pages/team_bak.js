@@ -1,5 +1,5 @@
 import style from '../styles/Team.module.css'
-import { PersonCard } from '../components/Personcard'
+import { PersonCard } from '../components/Personcard_bak'
 import PersonService from '../models/people'
 
 const Team = () => {
@@ -27,21 +27,25 @@ const Team = () => {
         <div className='row'>
           <div className='col'>
             <div className='container'>
+              <div className='row'>
+                <ul className={style.ul}>
+                  <div className='text-center'>
+                    <li className={style.li}>
+                      <input type='text' id='person-search-input' placeholder='Search...' />
+                    </li>
+                    <li className={style.li}>
+                      <i className='search-icon'>O</i>
+                    </li>
                     <li className={`${style.li} ${style.filtermenu}`}>
-              <div className='row justify-content-between'>
-                <div className='col-sm-4'>
-                  <label htmlFor='team-search' className='form-label'>Search</label>
-                  <input type='search' className='form-control' id='team-search' placeholder='Search by name, year, title, etc' />
-                </div>
-                <div className='col-sm-4'>
-                <label htmlFor='team-filter-select' className='form-label'>Filter by</label>
-                  <select className='form-select' id='team-filter-select'>
-                  <option value='Default'>None</option>
-                    <option value='Class'>Class</option>
-                    <option value='Degree'>Degree</option>
-                    <option value='Group'>Group</option>
-                  </select>
-                </div>
+                      <select className='filter-select'>
+                        <option value='Default'>Filter</option>
+                        <option value='Class'>Class</option>
+                        <option value='Degree'>Degree</option>
+                        <option value='Group'>Group</option>
+                      </select>
+                    </li>
+                  </div>
+                </ul>
               </div>
             </div>
           </div>
@@ -51,7 +55,11 @@ const Team = () => {
           <div className='col'>
             <div className='container'>
               <div className='row'>
-                {personListDisplay}
+                <div className='col'>
+                  <div className={style.personcontainer}>
+                    {personListDisplay}
+                  </div>
+                </div>
               </div>
             </div>
           </div>
