@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { PersonCard } from '../components/Personcard'
 import PersonService from '../models/people'
+import Layout from '../components/Layout'
 
 const createPersonListDisplay = (people) => {
   return people.map((person) =>
@@ -78,6 +79,12 @@ const Team = () => {
         </div>
       </div>
     </>
+  )
+}
+
+Team.getLayout = function getLayout (page) {
+  return (
+    <Layout>{page}</Layout>
   )
 }
 
