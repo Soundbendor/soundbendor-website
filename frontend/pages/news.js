@@ -1,4 +1,5 @@
 import Newscard from '../components/Newscard'
+import Layout from '../components/Layout'
 import EventService from '../models/events'
 
 const News = () => {
@@ -37,6 +38,12 @@ const News = () => {
         </div>
       </div>
     </div>
+  )
+}
+
+News.getLayout = function getLayout (page) {
+  return (
+    <Layout>{page}</Layout>
   )
 }
 
