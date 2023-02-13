@@ -49,18 +49,9 @@ const Team = () => {
           <div className='col'>
             <div className='container'>
               <div className='row justify-content-between'>
-                <div className='col col-sm-4'>
+                <div className='col'>
                   <label htmlFor='team-search' className='form-label'>Search</label>
                   <input type='search' className='form-control' id='team-search' onChange={searchHandler} placeholder='Search by name, class, degree, group' />
-                </div>
-                <div className='col col-sm-4 col-md-3 col-lg-2'>
-                  <label htmlFor='team-filter-select' className='form-label'>Filter by</label>
-                  <select className='form-select' id='team-filter-select' onChange={searchHandler}>
-                    <option value='Default'>None</option>
-                    <option value='Class'>Class</option>
-                    <option value='Degree'>Degree</option>
-                    <option value='Group'>Group</option>
-                  </select>
                 </div>
               </div>
             </div>
