@@ -31,14 +31,15 @@
         "Projects",
         "Publications",
         "News",
-        "Apply"
+        "Apply",
+        "ContactForm"
       ],
       "required": true,
       "default": "Content"
     },
     "URLPath": {
       "type": "string",
-      "regex": "^\\/(.+\\/)*$",
+      "regex": "^\\/.+",
       "unique": true,
       "required": true
     }

@@ -5,6 +5,7 @@
   "scripts": {
     "build": "next build",
     "export": "next build && next export",
+    "export-serve": "next build && next export && node serveout.js",
     "export-zach": "next build && next export -o '/mnt/f/Google Drive/school/S10/soundbendor/'",
     "prestart": "node prestart",
     "start": "next dev",
@@ -13,6 +14,7 @@
   "dependencies": {
     "bootstrap": "^5.2.2",
     "dotenv": "^16.0.3",
+    "express": "^4.18.2",
     "filecompare": "^1.0.4",
     "next": "13.0.2",
     "react": "18.2.0",

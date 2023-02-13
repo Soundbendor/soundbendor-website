@@ -1,4 +1,3 @@
-import content from '../data/database.json'
 
 function sortData (data, kwargs, sortByKey, sortByDirectionKey) {
   if (sortByKey in kwargs && kwargs[sortByKey] in data[0]) {
@@ -7,14 +6,30 @@ function sortData (data, kwargs, sortByKey, sortByDirectionKey) {
     const key = kwargs[sortByKey]
     const direction = kwargs[sortByDirectionKey]
 
-    data.sort((x, y) => {
-      if (!(key in y) && !(key in x)) return 0
-      if (!(key in y)) return direction * -1
-      if (!(key in x)) return direction
-      if ((x[key] < y[key])) return direction * -1
-      if ((x[key] > y[key])) return direction
-      return 0
-    })
+    if (Array.isArray(direction)){
+      data.sort((x, y) => {
+        if (!(key in y) && !(key in x)) return 0
+        if (!(key in y)) return -1
+        if (!(key in x)) return 1
+        let yi = direction.indexOf(y[key])
+        let xi = direction.indexOf(x[key])
+        if (yi == -1 && xi == -1) return 0
+        if (yi == -1) return -1
+        if (xi == -1) return 1
+        if (xi < yi) return -1
+        if (xi > yi) return 1
+        return 0
+      })
+    } else {
+      data.sort((x, y) => {
+        if (!(key in y) && !(key in x)) return 0
+        if (!(key in y)) return direction * -1
+        if (!(key in x)) return direction
+        if ((x[key] < y[key])) return direction * -1
+        if ((x[key] > y[key])) return direction
+        return 0
+      })
+    }
   }
 }
 
@@ -27,7 +42,7 @@ const FilterFunctions = {
   like: (key, value, obj) => obj[key].includes(value),
   sw: (key, value, obj) => obj[key].startsWith(value),
   ew: (key, value, obj) => obj[key].endsWith(value),
-  in: (key, value, obj) => obj[key] in value
+  in: (key, value, obj) => value.includes(obj[key])
 }
 
 function filterData (data, kwargs, filterFunctions) {
@@ -62,6 +77,7 @@ function capitalizeString (s) {
 }
 
 const BaseService = {
+  getContent: () => require('../data/database.json'),
   filterFunctions: FilterFunctions,
   defaultDataConstructor: function (rawData) {
     let d = {}
@@ -101,7 +117,7 @@ const BaseService = {
       filterFunctions = BaseService.filterFunctions
     }
     return function (kwargs) {
-      let rawData = Object.values(content.data[id])
+      let rawData = Object.values(BaseService.getContent().data[id])
 
       // When key word arguments (kwargs) are passed, we can perform filtering
       // kwargs can be an OBJECT with keys and values.
