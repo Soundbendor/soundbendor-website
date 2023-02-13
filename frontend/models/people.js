@@ -12,14 +12,14 @@ function Person (rawData) {
   p.personClass = PersonClassService.getPersonClass({ id__eq: p.person_class })
   p.groups = GroupService.getGroups({ id__eq: p.groups })
   p.degrees = DegreeService.getDegrees({ id__eq: p.degrees })
-  p.RawData.formattedPersonName = p.RawData.FirstName + " " + p.RawData.LastName
+  p.RawData.formattedPersonName = p.RawData.FirstName + ' ' + p.RawData.LastName
   p.RawData.personClass = p.personClass.Name
 
   return p
 }
 
 const peopleFilterFunctions = Object.assign({}, BaseService.filterFunctions)
-peopleFilterFunctions.searchNameAndClass = (key, value, obj) => obj.formattedPersonName.includes(value) || obj.FirstName.includes(value) ||obj.personClass.includes(value)
+peopleFilterFunctions.searchNameAndClass = (key, value, obj) => obj.formattedPersonName.includes(value) || obj.FirstName.includes(value) || obj.personClass.includes(value)
 
 const PersonService = {
   getRawPeople: BaseService.getRawData('api::person.person', peopleFilterFunctions),
@@ -33,6 +33,5 @@ const PersonService = {
     return BaseService.getData(PersonService.getRawPeople, Person, kwargs)
   }
 }
-//const PersonService = BaseService.constructDefaultService('api::person.person', 'person', 'people', Person)
 
 module.exports = PersonService

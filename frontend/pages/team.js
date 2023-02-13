@@ -26,7 +26,6 @@ const Team = () => {
       filters.selectedOption = filterField.value
     }
     setPersonListDisplay(createPersonListDisplay(PersonService.getPeople(filters)))
-
   }
 
   return (
@@ -56,12 +55,12 @@ const Team = () => {
                 </div>
                 <div className='col col-sm-4 col-md-3 col-lg-2'>
                 <label htmlFor='team-filter-select' className='form-label'>Filter by</label>
-                  <select className='form-select' id='team-filter-select' onChange={searchHandler}>
+                <select className='form-select' id='team-filter-select' onChange={searchHandler}>
                   <option value='Default'>None</option>
-                    <option value='Class'>Class</option>
-                    <option value='Degree'>Degree</option>
-                    <option value='Group'>Group</option>
-                  </select>
+                  <option value='Class'>Class</option>
+                  <option value='Degree'>Degree</option>
+                  <option value='Group'>Group</option>
+                </select>
                 </div>
               </div>
             </div>
