@@ -2,7 +2,7 @@ const PersonCard = ({ person }) => {
   return (
     <div className='col'>
       <div className='card'>
-        <div className='overflow-hidden' style={{maxHeight: 240 + 'px'}}>
+        <div className='ratio ratio-1x1'>
           <img src={person.photoImage.url} className='card-img-top' alt='Team member portrait' />
         </div>
         <div className='card-body'>
