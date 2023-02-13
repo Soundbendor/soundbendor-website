@@ -2,9 +2,7 @@ import BaseService from './__base'
 
 // Constructor -- decorates the data
 function Project (rawData) {
-  let p = {}
-  p = Object.assign(p, rawData)
-  p.RawData = rawData
+  let p = BaseService.defaultDataConstructor(rawData)
   const myDate = new Date(p.InitialPublishedDate)
   p.formattedInitialPublishedDate = (myDate.getMonth() + 1) + '/' + myDate.getDate() + '/' + myDate.getFullYear()
   return p

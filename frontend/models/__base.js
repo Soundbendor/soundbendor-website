@@ -26,7 +26,8 @@ const FilterFunctions = {
   gte: (key, value, obj) => obj[key] >= value,
   like: (key, value, obj) => obj[key].includes(value),
   sw: (key, value, obj) => obj[key].startsWith(value),
-  ew: (key, value, obj) => obj[key].endsWith(value)
+  ew: (key, value, obj) => obj[key].endsWith(value),
+  in: (key, value, obj) => obj[key] in value
 }
 
 function filterData (data, kwargs, filterFunctions) {

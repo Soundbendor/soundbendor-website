@@ -1,0 +1,46 @@
+{
+  "kind": "collectionType",
+  "collectionName": "pages",
+  "info": {
+    "singularName": "page",
+    "pluralName": "pages",
+    "displayName": "Page",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "PagePart": {
+      "type": "component",
+      "repeatable": true,
+      "component": "page-part.page-part"
+    },
+    "PageTitle": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "PageType": {
+      "type": "enumeration",
+      "enum": [
+        "Home",
+        "Content",
+        "Team",
+        "Projects",
+        "Publications",
+        "News",
+        "Apply"
+      ],
+      "required": true,
+      "default": "Content"
+    },
+    "URLPath": {
+      "type": "string",
+      "regex": "^\\/(.+\\/)*$",
+      "unique": true,
+      "required": true
+    }
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "collectionName": "components_page_part_page_parts",
+  "info": {
+    "displayName": "PagePart",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "PagePartTitle": {
+      "type": "string",
+      "required": true
+    },
+    "PagePartSubtitle": {
+      "type": "string"
+    },
+    "PagePartContent": {
+      "type": "richtext"
+    },
+    "PagePartImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "PartPageButtonText": {
+      "type": "string"
+    },
+    "PagePartButtonLink": {
+      "type": "string"
+    },
+    "PagePartLayout": {
+      "type": "enumeration",
+      "enum": [
+        "Simple Left",
+        "Simple Centered",
+        "Simple Right",
+        "Image Left",
+        "Image Center",
+        "Image Right"
+      ],
+      "required": true,
+      "default": "Simple Centered"
+    },
+    "PagePartColorTheme": {
+      "type": "enumeration",
+      "enum": [
+        "White",
+        "Light",
+        "Dark",
+        "Special"
+      ],
+      "required": true,
+      "default": "White"
+    }
+  }
+}

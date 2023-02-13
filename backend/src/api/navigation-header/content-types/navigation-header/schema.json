@@ -1,0 +1,25 @@
+{
+  "kind": "singleType",
+  "collectionName": "navigation_headers",
+  "info": {
+    "singularName": "navigation-header",
+    "pluralName": "navigation-headers",
+    "displayName": "NavigationHeader",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "pages": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::page.page"
+    },
+    "DisplayOrder": {
+      "type": "integer",
+      "unique": false
+    }
+  }
+}
