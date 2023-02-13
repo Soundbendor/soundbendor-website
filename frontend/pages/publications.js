@@ -1,5 +1,6 @@
 import Publicationentry from '../components/Publicationentry'
 import PublicationService from '../models/publications'
+import Layout from '../components/Layout'
 
 const Publications = () => {
   // call the getter function for publication objects
@@ -57,6 +58,12 @@ const Publications = () => {
         </div>
       </div>
     </>
+  )
+}
+
+Publications.getLayout = function getLayout (page) {
+  return (
+    <Layout>{page}</Layout>
   )
 }
 

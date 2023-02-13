@@ -1,6 +1,7 @@
 import style from '../styles/Team.module.css'
 import { PersonCard } from '../components/Personcard'
 import PersonService from '../models/people'
+import Layout from '../components/Layout'
 
 const Team = () => {
   const people = PersonService.getPeople()
@@ -66,6 +67,12 @@ const Team = () => {
         </div>
       </div>
     </>
+  )
+}
+
+Team.getLayout = function getLayout (page) {
+  return (
+    <Layout>{page}</Layout>
   )
 }
 

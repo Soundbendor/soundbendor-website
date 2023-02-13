@@ -1,3 +1,4 @@
+import Layout from '../components/Layout'
 
 const Apply = () => {
   return (
@@ -22,28 +23,25 @@ const Apply = () => {
         </div>
 
         <div className='row justify-content-center py-5'>
-          <div className='col-md-4'>
+          <div className='col'>
             <div className='container'>
               <div className='text-center'>
                 <h4>Request Information</h4>
-                <form>
-                  <div className='form-group'>
-                    <label htmlFor='exampleInputPassword1'>Full Name</label>
-                    <input type='name' className='form-control' id='inputName' placeholder='Full Name' />
-                  </div>
-                  <div className='form-group m-1'>
-                    <label htmlFor='exampleInputEmail1'>Email Address</label>
-                    <input type='email' className='form-control' id='inputEmail1' aria-describedby='emailHelp' placeholder='Enter email' />
-                  </div>
-
-                  <button type='submit' className='btn btn-dark mt-3'>Request Information</button>
-                </form>
+                <div class='embed-responsive embed-responsive-16by9'>
+                  <iframe class='embed-responsive-item' width='400px' height='400px' src='/contactform' />
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+  )
+}
+
+Apply.getLayout = function getLayout (page) {
+  return (
+    <Layout>{page}</Layout>
   )
 }
 
