@@ -1,6 +1,6 @@
 const PersonCard = ({ person }) => {
   return (
-    <div className='col '>
+    <div className='col'>
       <div className='card'>
         <img src={person.photoImage.url} className='card-img-top' alt='Team member portrait'></img>
         <div className='card-body'>
