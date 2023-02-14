@@ -21,10 +21,6 @@ const Team = () => {
     if (searchField.value) {
       filters.x__searchNameAndClass = searchField.value
     }
-    // Currently unimplemented, this is supposed to handle "Filter by class, degree, group"
-    if (filterField.value) {
-      filters.selectedOption = filterField.value
-    }
     setPersonListDisplay(createPersonListDisplay(PersonService.getPeople(filters)))
   }
 
