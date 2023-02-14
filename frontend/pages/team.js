@@ -16,14 +16,10 @@ const Team = () => {
   const searchHandler = async (event) => {
     event.preventDefault()
     const searchField = document.getElementById('team-search')
-    const filterField = document.getElementById('team-filter-select')
+    // const filterField = document.getElementById('team-filter-select')
     const filters = {}
     if (searchField.value) {
       filters.x__searchNameAndClass = searchField.value
-    }
-    // Currently unimplemented, this is supposed to handle "Filter by class, degree, group"
-    if (filterField.value) {
-      filters.selectedOption = filterField.value
     }
     setPersonListDisplay(createPersonListDisplay(PersonService.getPeople(filters)))
   }
@@ -49,18 +45,9 @@ const Team = () => {
           <div className='col'>
             <div className='container'>
               <div className='row justify-content-between'>
-                <div className='col col-sm-4'>
+                <div className='col'>
                   <label htmlFor='team-search' className='form-label'>Search</label>
                   <input type='search' className='form-control' id='team-search' onChange={searchHandler} placeholder='Search by name, class, degree, group' />
-                </div>
-                <div className='col col-sm-4 col-md-3 col-lg-2'>
-                  <label htmlFor='team-filter-select' className='form-label'>Filter by</label>
-                  <select className='form-select' id='team-filter-select' onChange={searchHandler}>
-                    <option value='Default'>None</option>
-                    <option value='Class'>Class</option>
-                    <option value='Degree'>Degree</option>
-                    <option value='Group'>Group</option>
-                  </select>
                 </div>
               </div>
             </div>

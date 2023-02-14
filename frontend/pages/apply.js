@@ -27,8 +27,8 @@ const Apply = () => {
             <div className='container'>
               <div className='text-center'>
                 <h4>Request Information</h4>
-                <div class='embed-responsive embed-responsive-16by9'>
-                  <iframe class='embed-responsive-item' width='400px' height='400px' src='/contactform' />
+                <div className='embed-responsive embed-responsive-16by9'>
+                  <iframe className='embed-responsive-item' width='400px' height='400px' src='/contactform' />
                 </div>
               </div>
             </div>
