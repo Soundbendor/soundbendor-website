@@ -1,22 +1,16 @@
-import style from '../styles/Personcard.module.css'
-
 const PersonCard = ({ person }) => {
   return (
-    <article className={style.card}>
-      <div className={style.container}>
-        <img
-          src={person.photoImage.url}
-          width='240'
-          height='240'
-          preserveAspectRatio='xMidYMid slice'
-        />
+    <div className='col'>
+      <div className='card'>
+        <div className='ratio ratio-1x1'>
+          <img src={person.photoImage.url} className='card-img-top' alt='Team member portrait' />
+        </div>
+        <div className='card-body'>
+          <h5 className='card-title beaverorange'>{person.formattedPersonName}</h5>
+          <p className='card-subtitle mb-2 text-muted'>{person.personClass.Name}</p>
+        </div>
       </div>
-      <div className={style.bottom}>
-        <h5><strong>{person.FirstName} {person.LastName}</strong></h5>
-        <hr className={style.horizontalbar} />
-        <h6 className='beaverorange'>{person.personClass.Name}</h6>
-      </div>
-    </article>
+    </div>
   )
 }
 
