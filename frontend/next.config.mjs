@@ -16,6 +16,8 @@ const nextConfig = {
       if(pageType == 'home') pageType='index'
       if(pageType == 'content'){
         pathMap[page.URLPath] = {'page': suffix+pageType, query: {'path': page.URLPath}}
+      } else if(dev && pageType == 'index'){
+        pathMap['/index'] = {'page': suffix+pageType}
       } else {
         pathMap[page.URLPath] = {'page': suffix+pageType}
       }
