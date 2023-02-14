@@ -9,13 +9,16 @@ const Content = (x) => {
   const router = useRouter()
   const { path } = router.query
   const page = PageService.getPage({'URLPath__eq': x.path})
-  const pagepartListDisplay = page.pageparts.map((pagepart) =>
+  //console.log(page)
+  /*const pagepartListDisplay = page.pageparts.map((pagepart) =>
     <Simple key={pagepart.id} pagepart={pagepart} />
-  )
+  )*/
+  const pagepartListDisplay = ""
 
   return (
     <>
       <div className='container-fluid px-0'>
+      {pagepartListDisplay}
         {/*<div className='row py-5'>
           <div className='col'>
             <div className='container'>
@@ -29,11 +32,8 @@ const Content = (x) => {
               </div>
             </div>
           </div>
-        </div>*/}
-        {pagepartListDisplay}
-
-
-        {/*<div className='row bg-dark py-5'>
+        </div>
+        <div className='row bg-dark py-5'>
           <div className='col'>
             <div className='container'>
               <div className='row'>

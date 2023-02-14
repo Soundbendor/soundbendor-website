@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_layout_page_custom_contents",
+  "info": {
+    "displayName": "PageCustomContent"
+  },
+  "options": {},
+  "attributes": {
+    "ignore": {
+      "type": "string",
+      "maxLength": 1,
+      "private": true
+    }
+  }
+}

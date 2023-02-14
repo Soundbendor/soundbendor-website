@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_navigation_navigation_pages",
+  "info": {
+    "displayName": "NavigationPage"
+  },
+  "options": {},
+  "attributes": {
+    "page": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::page.page"
+    }
+  }
+}

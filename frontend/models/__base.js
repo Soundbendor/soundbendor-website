@@ -53,7 +53,7 @@ function filterData (data, kwargs, filterFunctions) {
       const propName = filterInfo[0]
       const funcName = filterInfo[1]
       const propValue = kwargs[key]
-      if (funcName in filterFunctions) {
+      if (funcName in filterFunctions && propValue !== undefined) {
         myData = myData.filter(filterFunctions[funcName].bind(null, propName, propValue))
       }
     }

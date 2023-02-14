@@ -12,14 +12,11 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "pages": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::page.page"
-    },
-    "DisplayOrder": {
-      "type": "integer",
-      "unique": false
+    "NavigationPage": {
+      "displayName": "NavigationPage",
+      "type": "component",
+      "repeatable": true,
+      "component": "navigation.navigation-page"
     }
   }
 }

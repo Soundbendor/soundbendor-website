@@ -12,11 +12,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "PagePart": {
-      "type": "component",
-      "repeatable": true,
-      "component": "page-part.page-part"
-    },
     "PageTitle": {
       "type": "string",
       "required": true,
@@ -39,8 +34,17 @@
     },
     "URLPath": {
       "type": "string",
-      "regex": "^\\/.+",
       "unique": true,
+      "required": true
+    },
+    "Rows": {
+      "type": "dynamiczone",
+      "components": [
+        "layout.one-column",
+        "layout.two-column",
+        "layout.slide",
+        "layout.page-custom-content"
+      ],
       "required": true
     }
   }

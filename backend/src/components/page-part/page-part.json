@@ -8,7 +8,7 @@
   "attributes": {
     "PagePartTitle": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "PagePartSubtitle": {
       "type": "string"
@@ -33,29 +33,14 @@
     "PagePartButtonLink": {
       "type": "string"
     },
-    "PagePartLayout": {
+    "PagePartTextAlign": {
       "type": "enumeration",
       "enum": [
-        "Simple Left",
-        "Simple Centered",
-        "Simple Right",
-        "Image Left",
-        "Image Center",
-        "Image Right"
+        "Left",
+        "Center",
+        "Right"
       ],
-      "required": true,
-      "default": "Simple Centered"
-    },
-    "PagePartColorTheme": {
-      "type": "enumeration",
-      "enum": [
-        "White",
-        "Light",
-        "Dark",
-        "Special"
-      ],
-      "required": true,
-      "default": "White"
+      "default": "Left"
     }
   }
 }
