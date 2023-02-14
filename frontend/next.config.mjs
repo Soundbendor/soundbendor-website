@@ -5,16 +5,19 @@ const nextConfig = {
   trailingSlash: true,
   reactStrictMode: true,
   exportPathMap: async function(defaultPathMap, {dev, dir, outDir, distDir, buildId}){
+
     const PageService = BaseService.constructDefaultService('api::page.page', 'page')
     const pages = PageService.getPages()
     let pathMap = {}
+    let suffix = ""
+    if(dev) suffix = "/"
     for(let page of pages){
       let pageType = page.PageType.toLowerCase()
       if(pageType == 'home') pageType='index'
       if(pageType == 'content'){
-        pathMap[page.URLPath] = {'page': pageType, query: {'path': page.URLPath}}
+        pathMap[page.URLPath] = {'page': suffix+pageType, query: {'path': page.URLPath}}
       } else {
-        pathMap[page.URLPath] = {'page': pageType}
+        pathMap[page.URLPath] = {'page': suffix+pageType}
       }
     }
     console.log(pathMap)

@@ -8,11 +8,10 @@ import { Simple } from '../components/PageParts'
 const Content = (x) => {
   const router = useRouter()
   const { path } = router.query
-  console.log(x.query.path)
-  const page = PageService.getPage({'URLPath__eq': x.query.path})
+  const page = PageService.getPage({'URLPath__eq': x.path})
   const pagepartListDisplay = page.pageparts.map((pagepart) =>
     <Simple key={pagepart.id} pagepart={pagepart} />
-  ) 
+  )
 
   return (
     <>
@@ -72,7 +71,7 @@ const Content = (x) => {
 }
 
 Content.getInitialProps = async function (context) {
-  return context
+  return {'path':context.query.path}
 }
 
 Content.getLayout = function getLayout (page) {
