@@ -19,8 +19,8 @@ function Person (rawData) {
 }
 
 const peopleFilterFunctions = Object.assign({}, BaseService.filterFunctions)
-peopleFilterFunctions.searchNameAndClass = (key, value, obj) => obj.formattedPersonName.toLowerCase().includes(value.toLowerCase()) 
-  || obj.FirstName.toLowerCase().includes(value.toLowerCase()) || obj.personClass.toLowerCase().includes(value.toLowerCase())
+peopleFilterFunctions.searchNameAndClass = (key, value, obj) => obj.formattedPersonName.toLowerCase().includes(value.toLowerCase()) ||
+  obj.FirstName.toLowerCase().includes(value.toLowerCase()) || obj.personClass.toLowerCase().includes(value.toLowerCase())
 
 const PersonService = {
   getRawPeople: BaseService.getRawData('api::person.person', peopleFilterFunctions),

@@ -16,7 +16,7 @@ const Team = () => {
   const searchHandler = async (event) => {
     event.preventDefault()
     const searchField = document.getElementById('team-search')
-    const filterField = document.getElementById('team-filter-select')
+    // const filterField = document.getElementById('team-filter-select')
     const filters = {}
     if (searchField.value) {
       filters.x__searchNameAndClass = searchField.value
