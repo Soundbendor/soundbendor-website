@@ -1,5 +1,5 @@
 const Carousel = ({ id, props, children }) => {
-  let carouselIdTarget = '#'+id
+  const carouselIdTarget = '#' + id
   return (
 
     <div id={id} className='carousel slide' data-bs-ride='carousel'>

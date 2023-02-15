@@ -6,16 +6,16 @@ function sortData (data, kwargs, sortByKey, sortByDirectionKey) {
     const key = kwargs[sortByKey]
     const direction = kwargs[sortByDirectionKey]
 
-    if (Array.isArray(direction)){
+    if (Array.isArray(direction)) {
       data.sort((x, y) => {
         if (!(key in y) && !(key in x)) return 0
         if (!(key in y)) return -1
         if (!(key in x)) return 1
-        let yi = direction.indexOf(y[key])
-        let xi = direction.indexOf(x[key])
-        if (yi == -1 && xi == -1) return 0
-        if (yi == -1) return -1
-        if (xi == -1) return 1
+        const yi = direction.indexOf(y[key])
+        const xi = direction.indexOf(x[key])
+        if (yi === -1 && xi === -1) return 0
+        if (yi === -1) return -1
+        if (xi === -1) return 1
         if (xi < yi) return -1
         if (xi > yi) return 1
         return 0
@@ -35,6 +35,7 @@ function sortData (data, kwargs, sortByKey, sortByDirectionKey) {
 
 const FilterFunctions = {
   eq: (key, value, obj) => obj[key] === value,
+  neq: (key, value, obj) => obj[key] !== value,
   lt: (key, value, obj) => obj[key] < value,
   lte: (key, value, obj) => obj[key] <= value,
   gt: (key, value, obj) => obj[key] > value,

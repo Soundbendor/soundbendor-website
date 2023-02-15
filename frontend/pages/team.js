@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { PersonCard } from '../components/Personcard'
 import PersonService from '../models/people'
-import Layout from '../components/Layout'
 
 const createPersonListDisplay = (people) => {
   return people.map((person) =>
@@ -26,51 +25,43 @@ const Team = () => {
 
   return (
     <>
-      <div className='container-fluid px-0'>
-        <div className='row py-5'>
-          <div className='col'>
-            <div className='container'>
-              <div className='row'>
-                <div className='col'>
-                  <div className='text-center'>
-                    <h1>Team Members</h1>
-                  </div>
+      <div className='row py-5'>
+        <div className='col'>
+          <div className='container'>
+            <div className='row'>
+              <div className='col'>
+                <div className='text-center'>
+                  <h1>Team Members</h1>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className='row'>
-          <div className='col'>
-            <div className='container'>
-              <div className='row justify-content-between'>
-                <div className='col'>
-                  <label htmlFor='team-search' className='form-label'>Search</label>
-                  <input type='search' className='form-control' id='team-search' onChange={searchHandler} placeholder='Search by name, class, degree, group' />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className='row py-5'>
-          <div className='col'>
-            <div className='container'>
-              <div className='row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 g-4'>
-                {personListDisplay}
               </div>
             </div>
           </div>
         </div>
       </div>
-    </>
-  )
-}
 
-Team.getLayout = function getLayout (page) {
-  return (
-    <Layout>{page}</Layout>
+      <div className='row'>
+        <div className='col'>
+          <div className='container'>
+            <div className='row justify-content-between'>
+              <div className='col'>
+                <label htmlFor='team-search' className='form-label'>Search</label>
+                <input type='search' className='form-control' id='team-search' onChange={searchHandler} placeholder='Search by name, class, degree, group' />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className='row py-5'>
+        <div className='col'>
+          <div className='container'>
+            <div className='row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 g-4'>
+              {personListDisplay}
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
   )
 }
 
