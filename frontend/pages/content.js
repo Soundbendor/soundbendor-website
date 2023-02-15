@@ -2,23 +2,22 @@ import Layout from '../components/Layout'
 import { useRouter } from 'next/router'
 import { CarouselItemPlaceholder } from '../components/Carousel'
 import PageService from '../models/pages'
-import { Simple } from '../components/PageParts'
+import Page from '../components/PageParts'
 
 
 const Content = (x) => {
   const router = useRouter()
   const { path } = router.query
   const page = PageService.getPage({'URLPath__eq': x.path})
-  //console.log(page)
   /*const pagepartListDisplay = page.pageparts.map((pagepart) =>
-    <Simple key={pagepart.id} pagepart={pagepart} />
-  )*/
-  const pagepartListDisplay = ""
+    <PageContent key={pagepart.id} rows={pagepart} />
+  )
+  const pagepartListDisplay = ""*/
 
   return (
     <>
       <div className='container-fluid px-0'>
-      {pagepartListDisplay}
+      <Page page={page} />
         {/*<div className='row py-5'>
           <div className='col'>
             <div className='container'>

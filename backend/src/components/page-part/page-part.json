@@ -13,9 +13,6 @@
     "PagePartSubtitle": {
       "type": "string"
     },
-    "PagePartContent": {
-      "type": "richtext"
-    },
     "PagePartImage": {
       "type": "media",
       "multiple": false,
@@ -26,9 +23,6 @@
         "videos",
         "audios"
       ]
-    },
-    "PartPageButtonText": {
-      "type": "string"
     },
     "PagePartButtonLink": {
       "type": "string"
@@ -41,6 +35,17 @@
         "Right"
       ],
       "default": "Left"
+    },
+    "PagePartButtonText": {
+      "type": "string"
+    },
+    "PagePartContent": {
+      "type": "customField",
+      "options": {
+        "output": "HTML",
+        "preset": "standard"
+      },
+      "customField": "plugin::ckeditor.CKEditor"
     }
   }
 }

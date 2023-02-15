@@ -1,6 +1,7 @@
 import Layout from '../components/Layout'
 
 const Apply = () => {
+  
   return (
     <div>
       <div className='container-fluid px-0'>
