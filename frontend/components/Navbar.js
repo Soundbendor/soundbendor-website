@@ -28,12 +28,6 @@ const Navbar = () => {
           <div className='collapse navbar-collapse' id='navbarSupportedContent'>
             <ul className='navbar-nav me-auto mb-2 mb-lg-0'>
               {links}
-              {/* <li className='nav-item'><Link href='/about' className='nav-link'>About</Link></li>
-              <li className='nav-item'><Link href='/team' className='nav-link'>Team</Link></li>
-              <li className='nav-item'><Link href='/projects' className='nav-link'>Projects</Link></li>
-              <li className='nav-item'><Link href='/publications' className='nav-link'>Publications</Link></li>
-              <li className='nav-item'><Link href='/news' className='nav-link'>News</Link></li>
-              <li className='nav-item'><Link href='/apply' className='nav-link'>Apply</Link></li> */}
             </ul>
           </div>
         </div>
