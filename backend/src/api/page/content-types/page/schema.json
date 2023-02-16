@@ -1,0 +1,51 @@
+{
+  "kind": "collectionType",
+  "collectionName": "pages",
+  "info": {
+    "singularName": "page",
+    "pluralName": "pages",
+    "displayName": "Page",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "PageTitle": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "PageType": {
+      "type": "enumeration",
+      "enum": [
+        "Home",
+        "Content",
+        "Team",
+        "Projects",
+        "Publications",
+        "News",
+        "Apply",
+        "ContactForm"
+      ],
+      "required": true,
+      "default": "Content"
+    },
+    "URLPath": {
+      "type": "string",
+      "unique": true,
+      "required": true
+    },
+    "Rows": {
+      "type": "dynamiczone",
+      "components": [
+        "layout.one-column",
+        "layout.two-column",
+        "layout.slide",
+        "layout.page-custom-content"
+      ],
+      "required": true
+    }
+  }
+}

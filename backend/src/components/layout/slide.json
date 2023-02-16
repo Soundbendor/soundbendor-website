@@ -1,0 +1,43 @@
+{
+  "collectionName": "components_slideshow_slides",
+  "info": {
+    "displayName": "Slide",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "BriefContent": {
+      "type": "string"
+    },
+    "Image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "TextLocation": {
+      "type": "enumeration",
+      "enum": [
+        "Top Left",
+        "Top Center",
+        "Top Right",
+        "Bottom Left",
+        "Bottom Center",
+        "BottomRight"
+      ],
+      "default": "Bottom Left"
+    },
+    "TextColor": {
+      "type": "enumeration",
+      "enum": [
+        "White",
+        "Black"
+      ]
+    }
+  }
+}

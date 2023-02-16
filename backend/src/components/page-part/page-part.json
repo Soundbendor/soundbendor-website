@@ -1,0 +1,51 @@
+{
+  "collectionName": "components_page_part_page_parts",
+  "info": {
+    "displayName": "PagePart",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "PagePartTitle": {
+      "type": "string",
+      "required": false
+    },
+    "PagePartSubtitle": {
+      "type": "string"
+    },
+    "PagePartImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "PagePartButtonLink": {
+      "type": "string"
+    },
+    "PagePartTextAlign": {
+      "type": "enumeration",
+      "enum": [
+        "Left",
+        "Center",
+        "Right"
+      ],
+      "default": "Left"
+    },
+    "PagePartButtonText": {
+      "type": "string"
+    },
+    "PagePartContent": {
+      "type": "customField",
+      "options": {
+        "output": "HTML",
+        "preset": "standard"
+      },
+      "customField": "plugin::ckeditor.CKEditor"
+    }
+  }
+}

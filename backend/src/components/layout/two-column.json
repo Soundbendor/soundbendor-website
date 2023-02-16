@@ -1,0 +1,46 @@
+{
+  "collectionName": "components_layout_two_columns",
+  "info": {
+    "displayName": "TwoColumn"
+  },
+  "options": {},
+  "attributes": {
+    "Column1": {
+      "type": "component",
+      "repeatable": false,
+      "component": "page-part.page-part",
+      "required": true
+    },
+    "Column2": {
+      "type": "component",
+      "repeatable": false,
+      "component": "page-part.page-part",
+      "required": true
+    },
+    "ColorTheme": {
+      "type": "enumeration",
+      "enum": [
+        "White",
+        "Light",
+        "Dark",
+        "Special"
+      ],
+      "required": false,
+      "default": "White"
+    },
+    "ColumnRatio": {
+      "type": "enumeration",
+      "enum": [
+        "Ratio 1:5",
+        "Ratio 1:3",
+        "Ratio 1:2",
+        "Ratio 1:1",
+        "Ratio 2:1",
+        "Ratio 3:1",
+        "Ratio 5:1"
+      ],
+      "default": "Ratio 1:1",
+      "required": false
+    }
+  }
+}

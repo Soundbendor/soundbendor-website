@@ -1,14 +1,16 @@
-const Carousel = ({ props, children }) => {
+const Carousel = ({ id, props, children }) => {
+  const carouselIdTarget = '#' + id
   return (
-    <div id='carouselExampleControls' className='carousel slide' data-bs-ride='carousel'>
+
+    <div id={id} className='carousel slide' data-bs-ride='carousel'>
       <div className='carousel-inner'>
         {children}
       </div>
-      <button className='carousel-control-prev' type='button' data-bs-target='#carouselExampleControls' data-bs-slide='prev'>
+      <button className='carousel-control-prev' type='button' data-bs-target={carouselIdTarget} data-bs-slide='prev'>
         <span className='carousel-control-prev-icon' aria-hidden='true' />
         <span className='visually-hidden'>Previous</span>
       </button>
-      <button className='carousel-control-next' type='button' data-bs-target='#carouselExampleControls' data-bs-slide='next'>
+      <button className='carousel-control-next' type='button' data-bs-target={carouselIdTarget} data-bs-slide='next'>
         <span className='carousel-control-next-icon' aria-hidden='true' />
         <span className='visually-hidden'>Next</span>
       </button>
@@ -24,7 +26,7 @@ const CarouselItem = ({ isActive, props }) => {
     </div>
   )
 }
-const CarouselItemPlaceholder = ({ isActive, name, bg, color, title, description, props }) => {
+const CarouselItemPlaceholder = ({ isActive, name, bg, color, title, description, imgSrc, props }) => {
   const ciclassname = 'carousel-item ' + (isActive === '1' ? 'active' : '')
   const arialabel = 'Placeholder: ' + name
   return (

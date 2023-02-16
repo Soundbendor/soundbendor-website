@@ -1,0 +1,22 @@
+{
+  "kind": "singleType",
+  "collectionName": "navigation_headers",
+  "info": {
+    "singularName": "navigation-header",
+    "pluralName": "navigation-headers",
+    "displayName": "NavigationHeader",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "NavigationPage": {
+      "displayName": "NavigationPage",
+      "type": "component",
+      "repeatable": true,
+      "component": "navigation.navigation-page"
+    }
+  }
+}

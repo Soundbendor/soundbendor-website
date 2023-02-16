@@ -1,4 +1,3 @@
-import FormLayout from '../components/Formlayout'
 
 const ContactForm = () => {
   return (
@@ -26,12 +25,6 @@ const ContactForm = () => {
         </div>
       </div>
     </div>
-  )
-}
-
-ContactForm.getLayout = function getLayout (page) {
-  return (
-    <FormLayout>{page}</FormLayout>
   )
 }
 

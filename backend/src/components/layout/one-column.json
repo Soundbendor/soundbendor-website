@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_layout_one_columns",
+  "info": {
+    "displayName": "OneColumn"
+  },
+  "options": {},
+  "attributes": {
+    "Column1": {
+      "type": "component",
+      "repeatable": false,
+      "component": "page-part.page-part"
+    },
+    "ColorTheme": {
+      "type": "enumeration",
+      "enum": [
+        "White",
+        "Light",
+        "Dark",
+        "Special"
+      ],
+      "default": "White"
+    }
+  }
+}

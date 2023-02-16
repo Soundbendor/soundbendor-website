@@ -5,9 +5,7 @@ import GroupService from './groups'
 import DegreeService from './degrees'
 
 function Person (rawData) {
-  let p = {}
-  p = Object.assign(p, rawData)
-  p.RawData = rawData
+  const p = BaseService.defaultDataConstructor(rawData)
   p.photoImage = ImageService.getImage({ id__eq: p.Photo })
   p.personClass = PersonClassService.getPersonClass({ id__eq: p.person_class })
   p.groups = GroupService.getGroups({ id__eq: p.groups })
