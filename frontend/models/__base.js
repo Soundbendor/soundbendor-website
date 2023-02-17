@@ -68,6 +68,15 @@ function paginateData (data, kwargs) {
   if ('pageSize' in kwargs && !isNaN(kwargs.pageSize)) {
     if (!('page' in kwargs)) kwargs.page = 1
     myData = myData.slice((kwargs.page - 1) * kwargs.pageSize, (kwargs.page) * kwargs.pageSize)
+    myData.__pagination = {
+      totalNumberOfItems: data.length,
+      totalPages: Math.ceil(data.length / kwargs.pageSize), 
+      currentPage: kwargs.page,
+      hasPreviousPage: (kwargs.page !== 1),
+      previousPage: kwargs.page-1,
+      hasNextPage: (Math.ceil(data.length / kwargs.pageSize) > kwargs.page),
+      nextPage: kwargs.page+1
+    }
   }
 
   return myData
@@ -155,7 +164,9 @@ const BaseService = {
   },
   getData: function (getRawDataFn, datatype, kwargs) {
     const data = getRawDataFn(kwargs)
-    return data.map(x => datatype(x))
+    let result = data.map(x => datatype(x))
+    if ('__pagination' in data) result.__pagination = data.__pagination 
+    return result
   }
 }
 
