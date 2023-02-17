@@ -24,5 +24,4 @@ ProjectService.getProjectYears = (kwargs) => {
   return years.filter((item, index, arrRef) => arrRef.indexOf(item) === index)
 }
 
-
 module.exports = ProjectService

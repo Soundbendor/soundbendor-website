@@ -55,7 +55,7 @@ const Team = () => {
       <div className='row py-5'>
         <div className='col'>
           <div className='container'>
-            <div className='row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 g-4' id="personListDisplay">
+            <div className='row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 g-4' id='personListDisplay'>
               {personListDisplay}
             </div>
           </div>

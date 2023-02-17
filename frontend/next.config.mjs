@@ -2,13 +2,13 @@
 import BaseService from './models/__base.js'
 
 const buildPathMapQuery = (urlPath) => {
-  return {__nextDefaultLocale: 'en-US', __nextLocale: 'en-US', path: urlPath}
+  return { __nextDefaultLocale: 'en-US', __nextLocale: 'en-US', path: urlPath }
 }
 
 const nextConfig = {
   i18n: {
     locales: ['en-US'],
-    defaultLocale: 'en-US',
+    defaultLocale: 'en-US'
   },
   trailingSlash: true,
   reactStrictMode: true,

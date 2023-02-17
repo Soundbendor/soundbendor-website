@@ -15,10 +15,10 @@ function Person (rawData) {
 }
 
 const peopleFilterFunctions = {
-  searchNameAndClass : (key, value, obj) => {
-    let lValue = value.toLowerCase()
-    return ( obj.formattedPersonName.toLowerCase().includes(lValue) ||
-    obj.FirstName.toLowerCase().includes(lValue) || 
+  searchNameAndClass: (key, value, obj) => {
+    const lValue = value.toLowerCase()
+    return (obj.formattedPersonName.toLowerCase().includes(lValue) ||
+    obj.FirstName.toLowerCase().includes(lValue) ||
     obj.personClass.toLowerCase().includes(lValue))
   }
 }

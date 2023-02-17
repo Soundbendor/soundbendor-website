@@ -70,12 +70,12 @@ function paginateData (data, kwargs) {
     myData = myData.slice((kwargs.page - 1) * kwargs.pageSize, (kwargs.page) * kwargs.pageSize)
     myData.__pagination = {
       totalNumberOfItems: data.length,
-      totalPages: Math.ceil(data.length / kwargs.pageSize), 
+      totalPages: Math.ceil(data.length / kwargs.pageSize),
       currentPage: kwargs.page,
       hasPreviousPage: (kwargs.page !== 1),
-      previousPage: kwargs.page-1,
+      previousPage: kwargs.page - 1,
       hasNextPage: (Math.ceil(data.length / kwargs.pageSize) > kwargs.page),
-      nextPage: kwargs.page+1
+      nextPage: kwargs.page + 1
     }
   }
 
@@ -133,7 +133,6 @@ const BaseService = {
     }
     return function (kwargs) {
       let rawData = Object.values(BaseService.getContent().data[id])
-
       // When key word arguments (kwargs) are passed, we can perform filtering
       // kwargs can be an OBJECT with keys and values.
       // an example of kwargs includes: {'presortBy': 'id', 'id__eq': 1}
@@ -164,8 +163,8 @@ const BaseService = {
   },
   getData: function (getRawDataFn, datatype, kwargs) {
     const data = getRawDataFn(kwargs)
-    let result = data.map(x => datatype(x))
-    if ('__pagination' in data) result.__pagination = data.__pagination 
+    const result = data.map(x => datatype(x))
+    if ('__pagination' in data) result.__pagination = data.__pagination
     return result
   }
 }
