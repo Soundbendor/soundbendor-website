@@ -80,6 +80,9 @@ function capitalizeString (s) {
 const BaseService = {
   getContent: () => require('../data/database.json'),
   filterFunctions: FilterFunctions,
+  decorateFilterFunctions: (newFF) => {
+    return Object.assign(newFF, BaseService.filterFunctions)
+  },
   defaultDataConstructor: function (rawData) {
     let d = {}
     // we do this so that we do not have the same reference to an object in memory and create race conditions
@@ -93,6 +96,8 @@ const BaseService = {
     }
     if (!filterFunctions) {
       filterFunctions = BaseService.filterFunctions
+    } else {
+      filterFunctions = BaseService.decorateFilterFunctions(filterFunctions)
     }
     if (!datatype) {
       datatype = BaseService.defaultDataConstructor
