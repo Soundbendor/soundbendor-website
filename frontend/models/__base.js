@@ -68,6 +68,15 @@ function paginateData (data, kwargs) {
   if ('pageSize' in kwargs && !isNaN(kwargs.pageSize)) {
     if (!('page' in kwargs)) kwargs.page = 1
     myData = myData.slice((kwargs.page - 1) * kwargs.pageSize, (kwargs.page) * kwargs.pageSize)
+    myData.__pagination = {
+      totalNumberOfItems: data.length,
+      totalPages: Math.ceil(data.length / kwargs.pageSize),
+      currentPage: kwargs.page,
+      hasPreviousPage: (kwargs.page !== 1),
+      previousPage: kwargs.page - 1,
+      hasNextPage: (Math.ceil(data.length / kwargs.pageSize) > kwargs.page),
+      nextPage: kwargs.page + 1
+    }
   }
 
   return myData
@@ -80,6 +89,9 @@ function capitalizeString (s) {
 const BaseService = {
   getContent: () => require('../data/database.json'),
   filterFunctions: FilterFunctions,
+  decorateFilterFunctions: (newFF) => {
+    return Object.assign(newFF, BaseService.filterFunctions)
+  },
   defaultDataConstructor: function (rawData) {
     let d = {}
     // we do this so that we do not have the same reference to an object in memory and create race conditions
@@ -93,6 +105,8 @@ const BaseService = {
     }
     if (!filterFunctions) {
       filterFunctions = BaseService.filterFunctions
+    } else {
+      filterFunctions = BaseService.decorateFilterFunctions(filterFunctions)
     }
     if (!datatype) {
       datatype = BaseService.defaultDataConstructor
@@ -119,7 +133,6 @@ const BaseService = {
     }
     return function (kwargs) {
       let rawData = Object.values(BaseService.getContent().data[id])
-
       // When key word arguments (kwargs) are passed, we can perform filtering
       // kwargs can be an OBJECT with keys and values.
       // an example of kwargs includes: {'presortBy': 'id', 'id__eq': 1}
@@ -150,7 +163,9 @@ const BaseService = {
   },
   getData: function (getRawDataFn, datatype, kwargs) {
     const data = getRawDataFn(kwargs)
-    return data.map(x => datatype(x))
+    const result = data.map(x => datatype(x))
+    if ('__pagination' in data) result.__pagination = data.__pagination
+    return result
   }
 }
 

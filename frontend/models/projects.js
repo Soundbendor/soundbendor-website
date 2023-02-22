@@ -8,26 +8,20 @@ function Project (rawData) {
   return p
 }
 
-const projectFilterFunctions = Object.assign({}, BaseService.filterFunctions)
-projectFilterFunctions.searchNameAndDescription = (key, value, obj) => obj.Name.includes(value) || obj.Description.includes(value)
-
-const ProjectService = {
-  getRawProjects: BaseService.getRawData('api::project.project', projectFilterFunctions),
-  getRawProject: function (kwargs) {
-    return BaseService.getRawDatum(ProjectService.getRawProjects, kwargs)
-  },
-  getProject: function (kwargs) {
-    return BaseService.getDatum(ProjectService.getRawProject, Project, kwargs)
-  },
-  getProjects: function (kwargs) {
-    return BaseService.getData(ProjectService.getRawProjects, Project, kwargs)
-  },
-  // Custom function to get the total number of years for a project
-  getProjectYears: function (kwargs) {
-    const projects = this.getRawProjects(kwargs)
-    const years = projects.map(project => (new Date(project.InitialPublishedDate)).getFullYear())
-    return years.filter((item, index, arrRef) => arrRef.indexOf(item) === index)
+const projectFilterFunctions = {
+  searchNameAndDescription: (key, value, obj) => {
+    const lValue = value.toLowerCase()
+    return obj.Name.toLowerCase().includes(lValue) || obj.Description.toLowerCase().includes(lValue)
   }
+}
+
+const ProjectService = BaseService.constructDefaultService('api::project.project', 'project', 'projects', Project, projectFilterFunctions)
+
+// Custom function to get the total number of years for a project
+ProjectService.getProjectYears = (kwargs) => {
+  const projects = ProjectService.getRawProjects(kwargs)
+  const years = projects.map(project => (new Date(project.InitialPublishedDate)).getFullYear())
+  return years.filter((item, index, arrRef) => arrRef.indexOf(item) === index)
 }
 
 module.exports = ProjectService

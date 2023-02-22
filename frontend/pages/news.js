@@ -1,11 +1,29 @@
+import { useState } from 'react'
 import Newscard from '../components/Newscard'
+import Pagination from '../components/Pagination'
 import EventService from '../models/events'
 
+const generatePaginationDisplay = (data, onClick) => {
+  return <Pagination data={data} pagesShown='5' className='justify-content-center my-4' onClick={onClick} />
+}
+
+const generateEventListDisplay = (events) => {
+  return events.map((event) => <Newscard key={event.id} event={event} />)
+}
+
 const News = () => {
-  const events = EventService.getEvents()
-  const eventListDisplay = events.map((event) =>
-    <Newscard key={event.id} event={event} />
-  )
+  const pageSize = 3
+  const paginationHandler = async (event) => {
+    event.preventDefault()
+    const filters = { page: parseInt(event.target.innerText), pageSize }
+    const currentEvents = EventService.getEvents(filters)
+    setEventListDisplay(generateEventListDisplay(currentEvents))
+    setPaginationDisplay(generatePaginationDisplay(currentEvents, paginationHandler))
+  }
+  const events = EventService.getEvents({ page: 1, pageSize })
+  const [eventListDisplay, setEventListDisplay] = useState(generateEventListDisplay(events))
+  const [paginationDisplay, setPaginationDisplay] = useState(generatePaginationDisplay(events, paginationHandler))
+
   return (
     <>
       <div className='row py-5'>
@@ -30,11 +48,7 @@ const News = () => {
               </div>
               <nav aria-label='Pagination'>
                 <hr className='my-0' />
-                <ul className='pagination justify-content-center my-4'>
-                  <li className='page-item disabled'><a className='page-link' href='#' tabIndex='-1' aria-disabled='true'>Newer</a></li>
-                  <li className='page-item active' aria-current='page'><a className='page-link' href='#!'>1</a></li>
-                  <li className='page-item disabled'><a className='page-link' href='#!'>Older</a></li>
-                </ul>
+                {paginationDisplay}
               </nav>
             </div>
           </div>
