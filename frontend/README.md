@@ -43,6 +43,26 @@ A problem exists for developers that the model layer is often repeating rote cod
 Accordingly, we have abstracted out the basics of the model layer to the \_\_base model
 
 
+
+
+# envinronment
+get_info_url=https://docs.google.com/forms/u/0/d/e/1FAIpQLSdhQZkLmzAydW0RNwdhr7TOlpdobipBJOb6Pf6VZTYCiJvjQw/formResponse
+get_info_name=entry.1762360844
+get_info_email=entry.329423547
+get_info_comment=entry.1360674181
+
+old_get_info_url=https://docs.google.com/forms/u/0/d/e/1FAIpQLSdkdXrKAD7q8Q3ALzzU-kYjI0RogaH5vrX6oz0iLpi7pM00FA/formResponse
+old_get_info_name=entry.2005620554
+old_get_info_email=entry.1045781291
+old_get_info_comment=entry.839337160
+
+
+
+
+
+
+
+
 ### Implementing the \_\_base model
 To implement the \_\_base model, first create a new file for the type of service you wish to make.  Include the BaseService at the top of the new file.  You can optionally create a custom object which your data can be stored within, if you wish.  For the most simple implementations, should look like:
 ```javascript
