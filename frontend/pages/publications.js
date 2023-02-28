@@ -2,6 +2,7 @@ import { Publicationentry, PublicationHeader } from '../components/Publicationen
 import PublicationService from '../models/publications'
 import Pagination from '../components/Pagination'
 import { useState } from 'react'
+import $ from 'jquery'
 
 const generatePaginationDisplay = (data, onClick) => {
   return <Pagination data={data} pagesShown='5' className='justify-content-center my-4' onClick={onClick} />
@@ -29,9 +30,9 @@ const Publications = () => {
     const filters = { pageSize: 5, presortBy: 'publishedDate', presortDirection: -1 }
 
     if (typeof jQuery !== 'undefined') {
-      const searchField = jQuery('#pub-search')
-      const yearField = jQuery('#pub-year')
-      const pageSizeField = jQuery('#pageSize')
+      const searchField = $('#pub-search')
+      const yearField = $('#pub-year')
+      const pageSizeField = $('#pageSize')
       if (searchField.val()) {
         filters.title__likelow = searchField.val()
       }
@@ -62,7 +63,7 @@ const Publications = () => {
     event.preventDefault()
     const filters = getSearchFilters()
     if (event.target.innerText === 'Next' || event.target.innerText === 'Previous') {
-      filters.page = parseInt(jQuery(event.target).attr('value'))
+      filters.page = parseInt($(event.target).attr('value'))
     } else {
       filters.page = parseInt(event.target.innerText)
     }
