@@ -15,7 +15,12 @@ const News = () => {
   const pageSize = 3
   const paginationHandler = async (event) => {
     event.preventDefault()
-    const filters = { page: parseInt(event.target.innerText), pageSize }
+    const filters = { pageSize }
+    if (event.target.innerText === 'Next' || event.target.innerText === 'Previous') {
+      filters.page = parseInt(jQuery(event.target).attr('value'))
+    } else {
+      filters.page = parseInt(event.target.innerText)
+    }
     const currentEvents = EventService.getEvents(filters)
     setEventListDisplay(generateEventListDisplay(currentEvents))
     setPaginationDisplay(generatePaginationDisplay(currentEvents, paginationHandler))
