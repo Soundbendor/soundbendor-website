@@ -1,4 +1,5 @@
 import { saveAs } from 'file-saver'
+import Blob from 'cross-blob'
 
 // template publication entry
 // args: publication obj data from Strapi API
@@ -14,7 +15,7 @@ const Publicationentry = ({ publication }) => {
     event.preventDefault()
   }
 
-  const bibTex = <a href='#' className='beaverorange' onClick={saveBibtex.bind(null, 'soundbendor-' + fileTitle, publication.bibtex)}>Cite</a>
+  const bibTex = <a href='#' className='beaverorange' onClick={saveBibtex.bind(null, 'soundbendor-' + fileTitle, publication.bibtext)}>Cite</a>
 
   return (
     <tr>

@@ -26,12 +26,12 @@ const getPublicationListDisplay = (publications) => {
 
 const Publications = () => {
   const getSearchFilters = () => {
-    let filters = { pageSize: 5 }
+    const filters = { pageSize: 5, presortBy: 'publishedDate', presortDirection: -1 }
+
     if (typeof jQuery !== 'undefined') {
       const searchField = jQuery('#pub-search')
       const yearField = jQuery('#pub-year')
       const pageSizeField = jQuery('#pageSize')
-      filters = {}
       if (searchField.val()) {
         filters.title__likelow = searchField.val()
       }
@@ -40,8 +40,6 @@ const Publications = () => {
       }
       if (pageSizeField.val()) {
         filters.pageSize = pageSizeField.val()
-      } else {
-        filters.pageSize = 5
       }
     }
     return filters
@@ -98,7 +96,7 @@ const Publications = () => {
               <div className='col-sm-3'>
                 <label htmlFor='Entries' className='form-label'>Year Published</label>
                 <select className='form-select' id='pub-year' onChange={searchHandler}>
-                  <option defaultValue />
+                  <option defaultValue value=''>All Years</option>
                   {publicationYearListDisplay}
                 </select>
               </div>
@@ -106,6 +104,7 @@ const Publications = () => {
                 <label htmlFor='Entries' className='form-label'>Entries shown per page</label>
                 <select className='form-select' id='pageSize' onChange={searchHandler}>
                   <option value='5' defaultValue>5</option>
+                  <option value='2'>2</option>
                   <option value='10'>10</option>
                   <option value='15'>15</option>
                   <option value='20'>20</option>
