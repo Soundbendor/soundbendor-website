@@ -26,6 +26,9 @@
     },
     "venue": {
       "type": "string"
+    },
+    "bibtext": {
+      "type": "text"
     }
   }
 }
