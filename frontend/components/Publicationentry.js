@@ -68,7 +68,7 @@ const PublicationModal = () => {
           </div>
           <div className='modal-footer'>
             <button type='button' className='btn btn-secondary' data-bs-dismiss='modal'>Close</button>
-            <button type='button' className='btn btn-primary saveBibtex'>Save changes</button>
+            <button type='button' className='btn btn-primary saveBibtex'>Download Citation</button>
           </div>
         </div>
       </div>
