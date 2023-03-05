@@ -1,4 +1,4 @@
-import { Publicationentry, PublicationHeader } from '../components/Publicationentry'
+import { Publicationentry, PublicationHeader, PublicationModal } from '../components/Publicationentry'
 import PublicationService from '../models/publications'
 import Pagination from '../components/Pagination'
 import { useState } from 'react'
@@ -134,6 +134,8 @@ const Publications = () => {
           </div>
         </div>
       </div>
+
+      {PublicationModal()}
     </>
   )
 }
