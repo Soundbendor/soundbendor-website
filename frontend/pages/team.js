@@ -3,20 +3,37 @@ import { PersonCard } from '../components/Personcard'
 import PersonService from '../models/people'
 
 const createCurrentTeamListDisplay = (people) => {
-  return people.map((person) =>
-    <PersonCard key={person.id} person={person} />
+  return people.map((person) => 
+    trimTeamMember(0, person)
   )
 }
 
 const createAlumniListDisplay = (people) => {
-  return people.map((person) =>
-    <PersonCard key={person.id} person={person} />
+  return people.map((person) => 
+  trimTeamMember(1, person)
   )
+}
+
+function trimTeamMember(filter, person) {
+  let parse = person.personClass.Name.toLocaleLowerCase()
+
+  if (!filter) {
+    if (parse === 'alumni') {
+      return
+    }
+  } else if (filter) {
+    if (parse != 'alumni') {
+      return
+    }
+  }
+  
+  return <PersonCard key={person.id} person={person} />
 }
 
 const Team = () => {
   const people = PersonService.getPeople()
   const [currentTeamListDisplay, setCurrentTeamListDisplay] = useState(createCurrentTeamListDisplay(people))
+  const [alumniListDisplay] = useState(createAlumniListDisplay(people))
 
   const searchHandler = async (event) => {
     event.preventDefault()
@@ -61,7 +78,7 @@ const Team = () => {
       <div className='row py-5'>
         <div className='col'>
           <div className='container'>
-            <div className='row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 g-4' id='CurrentTeamListDisplay'>
+            <div className='row row-cols-2 row-cols-sm-3 row-cols-md-3 row-cols-lg-5 g-4' id='personListDisplay'>
               {currentTeamListDisplay}
             </div>
           </div>
@@ -80,7 +97,7 @@ const Team = () => {
         <div className='col'>
           <div className='container'>
             <div className='row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 g-4' id='CurrentTeamListDisplay'>
-              {currentTeamListDisplay}
+              {alumniListDisplay}
             </div>
           </div>
         </div>
