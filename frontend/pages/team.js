@@ -29,12 +29,11 @@ function trimTeamMember(filter, person) {
 const Team = () => {
   const people = PersonService.getPeople()
   const [currentTeamListDisplay, setCurrentTeamListDisplay] = useState(createCurrentTeamListDisplay(people))
-  const [alumniListDisplay] = useState(createAlumniListDisplay(people))
+  const [alumniListDisplay, setAlumniListDisplay] = useState(createAlumniListDisplay(people))
 
   const searchHandler = async (event) => {
     event.preventDefault()
     const searchField = document.getElementById('team-search')
-    // const filterField = document.getElementById('team-filter-select')
     const filters = {}
     if (searchField.value) {
       filters.x__searchNameAndClass = searchField.value
@@ -62,9 +61,15 @@ const Team = () => {
         <div className='col'>
           <div className='container'>
             <div className='row justify-content-between'>
-              <div className='col'>
+              <div className='col-sm-8'>
                 <label htmlFor='team-search' className='form-label'>Search</label>
                 <input type='search' className='form-control' id='team-search' onChange={searchHandler} placeholder='Search by name' />
+              </div>
+              <div className='col-sm-4'>
+                <label htmlFor='class-select' className='form-label'>Sort by Class</label>
+                <select className='form-select' id='class-select' onChange={searchHandler}>
+                  <option defaultValue value='' />
+                </select>  
               </div>
             </div>
           </div>
