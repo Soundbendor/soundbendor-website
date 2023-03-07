@@ -17,9 +17,9 @@ function Person (rawData) {
 const peopleFilterFunctions = {
   searchNameAndClass: (key, value, obj) => {
     const lValue = value.toLowerCase()
-    return (obj.formattedPersonName.toLowerCase().includes(lValue) ||
-    obj.FirstName.toLowerCase().includes(lValue) ||
-    obj.personClass.toLowerCase().includes(lValue))
+    let fullname = (obj.FirstName + ' ' + obj.LastName).toLowerCase()
+    return (fullname.includes(lValue) ||
+    obj.FirstName.toLowerCase().includes(lValue))
   }
 }
 

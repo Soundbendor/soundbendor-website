@@ -18,13 +18,9 @@ function trimTeamMember(filter, person) {
   let parse = person.personClass.Name.toLocaleLowerCase()
 
   if (!filter) {
-    if (parse === 'alumni') {
-      return
-    }
+    if (parse === 'alumni') { return }
   } else if (filter) {
-    if (parse != 'alumni') {
-      return
-    }
+    if (parse != 'alumni') { return }
   }
   
   return <PersonCard key={person.id} person={person} />
@@ -68,7 +64,7 @@ const Team = () => {
             <div className='row justify-content-between'>
               <div className='col'>
                 <label htmlFor='team-search' className='form-label'>Search</label>
-                <input type='search' className='form-control' id='team-search' onChange={searchHandler} placeholder='Search by name, class, degree, group' />
+                <input type='search' className='form-control' id='team-search' onChange={searchHandler} placeholder='Search by name' />
               </div>
             </div>
           </div>
