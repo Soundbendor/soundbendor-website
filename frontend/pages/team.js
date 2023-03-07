@@ -2,7 +2,13 @@ import { useState } from 'react'
 import { PersonCard } from '../components/Personcard'
 import PersonService from '../models/people'
 
-const createPersonListDisplay = (people) => {
+const createCurrentTeamListDisplay = (people) => {
+  return people.map((person) =>
+    <PersonCard key={person.id} person={person} />
+  )
+}
+
+const createAlumniListDisplay = (people) => {
   return people.map((person) =>
     <PersonCard key={person.id} person={person} />
   )
@@ -10,7 +16,7 @@ const createPersonListDisplay = (people) => {
 
 const Team = () => {
   const people = PersonService.getPeople()
-  const [personListDisplay, setPersonListDisplay] = useState(createPersonListDisplay(people))
+  const [currentTeamListDisplay, setCurrentTeamListDisplay] = useState(createCurrentTeamListDisplay(people))
 
   const searchHandler = async (event) => {
     event.preventDefault()
@@ -20,7 +26,7 @@ const Team = () => {
     if (searchField.value) {
       filters.x__searchNameAndClass = searchField.value
     }
-    setPersonListDisplay(createPersonListDisplay(PersonService.getPeople(filters)))
+    setCurrentTeamListDisplay(createCurrentTeamListDisplay(PersonService.getPeople(filters)))
   }
 
   return (
@@ -55,12 +61,31 @@ const Team = () => {
       <div className='row py-5'>
         <div className='col'>
           <div className='container'>
-            <div className='row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 g-4' id='personListDisplay'>
-              {personListDisplay}
+            <div className='row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 g-4' id='CurrentTeamListDisplay'>
+              {currentTeamListDisplay}
             </div>
           </div>
         </div>
       </div>
+
+      <div className='row py-5'>
+        <div className='col'>
+          <div className='text-center'>
+            <h1>Alumni</h1>
+          </div>
+        </div>
+      </div>      
+
+      <div className='row'>
+        <div className='col'>
+          <div className='container'>
+            <div className='row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 g-4' id='CurrentTeamListDisplay'>
+              {currentTeamListDisplay}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className='row py-5' />
     </>
   )
 }
