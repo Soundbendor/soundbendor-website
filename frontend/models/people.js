@@ -17,28 +17,27 @@ function Person (rawData) {
 const peopleFilterFunctions = {
   searchNameAndClass: (key, value, obj) => {
     const lValue = value.toLowerCase()
-    let fullName = (obj.FirstName + ' ' + obj.LastName).toLowerCase()
-    let className = PersonClassService.getPersonClass({id__eq: obj.person_class}).Name.toLowerCase()
-    return (fullName.includes(lValue) || 
-    className.includes(lValue) )
+    const fullName = (obj.FirstName + ' ' + obj.LastName).toLowerCase()
+    const className = PersonClassService.getPersonClass({ id__eq: obj.person_class }).Name.toLowerCase()
+    return (fullName.includes(lValue) ||
+    className.includes(lValue))
   },
 
   filterClass: (key, value, obj) => {
     const lValue = value.toLowerCase()
     console.log(lValue)
-    let className = PersonClassService.getPersonClass({id__eq: obj.person_class}).Name.toLowerCase()
+    const className = PersonClassService.getPersonClass({ id__eq: obj.person_class }).Name.toLowerCase()
     return (className.includes(lValue))
   }
 }
-
 
 const PersonService = BaseService.constructDefaultService('api::person.person', 'person', 'people', Person, peopleFilterFunctions)
 
 // Custom function to get the list of class name
 PersonService.getClasses = (kwargs) => {
   const people = PersonService.getRawPeople(kwargs)
-  const classes = people.map(person => (PersonClassService.getPersonClass({id__eq: person.person_class}).Name))
-  for (var i = 0; i < classes.length; i++) {
+  const classes = people.map(person => (PersonClassService.getPersonClass({ id__eq: person.person_class }).Name))
+  for (let i = 0; i < classes.length; i++) {
     if (classes[i] === 'Alumni') {
       classes.splice(i, 1)
     }

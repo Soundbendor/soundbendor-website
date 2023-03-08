@@ -3,26 +3,26 @@ import { PersonCard } from '../components/Personcard'
 import PersonService from '../models/people'
 
 const createCurrentTeamListDisplay = (people) => {
-  return people.map((person) => 
+  return people.map((person) =>
     trimTeamMember(0, person)
   )
 }
 
 const createAlumniListDisplay = (people) => {
-  return people.map((person) => 
-  trimTeamMember(1, person)
+  return people.map((person) =>
+    trimTeamMember(1, person)
   )
 }
 
-function trimTeamMember(filter, person) {
-  let parse = person.personClass.Name.toLocaleLowerCase()
+function trimTeamMember (filter, person) {
+  const parse = person.personClass.Name.toLocaleLowerCase()
 
   if (!filter) {
     if (parse === 'alumni') { return }
   } else if (filter) {
     if (parse != 'alumni') { return }
   }
-  
+
   return <PersonCard key={person.id} person={person} />
 }
 
@@ -48,13 +48,13 @@ const Team = () => {
     filters.alumni = {}
     if (searchField.value) {
       filters.x__searchNameAndClass = searchField.value
-    } 
+    }
     if (classField.value) {
       filters.x__filterClass = classField.value
     }
     if (alumniSearchField.value) {
       filters.alumni.x__searchNameAndClass = alumniSearchField.value
-    }    
+    }
     setAlumniListDisplay(createAlumniListDisplay(PersonService.getPeople(filters.alumni)))
     setCurrentTeamListDisplay(createCurrentTeamListDisplay(PersonService.getPeople(filters)))
   }
@@ -88,7 +88,7 @@ const Team = () => {
                 <select className='form-select' id='class-select' onChange={searchHandler}>
                   <option defaultValue value='' />
                   {classListDisplay}
-                </select>  
+                </select>
               </div>
             </div>
           </div>
@@ -111,7 +111,7 @@ const Team = () => {
             <h1>Alumni</h1>
           </div>
         </div>
-      </div>      
+      </div>
 
       <div className='row'>
         <div className='col'>
