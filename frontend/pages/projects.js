@@ -17,6 +17,7 @@ const createProjectYearListDisplay = (projectYears) => {
 
 const Projects = () => {
   const projects = ProjectService.getProjects()
+  console.log(projects)
   const projectSearchPlaceholder = '(e.g., ' + projects[0].Name + ')'
   const [projectListDisplay, setProjectListDisplay] = useState(createProjectListDisplay(projects))
   const projectYearListDisplay = createProjectYearListDisplay(ProjectService.getProjectYears())

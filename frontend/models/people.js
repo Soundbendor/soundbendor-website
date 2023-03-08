@@ -17,12 +17,32 @@ function Person (rawData) {
 const peopleFilterFunctions = {
   searchNameAndClass: (key, value, obj) => {
     const lValue = value.toLowerCase()
-    return (obj.formattedPersonName.toLowerCase().includes(lValue) ||
-    obj.FirstName.toLowerCase().includes(lValue) ||
-    obj.personClass.toLowerCase().includes(lValue))
+    const fullName = (obj.FirstName + ' ' + obj.LastName).toLowerCase()
+    const className = PersonClassService.getPersonClass({ id__eq: obj.person_class }).Name.toLowerCase()
+    return (fullName.includes(lValue) ||
+    className.includes(lValue))
+  },
+
+  filterClass: (key, value, obj) => {
+    const lValue = value.toLowerCase()
+    console.log(lValue)
+    const className = PersonClassService.getPersonClass({ id__eq: obj.person_class }).Name.toLowerCase()
+    return (className.includes(lValue))
   }
 }
 
 const PersonService = BaseService.constructDefaultService('api::person.person', 'person', 'people', Person, peopleFilterFunctions)
+
+// Custom function to get the list of class name
+PersonService.getClasses = (kwargs) => {
+  const people = PersonService.getRawPeople(kwargs)
+  const classes = people.map(person => (PersonClassService.getPersonClass({ id__eq: person.person_class }).Name))
+  for (let i = 0; i < classes.length; i++) {
+    if (classes[i] === 'Alumni') {
+      classes.splice(i, 1)
+    }
+  }
+  return classes.filter((item, index, arrRef) => arrRef.indexOf(item) === index)
+}
 
 module.exports = PersonService
