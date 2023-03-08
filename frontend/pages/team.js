@@ -20,15 +20,15 @@ function trimTeamMember (filter, person) {
   if (!filter) {
     if (parse === 'alumni') { return }
   } else if (filter) {
-    if (parse != 'alumni') { return }
+    if (parse !== 'alumni') { return }
   }
 
   return <PersonCard key={person.id} person={person} />
 }
 
 const createClassListDisplay = (peopleClasses) => {
-  return peopleClasses.map((class_name) =>
-    <option key={class_name} value={class_name}>{class_name}</option>
+  return peopleClasses.map((className) =>
+    <option key={className} value={className}>{className}</option>
   )
 }
 
