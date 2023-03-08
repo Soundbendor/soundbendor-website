@@ -41,8 +41,11 @@ const FilterFunctions = {
   gt: (key, value, obj) => obj[key] > value,
   gte: (key, value, obj) => obj[key] >= value,
   like: (key, value, obj) => obj[key].includes(value),
+  likelow: (key, value, obj) => obj[key].toLowerCase().includes(value.toLowerCase()),
   sw: (key, value, obj) => obj[key].startsWith(value),
+  swlow: (key, value, obj) => obj[key].toLowerCase().startsWith(value.toLowerCase()),
   ew: (key, value, obj) => obj[key].endsWith(value),
+  ewlow: (key, value, obj) => obj[key].toLowerCase().endsWith(value.toLowerCase()),
   in: (key, value, obj) => value.includes(obj[key])
 }
 
