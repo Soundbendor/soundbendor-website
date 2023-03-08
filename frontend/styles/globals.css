@@ -17,14 +17,12 @@
   background-color: #d73f09 !important;
 }
 
-.pagination > li > a
- {
+.pagination > li > a {
   background-color: white;
   color: black;
 }
 
-.pagination > .active > a
- {
+.pagination > .active > a {
   color: white;
   background-color: #d73f09 !Important;
   border: solid 1px #d73f09 !Important;
@@ -33,14 +31,12 @@
 .pagination > li > a:focus,
 .pagination > li > a:hover,
 .pagination > li > span:focus,
-.pagination > li > span:hover
- {
+.pagination > li > span:hover {
   background-color: #eee;
   border-color: #ddd;
 }
 
-.pagination > .active > a:hover
- {
+.pagination > .active > a:hover {
   background-color: #d73f09 !Important;
   border: solid 1px #d73f09;
 }
