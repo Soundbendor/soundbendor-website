@@ -10,12 +10,12 @@ const Page = ({ page, pageCustomContent }) => {
 
 const Row = ({ row, pageCustomContent }) => {
   let content = ''
-  let topLevelClassArray = ['row']
-  if(row.HasVerticalPadding){
+  const topLevelClassArray = ['row']
+  if (row.HasVerticalPadding) {
     topLevelClassArray.push('py-5')
   }
-  if(row.colorThemeClass !== undefined && row.colorThemeClass !== null){
-    topLevelClassArray.push('text-bg-'+row.colorThemeClass)
+  if (row.colorThemeClass !== undefined && row.colorThemeClass !== null) {
+    topLevelClassArray.push('text-bg-' + row.colorThemeClass)
   }
   const topLevelClasses = topLevelClassArray.join(' ')
   switch (row[PageService.COMPONENT]) {
@@ -83,20 +83,19 @@ const TwoColumn = function ({ row }) {
 }
 
 const Column = ({ column }) => {
-  console.log(column)
   const className = column.colClass + ' text-' + column.textAlignClass
   const imageStyles = {}
-  if(column.PagePartImageMaxHeight !== undefined && column.PagePartImageMaxHeight !== null && column.PagePartImageMaxHeight !== 0){
-    imageStyles['maxHeight'] = column.PagePartImageMaxHeight + 'px'
+  if (column.PagePartImageMaxHeight !== undefined && column.PagePartImageMaxHeight !== null && column.PagePartImageMaxHeight !== 0) {
+    imageStyles.maxHeight = column.PagePartImageMaxHeight + 'px'
   }
-  if(column.PagePartImageMaxWidth !== undefined && column.PagePartImageMaxWidth !== null && column.PagePartImageMaxWidth !== 0){
-    imageStyles['maxWidth'] = column.PagePartImageMaxWidth + 'px'
+  if (column.PagePartImageMaxWidth !== undefined && column.PagePartImageMaxWidth !== null && column.PagePartImageMaxWidth !== 0) {
+    imageStyles.maxWidth = column.PagePartImageMaxWidth + 'px'
   }
   return (
     <div className={className}>
       {column.PagePartTitle && <h2>{column.PagePartTitle}</h2>}
       {column.PagePartSubtitle && <h3>{column.PagePartSubtitle}</h3>}
-      {column.PagePartImage && <div className="mx-auto" style={imageStyles}><img className='w-100' src={column.image.url} /></div>}
+      {column.PagePartImage && <div className='mx-auto' style={imageStyles}><img className='w-100' src={column.image.url} /></div>}
       {column.content && column.PagePartContent.trim().length > 0 && <div dangerouslySetInnerHTML={{ __html: column.content }} />}
       {
         column.PagePartButtonLink && column.PagePartButtonText &&

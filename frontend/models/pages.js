@@ -73,7 +73,7 @@ function PagePart (rawData) {
 function Row (rawData) {
   const p = BaseService.defaultDataConstructor(rawData)
   p.colorThemeClass = (p.ColorTheme === undefined || p.ColorTheme === null || !p.ColorTheme) ? 'white' : p.ColorTheme.toLowerCase()
-  p.HasVerticalPadding = (p.HasVerticalPadding === undefined || p.HasVerticalPadding === null) ? 'true': p.HasVerticalPadding
+  p.HasVerticalPadding = (p.HasVerticalPadding === undefined || p.HasVerticalPadding === null) ? 'true' : p.HasVerticalPadding
   return p
 }
 
