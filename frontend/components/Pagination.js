@@ -16,6 +16,7 @@ const Pagination = ({ data, pagesShown, previousLabel, nextLabel, className, onC
   } else {
     className += ' pagination'
   }
+  className += ' pagination-dark'
   const paginationData = data.__pagination
   const numbers = generatePaginationNumbers(paginationData, pagesShown, onClick)
   return (

@@ -10,8 +10,33 @@ const Page = ({ page, pageCustomContent }) => {
 
 const Row = ({ row, pageCustomContent }) => {
   let content = ''
-  const topLevelClasses = 'row py-5 text-bg-' + row.colorThemeClass
+  let topLevelClassArray = ['row']
+  if(row.HasVerticalPadding){
+    topLevelClassArray.push('py-5')
+  }
+  if(row.colorThemeClass !== undefined && row.colorThemeClass !== null){
+    topLevelClassArray.push('text-bg-'+row.colorThemeClass)
+  }
+  const topLevelClasses = topLevelClassArray.join(' ')
   switch (row[PageService.COMPONENT]) {
+    case PageService.ROW_TYPES.SLIDESHOW:
+      content = (
+        <>
+          <div className={topLevelClasses}>
+            <div className='col'>
+              <Slideshow row={row} />
+            </div>
+          </div>
+        </>
+      )
+      break
+    case PageService.ROW_TYPES.PAGE_CUSTOM_CONTENT:
+      content = (
+        <>
+          <Display pageCustomContent={pageCustomContent} />
+        </>
+      )
+      break
     case PageService.ROW_TYPES.ONE_COLUMN:
       content = (
         <>
@@ -42,24 +67,6 @@ const Row = ({ row, pageCustomContent }) => {
         </>
       )
       break
-    case PageService.ROW_TYPES.SLIDESHOW:
-      content = (
-        <>
-          <div className={topLevelClasses}>
-            <div className='col'>
-              <Slideshow row={row} />
-            </div>
-          </div>
-        </>
-      )
-      break
-    case PageService.ROW_TYPES.PAGE_CUSTOM_CONTENT:
-      content = (
-        <>
-          <Display pageCustomContent={pageCustomContent} />
-        </>
-      )
-      break
   }
   return content
 }
@@ -76,16 +83,24 @@ const TwoColumn = function ({ row }) {
 }
 
 const Column = ({ column }) => {
+  console.log(column)
   const className = column.colClass + ' text-' + column.textAlignClass
+  const imageStyles = {}
+  if(column.PagePartImageMaxHeight !== undefined && column.PagePartImageMaxHeight !== null && column.PagePartImageMaxHeight !== 0){
+    imageStyles['maxHeight'] = column.PagePartImageMaxHeight + 'px'
+  }
+  if(column.PagePartImageMaxWidth !== undefined && column.PagePartImageMaxWidth !== null && column.PagePartImageMaxWidth !== 0){
+    imageStyles['maxWidth'] = column.PagePartImageMaxWidth + 'px'
+  }
   return (
     <div className={className}>
       {column.PagePartTitle && <h2>{column.PagePartTitle}</h2>}
       {column.PagePartSubtitle && <h3>{column.PagePartSubtitle}</h3>}
-      {column.PagePartImage && <img className='w-100' src={column.image.url} />}
-      {column.content && <div dangerouslySetInnerHTML={{ __html: column.content }} />}
+      {column.PagePartImage && <div className="mx-auto" style={imageStyles}><img className='w-100' src={column.image.url} /></div>}
+      {column.content && column.PagePartContent.trim().length > 0 && <div dangerouslySetInnerHTML={{ __html: column.content }} />}
       {
         column.PagePartButtonLink && column.PagePartButtonText &&
-          <Link className='btn btn-primary' href={column.PagePartButtonLink}>{column.PagePartButtonText}</Link>
+          <Link className='btn btn-dark' href={column.PagePartButtonLink}>{column.PagePartButtonText}</Link>
       }
     </div>
   )
