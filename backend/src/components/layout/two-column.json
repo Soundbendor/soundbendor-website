@@ -1,7 +1,8 @@
 {
   "collectionName": "components_layout_two_columns",
   "info": {
-    "displayName": "TwoColumn"
+    "displayName": "TwoColumn",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -40,6 +41,11 @@
         "Ratio 5:1"
       ],
       "default": "Ratio 1:1",
+      "required": false
+    },
+    "HasVerticalPadding": {
+      "type": "boolean",
+      "default": true,
       "required": false
     }
   }

@@ -46,6 +46,17 @@
         "preset": "standard"
       },
       "customField": "plugin::ckeditor.CKEditor"
+    },
+    "PagePartImageMaxHeight": {
+      "type": "integer",
+      "min": 0,
+      "default": 0
+    },
+    "PagePartImageMaxWidth": {
+      "type": "integer",
+      "default": 0,
+      "min": 0,
+      "max": 6000
     }
   }
 }
