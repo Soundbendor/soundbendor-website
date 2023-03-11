@@ -16,13 +16,14 @@ const Pagination = ({ data, pagesShown, previousLabel, nextLabel, className, onC
   } else {
     className += ' pagination'
   }
+  className += ' pagination-dark'
   const paginationData = data.__pagination
   const numbers = generatePaginationNumbers(paginationData, pagesShown, onClick)
   return (
     <ul className={className}>
-      <PaginationLink label={previousLabel} disabled={!paginationData.hasPreviousPage} onClick={onClick} />
+      <PaginationLink label={previousLabel} value={paginationData.currentPage - 1} disabled={!paginationData.hasPreviousPage} onClick={onClick} />
       {numbers}
-      <PaginationLink label={nextLabel} disabled={!paginationData.hasNextPage} onClick={onClick} />
+      <PaginationLink label={nextLabel} value={paginationData.currentPage + 1} disabled={!paginationData.hasNextPage} onClick={onClick} />
     </ul>
   )
 }
@@ -87,7 +88,7 @@ const PaginationLink = ({ label, value, disabled, active, onClick }) => {
   const classNames = 'page-item' + ((disabled) ? ' disabled' : '') + ((active) ? ' active' : '')
   return (
     <li className={classNames} aria-current={(active) ? 'page' : undefined}>
-      <a className='page-link' onClick={onClick} href='#' aria-disabled={(disabled) ? true : undefined}>{label}</a>
+      <a className='page-link' value={value} onClick={onClick} href='#' aria-disabled={(disabled) ? true : undefined}>{label}</a>
     </li>
   )
 }

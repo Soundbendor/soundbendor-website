@@ -1,7 +1,8 @@
 {
   "collectionName": "components_layout_one_columns",
   "info": {
-    "displayName": "OneColumn"
+    "displayName": "OneColumn",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -19,6 +20,11 @@
         "Special"
       ],
       "default": "White"
+    },
+    "HasVerticalPadding": {
+      "type": "boolean",
+      "default": true,
+      "required": false
     }
   }
 }
