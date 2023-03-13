@@ -96,7 +96,7 @@ const Team = () => {
           <div className='col-sm-4'>
             <label htmlFor='class-select' className='form-label'>Sort by Class</label>
             <select className='form-select' id='class-select' onChange={searchHandler}>
-              <option defaultValue value='' />
+              <option defaultValue value=''>All Classes</option>
               {classListDisplay}
             </select>
           </div>

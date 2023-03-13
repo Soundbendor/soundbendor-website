@@ -37,9 +37,9 @@ const Apply = (data) => {
               <input type='hidden' name='submit' value='submit' />
               <div className='form-group'>
                 <label htmlFor='inputName'>Full Name</label>
-                <input type='name' name={data.get_info_name} className='form-control' id='inputName' placeholder='Name' />
+                <input type='name' name={data.get_info_name} className='form-control mb-2' id='inputName' placeholder='Name' />
                 <label htmlFor='inputEmail1'>Email Address</label>
-                <input type='email' name={data.get_info_email} className='form-control' id='inputEmail1' placeholder='Email' />
+                <input type='email' name={data.get_info_email} className='form-control mb-2' id='inputEmail1' placeholder='Email' />
                 <label htmlFor='inputComment1'>Additional Comments</label>
                 <textarea name={data.get_info_comment} className='form-control' id='inputComment1' placeholder='Comments' />
               </div>

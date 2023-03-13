@@ -25,10 +25,10 @@ const Footer = () => {
 
             <div className='col-md-4 col-lg-3 col-xl-3 mx-auto mb-3'>
               <h6 className='text-uppercase fw-bold mb-2'>Links</h6>
-              <ul className='list-group'>
-                <li style={{ color: '#D73F09' }} className='list-group-item bg-dark pb-0 border-0'><a href='https://oregonstate.edu/' className='text-reset'>Oregon State University</a></li>
-                <li style={{ color: '#D73F09' }} className='list-group-item bg-dark pb-0 border-0'><a href='https://eecs.oregonstate.edu/' className='text-reset'>Oregon State-Cascades</a></li>
-                <li style={{ color: '#D73F09' }} className='list-group-item bg-dark border-0'><a href='https://eecs.oregonstate.edu/' className='text-reset'>School of EECS</a></li>
+              <ul className='list-unstyled'>
+                <li className='list-group-item bg-dark pb-0 border-0 beaverorange'><a href='https://oregonstate.edu/' className='text-reset'>Oregon State University</a></li>
+                <li className='list-group-item bg-dark pb-0 border-0 beaverorange'><a href='https://eecs.oregonstate.edu/' className='text-reset'>Oregon State-Cascades</a></li>
+                <li className='list-group-item bg-dark border-0 beaverorange'><a href='https://eecs.oregonstate.edu/' className='text-reset'>School of EECS</a></li>
               </ul>
             </div>
 
