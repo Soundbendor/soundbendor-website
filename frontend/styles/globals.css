@@ -43,24 +43,24 @@
 
 .carousel .text-white {
   color: white;
-  text-shadow: 0px 0px 8px black;
+  text-shadow: 0 0 8px black;
 }
 
 .carousel .text-black {
   color: black;
-  text-shadow: 0px 0px 8px white;
+  text-shadow: 0 0 8px white;
 }
 
-.carousel-control-prev, .carousel-control-next {
-  text-shadow: 0px 0px 8px black;
+.carousel-control-prev, 
+.carousel-control-next {
+  text-shadow: 0 0 8px black;
   font-size: 3em;
-  width:10%;
+  width: 10%;
 }
 
 .carousel-text-container {
   width: 80%;
 }
-
 
 ul {
   list-style-type: none;
