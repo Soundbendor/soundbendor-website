@@ -52,6 +52,6 @@ ul {
 
 @media only screen and (min-width: 768px) {
   .newscard {
-     width: 50%;
- }
+    width: 50%;
+  }
 }
