@@ -4,9 +4,13 @@ import { ProjectCard } from '../components/Projectcard'
 import ProjectService from '../models/projects'
 
 const createProjectListDisplay = (projects) => {
-  return projects.map((project) =>
-    <ProjectCard key={project.id} project={project} />
-  )
+  if (projects.length) {
+    return projects.map((project) =>
+      <ProjectCard key={project.id} project={project} />
+    )
+  } else {
+    return (<p className='w-100 text-center fw-bold'>There are no projects matching that criteria.</p>)
+  }
 }
 
 const createProjectYearListDisplay = (projectYears) => {
@@ -38,49 +42,35 @@ const Projects = () => {
 
   return (
     <>
-      <div className='row py-5'>
-        <div className='col'>
-          <div className='container'>
-            <div className='row'>
-              <div className='col'>
-                <div className='text-center'>
-                  <h1>Student Projects</h1>
-                </div>
-              </div>
+      <div className='container py-5'>
+        <div className='row'>
+          <div className='col'>
+            <div className='text-center'>
+              <h1>Student Projects</h1>
             </div>
           </div>
         </div>
       </div>
-
-      <div className='row'>
-        <div className='col'>
-          <div className='container'>
-            <div className='row justify-content-between'>
-              <div className='col-sm-8'>
-                <label htmlFor='project-search' className='form-label'>Search by Name</label>
-                <input type='search' className='form-control' id='project-search' onChange={searchHandler} placeholder={projectSearchPlaceholder} />
-              </div>
-              <div className='col-sm-4'>
-                <label htmlFor='project-year' className='form-label'>Search By Year</label>
-                <select className='form-select' id='project-year' onChange={searchHandler}>
-                  <option defaultValue value='' />
-                  {projectYearListDisplay}
-                </select>
-              </div>
-            </div>
+      <div className='container'>
+        <div className='row justify-content-between'>
+          <div className='col-sm-8'>
+            <label htmlFor='project-search' className='form-label'>Search by Name</label>
+            <input type='search' className='form-control' id='project-search' onChange={searchHandler} placeholder={projectSearchPlaceholder} />
+          </div>
+          <div className='col-sm-4'>
+            <label htmlFor='project-year' className='form-label'>Search By Year</label>
+            <select className='form-select' id='project-year' onChange={searchHandler}>
+              <option defaultValue value='' />
+              {projectYearListDisplay}
+            </select>
           </div>
         </div>
       </div>
-
-      <div className='row py-5'>
-        <div className='col'>
-          <div className='container'>
-            <div className='row'>
-              <div className='col'>
-                <div className={style.personcontainer} id='projectListDisplay'>
-                  {projectListDisplay}
-                </div>
-              </div>
+      <div className='container py-5'>
+        <div className='row'>
+          <div className='col'>
+            <div className={style.personcontainer} id='projectListDisplay'>
+              {projectListDisplay}
             </div>
           </div>
         </div>

@@ -3,17 +3,25 @@ import { PersonCard } from '../components/Personcard'
 import PersonService from '../models/people'
 
 const createCurrentTeamListDisplay = (people) => {
-  people = sortPeople(people)
-  return people.map((person) =>
-    trimTeamMember(0, person)
-  )
+  if (people.length === 0) {
+    return (<p className='w-100 text-center fw-bold'>There are no team members matching that criteria.</p>)
+  } else {
+    people = sortPeople(people)
+    return people.map((person) =>
+      trimTeamMember(0, person)
+    )
+  }
 }
 
 const createAlumniListDisplay = (people) => {
-  people = sortPeople(people)
-  return people.map((person) =>
-    trimTeamMember(1, person)
-  )
+  if (people.length === 0) {
+    return (<p className='w-100 text-center fw-bold'>There are no Alumni matching that criteria.</p>)
+  } else {
+    people = sortPeople(people)
+    return people.map((person) =>
+      trimTeamMember(1, person)
+    )
+  }
 }
 
 function sortPeople (people) {
@@ -46,7 +54,6 @@ const createClassListDisplay = (peopleClasses) => {
 
 const Team = () => {
   const people = PersonService.getPeople()
-  console.log(people)
   const [currentTeamListDisplay, setCurrentTeamListDisplay] = useState(createCurrentTeamListDisplay(people))
   const [alumniListDisplay, setAlumniListDisplay] = useState(createAlumniListDisplay(people))
   const classListDisplay = createClassListDisplay(PersonService.getClasses())
@@ -73,81 +80,53 @@ const Team = () => {
 
   return (
     <>
-      <div className='row py-5'>
-        <div className='col'>
-          <div className='container'>
-            <div className='row'>
-              <div className='col'>
-                <div className='text-center'>
-                  <h1>Team Members</h1>
-                </div>
-              </div>
-            </div>
+      <div className='container py-5'>
+        <div className='row'>
+          <div className='col text-center'>
+            <h1>Team Members</h1>
           </div>
         </div>
       </div>
-
-      <div className='row'>
-        <div className='col'>
-          <div className='container'>
-            <div className='row justify-content-between'>
-              <div className='col-sm-4'>
-                <label htmlFor='team-search' className='form-label'>Search</label>
-                <input type='search' className='form-control' id='team-search' onChange={searchHandler} placeholder='Search by name' />
-              </div>
-              <div className='col-sm-4'>
-                <label htmlFor='class-select' className='form-label'>Sort by Class</label>
-                <select className='form-select' id='class-select' onChange={searchHandler}>
-                  <option defaultValue value='' />
-                  {classListDisplay}
-                </select>
-              </div>
-            </div>
+      <div className='container'>
+        <div className='row '>
+          <div className='col-sm-4'>
+            <label htmlFor='team-search' className='form-label'>Search</label>
+            <input type='search' className='form-control' id='team-search' onChange={searchHandler} placeholder='Search by name' />
+          </div>
+          <div className='col-sm-4'>
+            <label htmlFor='class-select' className='form-label'>Sort by Class</label>
+            <select className='form-select' id='class-select' onChange={searchHandler}>
+              <option defaultValue value='' />
+              {classListDisplay}
+            </select>
           </div>
         </div>
       </div>
-
-      <div className='row py-5'>
-        <div className='col'>
-          <div className='container'>
-            <div className='row row-cols-2 row-cols-sm-3 row-cols-md-3 row-cols-lg-5 g-4' id='personListDisplay'>
-              {currentTeamListDisplay}
-            </div>
-          </div>
+      <div className='container py-5'>
+        <div className='row row-cols-2 row-cols-sm-3 row-cols-md-3 row-cols-lg-5 g-4' id='personListDisplay'>
+          {currentTeamListDisplay}
         </div>
       </div>
-
-      <div className='row py-5'>
-        <div className='col'>
-          <div className='text-center'>
+      <div className='container'>
+        <div className='row'>
+          <div className='col text-center'>
             <h1>Alumni</h1>
           </div>
         </div>
       </div>
-
-      <div className='row'>
-        <div className='col'>
-          <div className='container'>
-            <div className='row justify-content-between'>
-              <div className='col-sm-4'>
-                <label htmlFor='alumni-search' className='form-label'>Search</label>
-                <input type='search' className='form-control' id='alumni-search' onChange={searchHandler} placeholder='Search by name' />
-              </div>
-            </div>
+      <div className='container'>
+        <div className='row justify-content-between'>
+          <div className='col-sm-4'>
+            <label htmlFor='alumni-search' className='form-label'>Search</label>
+            <input type='search' className='form-control' id='alumni-search' onChange={searchHandler} placeholder='Search by name' />
           </div>
         </div>
       </div>
-
-      <div className='row py-5'>
-        <div className='col'>
-          <div className='container'>
-            <div className='row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 g-4' id='alumniListDisplay'>
-              {alumniListDisplay}
-            </div>
-          </div>
+      <div className='container py-5'>
+        <div className='row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 g-4' id='alumniListDisplay'>
+          {alumniListDisplay}
         </div>
       </div>
-      <div className='row py-5' />
     </>
   )
 }

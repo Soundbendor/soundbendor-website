@@ -15,7 +15,7 @@ const createPublicationYearListDisplay = (publicationYears) => {
 }
 
 const getPublicationListDisplay = (publications) => {
-  let publicationsListDisplay = <tr><td colSpan='4' className='col text-center'>No Publications Available</td></tr>
+  let publicationsListDisplay = <tr><td colSpan='4' className='col text-center'>There are no publications matching that criteria</td></tr>
   if (publications.length) {
     // put each publication obj into an array for displaying in the HTML
     publicationsListDisplay = publications.map((publication) =>
@@ -80,59 +80,51 @@ const Publications = () => {
 
   return (
     <>
-      <div className='row py-5'>
-        <div className='container'>
-          <h1 className='text-center'>Publications</h1>
-        </div>
-      </div>
 
-      <div className='row'>
-        <div className='col'>
-          <div className='container'>
-            <div className='row justify-content-between'>
-              <div className='col-sm-6'>
-                <label htmlFor='pub-search' className='form-label'>Search By Title</label>
-                <input type='search' onChange={searchHandler} className='form-control' id='pub-search' placeholder='Title...' />
-              </div>
-              <div className='col-sm-3'>
-                <label htmlFor='Entries' className='form-label'>Year Published</label>
-                <select className='form-select' id='pub-year' onChange={searchHandler}>
-                  <option defaultValue value=''>All Years</option>
-                  {publicationYearListDisplay}
-                </select>
-              </div>
-              <div className='col-sm-3'>
-                <label htmlFor='Entries' className='form-label'>Entries shown per page</label>
-                <select className='form-select' id='pageSize' onChange={searchHandler}>
-                  <option value='5' defaultValue>5</option>
-                  <option value='2'>2</option>
-                  <option value='10'>10</option>
-                  <option value='15'>15</option>
-                  <option value='20'>20</option>
-                </select>
-              </div>
-            </div>
+      <div className='container'>
+        <div className='row py-5'>
+          <div className='col'>
+            <h1 className='text-center'>Publications</h1>
+          </div>
+        </div>
+
+        <div className='row justify-content-between'>
+          <div className='col-sm-6'>
+            <label htmlFor='pub-search' className='form-label'>Search By Title</label>
+            <input type='search' onChange={searchHandler} className='form-control' id='pub-search' placeholder='Title...' />
+          </div>
+          <div className='col-sm-3'>
+            <label htmlFor='Entries' className='form-label'>Year Published</label>
+            <select className='form-select' id='pub-year' onChange={searchHandler}>
+              <option defaultValue value=''>All Years</option>
+              {publicationYearListDisplay}
+            </select>
+          </div>
+          <div className='col-sm-3'>
+            <label htmlFor='Entries' className='form-label'>Entries shown per page</label>
+            <select className='form-select' id='pageSize' onChange={searchHandler}>
+              <option value='5' defaultValue>5</option>
+              <option value='2'>2</option>
+              <option value='10'>10</option>
+              <option value='15'>15</option>
+              <option value='20'>20</option>
+            </select>
           </div>
         </div>
       </div>
-
-      <div className='row py-5'>
-        <div className='col'>
-          <div className='container'>
-            <table className='table table-striped table-hover'>
-              <thead>
-                {PublicationHeader()}
-              </thead>
-              <tbody>
-                {publicationsListDisplay}
-              </tbody>
-            </table>
-            <nav aria-label='Pagination'>
-              <hr className='my-0' />
-              {paginationDisplay}
-            </nav>
-          </div>
-        </div>
+      <div className='container'>
+        <table className='table table-striped table-hover'>
+          <thead>
+            {PublicationHeader()}
+          </thead>
+          <tbody>
+            {publicationsListDisplay}
+          </tbody>
+        </table>
+        <nav aria-label='Pagination'>
+          <hr className='my-0' />
+          {paginationDisplay}
+        </nav>
       </div>
 
       {PublicationModal()}
