@@ -4,9 +4,13 @@ import { ProjectCard } from '../components/Projectcard'
 import ProjectService from '../models/projects'
 
 const createProjectListDisplay = (projects) => {
-  return projects.map((project) =>
-    <ProjectCard key={project.id} project={project} />
-  )
+  if (projects.length) {
+    return projects.map((project) =>
+      <ProjectCard key={project.id} project={project} />
+    )
+  } else {
+    return (<p className='w-100 text-center fw-bold'>There are no projects matching that criteria.</p>)
+  }
 }
 
 const createProjectYearListDisplay = (projectYears) => {

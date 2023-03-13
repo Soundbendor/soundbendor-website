@@ -15,7 +15,7 @@ const createPublicationYearListDisplay = (publicationYears) => {
 }
 
 const getPublicationListDisplay = (publications) => {
-  let publicationsListDisplay = <tr><td colSpan='4' className='col text-center'>No Publications Available</td></tr>
+  let publicationsListDisplay = <tr><td colSpan='4' className='col text-center'>There are no publications matching that criteria</td></tr>
   if (publications.length) {
     // put each publication obj into an array for displaying in the HTML
     publicationsListDisplay = publications.map((publication) =>

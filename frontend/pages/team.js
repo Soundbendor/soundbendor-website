@@ -3,17 +3,25 @@ import { PersonCard } from '../components/Personcard'
 import PersonService from '../models/people'
 
 const createCurrentTeamListDisplay = (people) => {
-  people = sortPeople(people)
-  return people.map((person) =>
-    trimTeamMember(0, person)
-  )
+  if (people.length === 0) {
+    return (<p className='w-100 text-center fw-bold'>There are no team members matching that criteria.</p>)
+  } else {
+    people = sortPeople(people)
+    return people.map((person) =>
+      trimTeamMember(0, person)
+    )
+  }
 }
 
 const createAlumniListDisplay = (people) => {
-  people = sortPeople(people)
-  return people.map((person) =>
-    trimTeamMember(1, person)
-  )
+  if (people.length === 0) {
+    return (<p className='w-100 text-center fw-bold'>There are no Alumni matching that criteria.</p>)
+  } else {
+    people = sortPeople(people)
+    return people.map((person) =>
+      trimTeamMember(1, person)
+    )
+  }
 }
 
 function sortPeople (people) {
@@ -46,7 +54,6 @@ const createClassListDisplay = (peopleClasses) => {
 
 const Team = () => {
   const people = PersonService.getPeople()
-  console.log(people)
   const [currentTeamListDisplay, setCurrentTeamListDisplay] = useState(createCurrentTeamListDisplay(people))
   const [alumniListDisplay, setAlumniListDisplay] = useState(createAlumniListDisplay(people))
   const classListDisplay = createClassListDisplay(PersonService.getClasses())
