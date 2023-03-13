@@ -45,3 +45,13 @@ ul {
   list-style-type: none;
   padding-left: 0;
 }
+
+.newscard {
+  width: 100%;
+}
+
+@media only screen and (min-width: 768px) {
+  .newscard {
+     width: 50%;
+ }
+}
