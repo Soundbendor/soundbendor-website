@@ -32,32 +32,24 @@ const News = () => {
 
   return (
     <>
-      <div className='row py-5'>
-        <div className='col'>
-          <div className='container'>
-            <div className='row'>
-              <div className='col'>
-                <div className='text-center'>
-                  <h1>News</h1>
-                </div>
-              </div>
+      <div className='container py-5'>
+        <div className='row'>
+          <div className='col'>
+            <div className='text-center'>
+              <h1>News</h1>
             </div>
           </div>
         </div>
       </div>
-      <div className='row'>
-        <div className='col'>
-          <div className='container'>
-            <div className='row justify-content-center'>
-              <div className='col-10'>
-                {eventListDisplay}
-              </div>
-              <nav aria-label='Pagination'>
-                <hr className='my-0' />
-                {paginationDisplay}
-              </nav>
-            </div>
+      <div className='container'>
+        <div className='row justify-content-center'>
+          <div className='col-10'>
+            {eventListDisplay}
           </div>
+          <nav aria-label='Pagination'>
+            <hr className='my-0' />
+            {paginationDisplay}
+          </nav>
         </div>
       </div>
     </>

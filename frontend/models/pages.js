@@ -120,6 +120,7 @@ function TwoColumn (rawData) {
 
 function Slide (rawData) {
   const p = BaseService.defaultDataConstructor(rawData)
+  p.imageData = ImageService.getImage({ id__eq: p.Image })
   return p
 }
 

@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import PageService from '../models/pages'
-import { Carousel, CarouselItemPlaceholder } from '../components/Carousel'
+import { Carousel, CarouselItem } from '../components/Carousel'
 
 const Page = ({ page, pageCustomContent }) => {
   return page.RowsContent.map((row, i) =>
@@ -10,7 +10,7 @@ const Page = ({ page, pageCustomContent }) => {
 
 const Row = ({ row, pageCustomContent }) => {
   let content = ''
-  const topLevelClassArray = ['row']
+  const topLevelClassArray = []
   if (row.HasVerticalPadding) {
     topLevelClassArray.push('py-5')
   }
@@ -23,9 +23,7 @@ const Row = ({ row, pageCustomContent }) => {
       content = (
         <>
           <div className={topLevelClasses}>
-            <div className='col'>
-              <Slideshow row={row} />
-            </div>
+            <Slideshow row={row} />
           </div>
         </>
       )
@@ -41,11 +39,9 @@ const Row = ({ row, pageCustomContent }) => {
       content = (
         <>
           <div className={topLevelClasses}>
-            <div className='col'>
-              <div className='container'>
-                <div className='row'>
-                  <OneColumn row={row} />
-                </div>
+            <div className='container'>
+              <div className='row'>
+                <OneColumn row={row} />
               </div>
             </div>
           </div>
@@ -56,11 +52,9 @@ const Row = ({ row, pageCustomContent }) => {
       content = (
         <>
           <div className={topLevelClasses}>
-            <div className='col'>
-              <div className='container'>
-                <div className='row'>
-                  <TwoColumn row={row} />
-                </div>
+            <div className='container'>
+              <div className='row'>
+                <TwoColumn row={row} />
               </div>
             </div>
           </div>
@@ -111,9 +105,9 @@ const Slideshow = ({ row }) => {
     const slideName = 'slide' + (index + 1)
     const isActive = (index === 0) ? '1' : '0'
     return (
-      <CarouselItemPlaceholder
-        key={index} isActive={isActive} name={slideName} bg='#777' color='#000'
-        title={slide.Title} imgSrc={slide} description={slide.BriefContent}
+      <CarouselItem
+        key={index} isActive={isActive} name={slideName} bg='#777' color='#000' height='300px'
+        title={slide.Title} imgSrc={slide.imageData.url} description={slide.BriefContent} props={slide}
       />
     )
   })

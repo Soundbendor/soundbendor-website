@@ -28,22 +28,24 @@ const Apply = (data) => {
 
   return (
     <>
-      <div className='row justify-content-center text-center py-5'>
-        <div className='col-10 col-md-8 col-lg-6 col-xl-4 col-xxl-3'>
-          <h4>Request Information</h4>
-          <form name='contact-form' action={data.get_info_url} onSubmit={ContactFormSubmit}>
-            <div id='form-alert-container' />
-            <input type='hidden' name='submit' value='submit' />
-            <div className='form-group'>
-              <label htmlFor='inputName'>Full Name</label>
-              <input type='name' name={data.get_info_name} className='form-control' id='inputName' placeholder='Full Name' />
-              <label htmlFor='inputEmail1'>Email Address</label>
-              <input type='email' name={data.get_info_email} className='form-control' id='inputEmail1' placeholder='Enter email' />
-              <label htmlFor='inputComment1'>Comments</label>
-              <textarea name={data.get_info_comment} className='form-control' id='inputComment1' placeholder='Comments' />
-            </div>
-            <button type='submit' className='btn btn-dark mt-3' id='requestInfoSubmit'>Request Information</button>
-          </form>
+      <div className='container'>
+        <div className='row justify-content-center text-center py-5'>
+          <div className='col-10 col-md-8 col-lg-6 col-xl-4 col-xxl-3'>
+            <h4>Request Information</h4>
+            <form name='contact-form' action={data.get_info_url} onSubmit={ContactFormSubmit}>
+              <div id='form-alert-container' />
+              <input type='hidden' name='submit' value='submit' />
+              <div className='form-group'>
+                <label htmlFor='inputName'>Full Name</label>
+                <input type='name' name={data.get_info_name} className='form-control' id='inputName' placeholder='Full Name' />
+                <label htmlFor='inputEmail1'>Email Address</label>
+                <input type='email' name={data.get_info_email} className='form-control' id='inputEmail1' placeholder='Enter email' />
+                <label htmlFor='inputComment1'>Comments</label>
+                <textarea name={data.get_info_comment} className='form-control' id='inputComment1' placeholder='Comments' />
+              </div>
+              <button type='submit' className='btn btn-dark mt-3' id='requestInfoSubmit'>Request Information</button>
+            </form>
+          </div>
         </div>
       </div>
     </>
