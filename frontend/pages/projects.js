@@ -58,9 +58,9 @@ const Projects = () => {
             <input type='search' className='form-control' id='project-search' onChange={searchHandler} placeholder={projectSearchPlaceholder} />
           </div>
           <div className='col-sm-4'>
-            <label htmlFor='project-year' className='form-label'>Search By Year</label>
+            <label htmlFor='project-year' className='form-label'>Year Published</label>
             <select className='form-select' id='project-year' onChange={searchHandler}>
-              <option defaultValue value='' />
+              <option defaultValue value=''>All Years</option>
               {projectYearListDisplay}
             </select>
           </div>
