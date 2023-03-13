@@ -3,15 +3,27 @@ import { PersonCard } from '../components/Personcard'
 import PersonService from '../models/people'
 
 const createCurrentTeamListDisplay = (people) => {
+  people = sortPeople(people)
   return people.map((person) =>
     trimTeamMember(0, person)
   )
 }
 
 const createAlumniListDisplay = (people) => {
+  people = sortPeople(people)
   return people.map((person) =>
     trimTeamMember(1, person)
   )
+}
+
+function sortPeople (people) {
+  people = people.sort(function (a, b) {
+    return (a.LastName < b.LastName) ? -1 : (a.LastName > b.LastName) ? 1 : 0
+  })
+  people = people.sort(function (a, b) {
+    return a.personClass.Name === 'Professor' ? -1 : b.personClass.Name === 'Professor' ? 1 : 0
+  })
+  return people
 }
 
 function trimTeamMember (filter, person) {

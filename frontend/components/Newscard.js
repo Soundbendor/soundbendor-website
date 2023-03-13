@@ -3,10 +3,10 @@ const Newscard = ({ event }) => {
     <div className='card mb-4'>
       <div className='card-body'>
         <div className='row align-items-center'>
-          <div className='col-6'>
-            <img className='' src={event.FeaturedImgImage.url} alt='...' width='400px' />
+          <div className='col-6 newscard'>
+            <img className='img-fluid' src={event.FeaturedImgImage.url} alt='...' width='400px' />
           </div>
-          <div className='col-6 align-items-center'>
+          <div className='col-6 newscard align-items-center'>
             <div className='small text-muted'>{event.formattedEventTime}</div>
             <h2 className='card-title h4 beaverorange'>{event.Name}</h2>
             <p className='card-text'>{event.Content}</p>
