@@ -6,10 +6,6 @@ const buildPathMapQuery = (urlPath) => {
 }
 
 const nextConfig = {
-  i18n: {
-    locales: ['en-US'],
-    defaultLocale: 'en-US'
-  },
   trailingSlash: true,
   reactStrictMode: true,
   exportPathMap: async function (defaultPathMap, { dev, dir, outDir, distDir, buildId }) {
@@ -25,5 +21,13 @@ const nextConfig = {
     return pathMap
   }
 }
+
+if(process.env.NODE_ENV === 'development'){
+  nextConfig['i18n'] = {
+    locales: ['en-US'],
+    defaultLocale: 'en-US'
+  }
+}
+
 
 export default nextConfig

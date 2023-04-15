@@ -1,7 +1,7 @@
 import { Publicationentry, PublicationHeader, PublicationModal } from '../components/Publicationentry'
 import PublicationService from '../models/publications'
 import Pagination from '../components/Pagination'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import $ from 'jquery'
 
 const generatePaginationDisplay = (data, onClick) => {
@@ -46,37 +46,50 @@ const Publications = () => {
     return filters
   }
 
-  const setBody = async (filters) => {
+  /*const setBody = async (filters) => {
     const currentPublications = PublicationService.getPublications(filters)
     setPublicationListDisplay(getPublicationListDisplay(currentPublications))
     setPaginationDisplay(generatePaginationDisplay(currentPublications, paginationHandler))
-  }
+  }*/
 
-  const searchHandler = async (event) => {
+  const searchHandler = (event) => {
     event.preventDefault()
+    console.log('wat1')
     const filters = getSearchFilters()
     filters.page = 1
-    await setBody(filters)
+    /*await setBody(filters)*/
+    setSearchFilters(filters)
   }
 
-  const paginationHandler = async (event) => {
+  const paginationHandler = (event) => {
     event.preventDefault()
+    console.log('wat2')
     const filters = getSearchFilters()
     if (event.target.innerText === 'Next' || event.target.innerText === 'Previous') {
       filters.page = parseInt($(event.target).attr('value'))
     } else {
       filters.page = parseInt(event.target.innerText)
     }
-    await setBody(await filters)
+    setSearchFilters(filters)
+    /*await setBody(filters)*/
   }
 
+
+
   // call the getter function for publication objects
-  const initialFilters = getSearchFilters()
-  const publications = PublicationService.getPublications(initialFilters)
+  const [searchFilters, setSearchFilters] = useState(getSearchFilters())
+  const [publications, setPublications] = useState(PublicationService.getPublications(searchFilters))
   const [publicationsListDisplay, setPublicationListDisplay] = useState(getPublicationListDisplay(publications))
   const [paginationDisplay, setPaginationDisplay] = useState(generatePaginationDisplay(publications, paginationHandler))
   const publicationYears = PublicationService.getPublicationYears({ presortBy: 'publishedDate', presortDirection: -1 })
   const publicationYearListDisplay = createPublicationYearListDisplay(publicationYears)
+
+  useEffect(() => {
+    let myPublications = PublicationService.getPublications(searchFilters)
+    setPublications(myPublications)
+    setPublicationListDisplay(getPublicationListDisplay(myPublications))
+    setPaginationDisplay(generatePaginationDisplay(myPublications, paginationHandler))
+  }, [searchFilters])
 
   return (
     <>
