@@ -9,6 +9,7 @@
     "export-zach": "next build && next export -o '/mnt/f/Google Drive/school/S10/soundbendor/'",
     "prestart": "node prestart",
     "start": "next dev",
+    "prod": "next start",
     "lint": "next lint"
   },
   "dependencies": {
