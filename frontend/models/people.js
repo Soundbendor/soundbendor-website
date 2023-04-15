@@ -25,7 +25,6 @@ const peopleFilterFunctions = {
 
   filterClass: (key, value, obj) => {
     const lValue = value.toLowerCase()
-    console.log(lValue)
     const className = PersonClassService.getPersonClass({ id__eq: obj.person_class }).Name.toLowerCase()
     return (className.includes(lValue))
   }
