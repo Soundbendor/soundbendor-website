@@ -1,8 +1,18 @@
 /** @type {import('next').NextConfig} */
 import BaseService from './models/__base.js'
 
-const buildPathMapQuery = (urlPath) => {
-  return { __nextDefaultLocale: 'en-US', __nextLocale: 'en-US', path: urlPath }
+async function getRewrites () {
+  const PageService = BaseService.constructDefaultService('api::page.page', 'page')
+  const pages = PageService.getPages()
+  const rewrites = []
+  let pageType = ''
+  for (const page of pages) {
+    pageType = page.PageType.toLowerCase()
+    if (pageType === 'content') {
+      rewrites.push({ source: page.URLPath, destination: '/content?path=' + page.URLPath })
+    }
+  }
+  return rewrites
 }
 
 const nextConfig = {
@@ -10,20 +20,9 @@ const nextConfig = {
     locales: ['en-US'],
     defaultLocale: 'en-US'
   },
+  rewrites: getRewrites,
   trailingSlash: true,
-  reactStrictMode: true,
-  exportPathMap: async function (defaultPathMap, { dev, dir, outDir, distDir, buildId }) {
-    const PageService = BaseService.constructDefaultService('api::page.page', 'page')
-    const pages = PageService.getPages()
-    const pathMap = {}
-    let suffix = ''
-    if (dev) suffix = '/'
-    for (const page of pages) {
-      const pageType = page.PageType.toLowerCase()
-      pathMap[page.URLPath] = { page: suffix + pageType, query: buildPathMapQuery(page.URLPath) }
-    }
-    return pathMap
-  }
+  reactStrictMode: true
 }
 
 export default nextConfig
