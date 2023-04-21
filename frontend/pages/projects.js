@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import style from '../styles/Team.module.css'
-import { ProjectCard } from '../components/Projectcard'
+import { ProjectCard, ProjectModal } from '../components/Projectcard'
 import ProjectService from '../models/projects'
 
 const createProjectListDisplay = (projects) => {
@@ -74,6 +74,7 @@ const Projects = () => {
           </div>
         </div>
       </div>
+      {ProjectModal()}
     </>
   )
 }
