@@ -112,7 +112,8 @@ ul {
   padding: 5;
 }
 
-.card .btn-link:hover, .card .btn-link:focus {
+.card .btn-link:hover,
+.card .btn-link:focus {
   background: #f1f1f1;
   color: #d73f09;
 }
