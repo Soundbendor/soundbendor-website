@@ -14,6 +14,7 @@ const AlumniCard = ({ person }) => {
             </div>
             <div className='card-back d-flex flex-column'>
               <div className='card-body d-flex flex-column'>
+                <h5 className='card-title beaverorange'>{person.formattedPersonName}</h5>
                 <p className='card-subtitle mb-2 text-muted mt-auto'>About Me?</p>
                 <button className='btn btn-link mt-auto'>Projects</button>
                 <button className='btn btn-link mt-1'>Publications</button>
