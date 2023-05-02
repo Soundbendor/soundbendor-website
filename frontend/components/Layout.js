@@ -5,7 +5,6 @@ import Navbar from './Navbar'
 import Footer from './Footer'
 
 const Layout = ({ children }) => {
-
   return (
     <>
       <Script src='https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js' />

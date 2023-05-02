@@ -9,7 +9,7 @@ async function getRewrites () {
   for (const page of pages) {
     pageType = page.PageType.toLowerCase()
     if (pageType === 'content') {
-      rewrites.push({ source: page.URLPath, destination: '/content/'+page.id.toString() })
+      rewrites.push({ source: page.URLPath, destination: '/content/' + page.id.toString() })
     }
   }
   return rewrites
