@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { PersonCard } from '../components/Personcard'
+import { AlumniCard } from '../components/Alumnicard'
 import PersonService from '../models/people'
 
 const createCurrentTeamListDisplay = (people) => {
@@ -42,7 +43,9 @@ function trimTeamMember (filter, person) {
   } else if (filter) {
     if (parse !== 'alumni') { return }
   }
-
+  if (parse === 'alumni') {
+    return <AlumniCard key={person.id} person={person} />
+  }
   return <PersonCard key={person.id} person={person} />
 }
 
