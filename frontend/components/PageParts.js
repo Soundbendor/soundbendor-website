@@ -3,7 +3,7 @@ import PageService from '../models/pages'
 import { Carousel, CarouselItem } from '../components/Carousel'
 
 const Page = ({ page, pageCustomContent }) => {
-  return page.RowsContent.map((row, i) =>
+  return page.getRowsContent().map((row, i) =>
     <Row key={i} row={row} pageCustomContent={pageCustomContent} />
   )
 }
@@ -66,13 +66,14 @@ const Row = ({ row, pageCustomContent }) => {
 }
 
 const OneColumn = ({ row }) => {
-  return <Column column={row.Column1Content} />
+  return <Column column={row.getColumn1Content()} />
 }
 
 const TwoColumn = function ({ row }) {
+  let columns = row.getColumnsContent()
   return [
-    <Column key='0' column={row.Column1Content} />,
-    <Column key='1' column={row.Column2Content} />
+    <Column key='0' column={columns[0]} />,
+    <Column key='1' column={columns[1]} />
   ]
 }
 
@@ -89,7 +90,7 @@ const Column = ({ column }) => {
     <div className={className}>
       {column.PagePartTitle && <h2>{column.PagePartTitle}</h2>}
       {column.PagePartSubtitle && <h3>{column.PagePartSubtitle}</h3>}
-      {column.PagePartImage && <div className='mx-auto' style={imageStyles}><img className='w-100' src={column.image.url} /></div>}
+      {column.PagePartImage && <div className='mx-auto' style={imageStyles}><img className='w-100' src={column.getImage().url} /></div>}
       {column.content && column.PagePartContent.trim().length > 0 && <div dangerouslySetInnerHTML={{ __html: column.content }} />}
       {
         column.PagePartButtonLink && column.PagePartButtonText &&
@@ -104,10 +105,11 @@ const Slideshow = ({ row }) => {
   const slides = row.slides.map((slide, index) => {
     const slideName = 'slide' + (index + 1)
     const isActive = (index === 0) ? '1' : '0'
+    const imageData = slide.getImageData()
     return (
       <CarouselItem
         key={index} isActive={isActive} name={slideName} bg='#777' color='#000' height='300px'
-        title={slide.Title} imgSrc={slide.imageData.url} description={slide.BriefContent} props={slide}
+        title={slide.Title} imgSrc={imageData.url} description={slide.BriefContent} props={slide}
       />
     )
   })

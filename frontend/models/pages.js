@@ -28,29 +28,32 @@ function Page (rawData) {
   }
   // END HACK
   // Generate easy to display json (rather than references to ids)
-  p.RowsContent = p.Rows.map((row) => {
-    const componentType = row[COMPONENT].split('.')[1]
-    let value = {}
-    if (componentType !== ROW_TYPES.PAGE_CUSTOM_CONTENT) {
-      value = LayoutServices[componentType].getRow({ id__eq: row.id })
-    }
-    value[COMPONENT] = componentType
-    return value
-  })
-  // combine slides to make slideshows
-  let slideshowCounter = 1
-  for (let i = 0; i < p.RowsContent.length; i++) {
-    const row1 = p.RowsContent[i]
-    if (row1[COMPONENT] === ROW_TYPES.SLIDE) {
-      let j = i + 1
-      for (j; j < p.RowsContent.length; j++) {
-        const row2 = p.RowsContent[j]
-        if (row2[COMPONENT] !== ROW_TYPES.SLIDE) break
+  p.getRowsContent = () => {
+    let rowsContent = p.Rows.map((row) => {
+      const componentType = row[COMPONENT].split('.')[1]
+      let value = {}
+      if (componentType !== ROW_TYPES.PAGE_CUSTOM_CONTENT) {
+        value = LayoutServices[componentType].getRow({ id__eq: row.id })
       }
-      const slides = p.RowsContent.splice(i, j - i)
-      p.RowsContent.splice(i, 0, SlideShow(slides, slideshowCounter))
-      slideshowCounter++
+      value[COMPONENT] = componentType
+      return value
+    })
+    // combine slides to make slideshows
+    let slideshowCounter = 1
+    for (let i = 0; i < rowsContent.length; i++) {
+      const row1 = rowsContent[i]
+      if (row1[COMPONENT] === ROW_TYPES.SLIDE) {
+        let j = i + 1
+        for (j; j < rowsContent.length; j++) {
+          const row2 = rowsContent[j]
+          if (row2[COMPONENT] !== ROW_TYPES.SLIDE) break
+        }
+        const slides = rowsContent.splice(i, j - i)
+        rowsContent.splice(i, 0, SlideShow(slides, slideshowCounter))
+        slideshowCounter++
+      }
     }
+    return rowsContent
   }
   return p
 }
@@ -58,7 +61,9 @@ function Page (rawData) {
 /* PagePart Object (Column) */
 function PagePart (rawData) {
   const p = BaseService.defaultDataConstructor(rawData)
-  p.image = ImageService.getImage({ id__eq: p.PagePartImage })
+  p.getImage = () => {
+    return ImageService.getImage({ id__eq: p.PagePartImage })
+  }
   p.textAlignClass = 'left'
   if (p.PagePartTextAlign !== undefined && p.PagePartTextAlign) p.textAlignClass = p.PagePartTextAlign.toLowerCase()
   if (p.textAlignClass === 'left') p.textAlignClass = 'start'
@@ -79,48 +84,55 @@ function Row (rawData) {
 
 function OneColumn (rawData) {
   const p = Row(rawData)
-  p.Column1Content = PagepartService.getPagepart({ id__eq: p.Column1 })
-  p.Column1Content.colClass = 'col'
-  p.ColumnsContent = [p.Column1Content]
+  p.getColumn1Content = () => {
+    let col = PagepartService.getPagepart({ id__eq: p.Column1 })
+    col.colClass = 'col'
+    return col
+  }
+  p.getColumnsContent = () => [p.getColumn1Content()]
   return p
 }
 
 function TwoColumn (rawData) {
   const p = OneColumn(rawData)
-  p.Column2Content = PagepartService.getPagepart({ id__eq: p.Column2 })
-  if (p.ColumnRatio) {
-    let class1 = 'col-6'
-    let class2 = 'col-6'
-    const ratio = p.ColumnRatio.substr(6)
-    if (ratio === '1:2') {
-      class1 = 'col-4'
-      class2 = 'col-8'
-    } else if (ratio === '2:1') {
-      class2 = 'col-4'
-      class1 = 'col-8'
-    } else if (ratio === '1:3') {
-      class1 = 'col-3'
-      class2 = 'col-9'
-    } else if (ratio === '3:1') {
-      class2 = 'col-3'
-      class1 = 'col-9'
-    } else if (ratio === '1:5') {
-      class1 = 'col-2'
-      class2 = 'col-10'
-    } else if (ratio === '5:1') {
-      class2 = 'col-2'
-      class1 = 'col-10'
+  p.getColumn2Content = () => PagepartService.getPagepart({ id__eq: p.Column2 })
+  p.getColumnsContent = () => {
+    let column1Content = p.getColumn1Content()
+    let column2Content = p.getColumn2Content()
+    if (p.ColumnRatio) {
+      let class1 = 'col-6'
+      let class2 = 'col-6'
+      const ratio = p.ColumnRatio.substr(6)
+      if (ratio === '1:2') {
+        class1 = 'col-4'
+        class2 = 'col-8'
+      } else if (ratio === '2:1') {
+        class2 = 'col-4'
+        class1 = 'col-8'
+      } else if (ratio === '1:3') {
+        class1 = 'col-3'
+        class2 = 'col-9'
+      } else if (ratio === '3:1') {
+        class2 = 'col-3'
+        class1 = 'col-9'
+      } else if (ratio === '1:5') {
+        class1 = 'col-2'
+        class2 = 'col-10'
+      } else if (ratio === '5:1') {
+        class2 = 'col-2'
+        class1 = 'col-10'
+      }
+      column1Content.colClass = class1
+      column2Content.colClass = class2
     }
-    p.Column1Content.colClass = class1
-    p.Column2Content.colClass = class2
+    return [column1Content, column2Content]
   }
-  p.ColumnsContent.push(p.Column2Content)
   return p
 }
 
 function Slide (rawData) {
   const p = BaseService.defaultDataConstructor(rawData)
-  p.imageData = ImageService.getImage({ id__eq: p.Image })
+  p.getImageData = () => ImageService.getImage({ id__eq: p.Image })
   return p
 }
 
