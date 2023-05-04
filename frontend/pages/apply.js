@@ -1,6 +1,6 @@
 import $ from 'jquery'
 
-function Apply (data){
+function Apply (data) {
   const ContactFormSubmit = async (event) => {
     event.preventDefault()
     $('#requestInfoSubmit').prop('disabled', true).addClass('disabled')
@@ -52,14 +52,14 @@ function Apply (data){
   )
 }
 
-export async function getStaticProps(){
+export async function getStaticProps () {
   const props = {
     get_info_url: process.env.get_info_url,
     get_info_name: process.env.get_info_name,
     get_info_email: process.env.get_info_email,
     get_info_comment: process.env.get_info_comment
   }
-  return {'props': props}
+  return { props }
 }
 
 export default Apply

@@ -29,7 +29,7 @@ function Page (rawData) {
   // END HACK
   // Generate easy to display json (rather than references to ids)
   p.getRowsContent = () => {
-    let rowsContent = p.Rows.map((row) => {
+    const rowsContent = p.Rows.map((row) => {
       const componentType = row[COMPONENT].split('.')[1]
       let value = {}
       if (componentType !== ROW_TYPES.PAGE_CUSTOM_CONTENT) {
@@ -85,7 +85,7 @@ function Row (rawData) {
 function OneColumn (rawData) {
   const p = Row(rawData)
   p.getColumn1Content = () => {
-    let col = PagepartService.getPagepart({ id__eq: p.Column1 })
+    const col = PagepartService.getPagepart({ id__eq: p.Column1 })
     col.colClass = 'col'
     return col
   }
@@ -97,8 +97,8 @@ function TwoColumn (rawData) {
   const p = OneColumn(rawData)
   p.getColumn2Content = () => PagepartService.getPagepart({ id__eq: p.Column2 })
   p.getColumnsContent = () => {
-    let column1Content = p.getColumn1Content()
-    let column2Content = p.getColumn2Content()
+    const column1Content = p.getColumn1Content()
+    const column2Content = p.getColumn2Content()
     if (p.ColumnRatio) {
       let class1 = 'col-6'
       let class2 = 'col-6'

@@ -2,7 +2,7 @@ import PageService from '../../models/pages'
 import Page from '../../components/PageParts'
 
 export default function Content ({ pageid }) {
-  const page = PageService.getPage({'id__eqstr': pageid})
+  const page = PageService.getPage({ id__eqstr: pageid })
   const pageCustomContent = ''
   return <Page page={page} pageCustomContent={pageCustomContent} />
 }

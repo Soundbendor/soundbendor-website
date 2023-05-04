@@ -70,7 +70,7 @@ const OneColumn = ({ row }) => {
 }
 
 const TwoColumn = function ({ row }) {
-  let columns = row.getColumnsContent()
+  const columns = row.getColumnsContent()
   return [
     <Column key='0' column={columns[0]} />,
     <Column key='1' column={columns[1]} />
