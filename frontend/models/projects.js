@@ -1,5 +1,6 @@
 import BaseService from './__base'
 
+
 // Constructor -- decorates the data
 function Project (rawData) {
   const p = BaseService.defaultDataConstructor(rawData)

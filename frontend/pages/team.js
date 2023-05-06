@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { PersonCard } from '../components/Personcard'
+import { PersonCard, PersonModal } from '../components/Personcard'
 import { AlumniCard } from '../components/Alumnicard'
 import PersonService from '../models/people'
 
@@ -130,6 +130,7 @@ const Team = () => {
           {alumniListDisplay}
         </div>
       </div>
+      {PersonModal()}
     </>
   )
 }
