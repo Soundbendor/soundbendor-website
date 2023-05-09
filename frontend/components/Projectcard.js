@@ -42,7 +42,7 @@ const ProjectEntry = ({ project }) => {
   )
 }
 
-const ProjectModal = (Name, projectLink, Description) => {
+const ProjectModal = (Name, projectLink, Description, id) => {
 
   const stopVideo = () => {
   $('iframe').attr('src', projectLink)
@@ -51,7 +51,7 @@ const ProjectModal = (Name, projectLink, Description) => {
   const modalTitle = <h5 class='modal-title'>{Name}</h5>
   const modalProjectLink = <iframe className='embed-responsive-item' src={projectLink} allowFullScreen> </iframe>
   return (
-    <div className='modal' id='project-modal' data-bs-backdrop='static' tabindex='-1'>
+    <div className='modal' id='project-modal-{id}' data-bs-backdrop='static' tabindex='-1'>
     <div className='modal-dialog modal-dialog-centered modal-lg'>
       <div className='modal-content'>
         <div className='modal-header'>
