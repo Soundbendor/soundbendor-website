@@ -1,17 +1,25 @@
 import { useState } from 'react'
 import style from '../styles/Team.module.css'
-import { ProjectCard } from '../components/Projectcard'
+import { ProjectCard, ProjectEntry, ProjectModal } from '../components/Projectcard'
 import ProjectService from '../models/projects'
 
 const createProjectListDisplay = (projects) => {
   if (projects.length) {
     return projects.map((project) =>
-      <ProjectCard key={project.id} project={project} />
+      <ProjectEntry key={project.id} project={project} />
+
     )
   } else {
     return (<p className='w-100 text-center fw-bold'>There are no projects matching that criteria.</p>)
   }
 }
+/*
+const createModalDisplay = (projects) => {
+  return projects.map((project) =>
+  <ProjectModal key={project.id} project={project} />
+  )
+}
+*/
 
 const createProjectYearListDisplay = (projectYears) => {
   return projectYears.map((year) =>
@@ -24,6 +32,9 @@ const Projects = () => {
   const projectSearchPlaceholder = '(e.g., ' + projects[0].Name + ')'
   const [projectListDisplay, setProjectListDisplay] = useState(createProjectListDisplay(projects))
   const projectYearListDisplay = createProjectYearListDisplay(ProjectService.getProjectYears())
+  // const [projectModalDisplay, setModalListDisplay] = useState(createModalListDisplay(projects))
+  // const handleShow = (id) => setModalListDisplay(id);
+
 
   const searchHandler = async (event) => {
     event.preventDefault()
@@ -37,6 +48,7 @@ const Projects = () => {
       filters.InitialPublishedDate__sw = yearField.value
     }
     setProjectListDisplay(createProjectListDisplay(ProjectService.getProjects(filters)))
+    // setModalListDisplay(createModalListDisplay(ProjectService.getProjects(filters)))
   }
 
   return (
