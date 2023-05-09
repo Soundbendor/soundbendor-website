@@ -41,14 +41,14 @@ async function handler (req, res, callback) {
   })
 }
 
-async function revalidate(res) {
+async function revalidate (res) {
   const PageService = require('../../models/__base.js').constructDefaultService('api::page.page', 'page')
   const pages = PageService.getPages()
   for (const page of pages) {
     try {
-      res.revalidate(page.URLPath+'/')
-    } catch (error){
-      //ignore
+      res.revalidate(page.URLPath + '/')
+    } catch (error) {
+      // ignore
     }
   }
 }

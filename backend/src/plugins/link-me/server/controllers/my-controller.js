@@ -1,10 +1,10 @@
-'use strict';
+'use strict'
 
 module.exports = ({ strapi }) => ({
-  index(ctx) {
+  index (ctx) {
     ctx.body = strapi
       .plugin('link-me')
       .service('myService')
-      .getWelcomeMessage();
-  },
-});
+      .getWelcomeMessage()
+  }
+})

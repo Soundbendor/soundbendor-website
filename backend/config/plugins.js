@@ -23,5 +23,5 @@ module.exports = ({ env }) => ({
   'link-me': {
     enabled: true,
     resolve: './src/plugins/link-me'
-  },
+  }
 })
