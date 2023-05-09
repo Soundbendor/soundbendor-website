@@ -2,7 +2,7 @@ const https = require('https')
 const fs = require('fs')
 const fc = require('filecompare')
 
-function handler (req, res, callback) {
+async function handler (req, res, callback) {
   const myFileName = './data/database' + Date.now() + '.json'
   const databaseFileName = process.env.db_file_local_name
   if (!fs.existsSync(databaseFileName)) {
@@ -29,6 +29,7 @@ function handler (req, res, callback) {
         } else {
           // if not equal, copy the temporary file contents to the live datafile
           fs.copyFile(myFileName, databaseFileName, function () {
+            revalidate(res)
             res.status(200).json({ status: 'Import Completed: Data Updated' })
             if (callback) {
               callback(res)
@@ -38,6 +39,18 @@ function handler (req, res, callback) {
       })
     })
   })
+}
+
+async function revalidate (res) {
+  const PageService = require('../../models/__base.js').constructDefaultService('api::page.page', 'page')
+  const pages = PageService.getPages()
+  for (const page of pages) {
+    try {
+      res.revalidate(page.URLPath + '/')
+    } catch (error) {
+      // ignore
+    }
+  }
 }
 
 module.exports = handler
