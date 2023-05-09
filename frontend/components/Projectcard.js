@@ -12,12 +12,14 @@ const ProjectCard = ({ project }) => {
     }
   }
 
-  const modalLink = <a href='#' className='beaverorange' onClick={openProModal(PRO_MODAL_ID + '-' + project.id)}><strong>{project.Name}</strong></a>
+  const modalLink = <a href='#' className='project-link beaverorange' onClick={openProModal(PRO_MODAL_ID + '-' + project.id)}><strong>{project.Name}</strong></a>
 
   return (
     <>
       <article className={style.card}>
-        <div className={style.bottom}>
+        <div>
+          <img src={project.FeaturedImg.url} className='img-fluid' alt='Featured Project Image' />
+          <div className={style.bottom} />
           <h5 className='beaverorange'>{modalLink}</h5>
           <p className='text-muted'>{project.formattedInitialPublishedDate}</p>
         </div>
@@ -31,7 +33,7 @@ const ProjectModal = (Name, projectLink, Description, id) => {
   // refreshes src when modal is closed so video starts over (and stops playing)
   // known bug: causes video to be one onClick behind
   const stopVideo = () => {
-    $('iframe').attr('src', projectLink)
+  //  $('iframe').attr('src', projectLink)
   }
 
   const modalIdName = 'project-modal-' + id
@@ -49,14 +51,11 @@ const ProjectModal = (Name, projectLink, Description, id) => {
             <div className='embed-responsive embed-responsive-16by9'>
               {modalProjectLink}
             </div>
-            <div>
-              <p>
-                {Description}
-              </p>
-            </div>
           </div>
-          <div className='modal-footer'>
-            <button type='button' className='btn btn-secondary' data-bs-dismiss='modal' onClick={stopVideo}>Close</button>
+          <div className='modal-footer justify-content-between'>
+            <div className='mt-2'>
+              {Description}
+            </div>
           </div>
         </div>
       </div>
@@ -65,4 +64,3 @@ const ProjectModal = (Name, projectLink, Description, id) => {
 }
 
 export { ProjectCard }
-
