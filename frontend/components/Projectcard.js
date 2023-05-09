@@ -20,12 +20,14 @@ const ProjectCard = ({ project }) => {
 }
 
 const ProjectEntry = ({ project }) => {
-  const openProModal = async () => {
-    const myModal = bootstrap.Modal.getOrCreateInstance($(PRO_MODAL_ID)[0])
-    myModal.show()
+  const openProModal = async (modalId) => {
+    return async () => {
+     const myModal = bootstrap.Modal.getOrCreateInstance($(modalId)[0])
+     myModal.show()
+    }
   }
 
-  const modalLink = <a href='#' className='beaverorange' onClick={openProModal}><strong>{project.Name}</strong></a>
+  const modalLink = <a href='#' className='beaverorange' onClick={openProModal(PRO_MODAL_ID+'-'+project.id)}><strong>{project.Name}</strong></a>
 
   return (
     <>
