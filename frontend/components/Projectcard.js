@@ -5,7 +5,6 @@ import { PersonCard } from '../components/Personcard'
 const PROJ_MODAL_ID = '#project-modal'
 
 const ProjectCard = ({ project }) => {
-
   const openModal = async (event) => {
     const { Modal } = require('bootstrap')
     const myModal = Modal.getOrCreateInstance($(PROJ_MODAL_ID)[0])
@@ -25,7 +24,7 @@ const ProjectCard = ({ project }) => {
       </div>
       {modalButton}
     </article>
-    
+
   )
 }
 
