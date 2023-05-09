@@ -35,17 +35,17 @@ const ProjectEntry = ({ project }) => {
         <p className='text-muted'>{project.formattedInitialPublishedDate}</p>
       </div>
     </article>
-    {ProjectModal(project.Name, project.projectLink)}
+    {ProjectModal(project.Name, project.projectLink, project.Description)}
       </>
   )
 }
 
-const ProjectModal = (Name, projectLink) => {
+const ProjectModal = (Name, projectLink, Description) => {
   const modalTitle = <h5 class="modal-title">{Name}</h5>
   const modalProjectLink = <iframe className='embed-responsive-item' src={projectLink} allowFullScreen> </iframe>
   return (
     <div class="modal" id="project-modal" data-bs-backdrop="static" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
       <div class="modal-content">
         <div class="modal-header">
           {modalTitle}
@@ -54,6 +54,11 @@ const ProjectModal = (Name, projectLink) => {
         <div class="modal-body">
         <div className='embed-responsive embed-responsive-16by9'>
           {modalProjectLink}
+        </div>
+        <div>
+          <p>
+            {Description}
+          </p>
         </div>
         </div>
         <div class="modal-footer">
