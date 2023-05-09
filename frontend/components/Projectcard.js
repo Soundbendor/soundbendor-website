@@ -20,14 +20,16 @@ const ProjectCard = ({ project }) => {
 }
 
 const ProjectEntry = ({ project }) => {
-  const openProModal = async (modalId) => {
-    return async () => {
+  const openProModal = (modalId) => {
+    return () => {
      const myModal = bootstrap.Modal.getOrCreateInstance($(modalId)[0])
      myModal.show()
     }
   }
 
-  const modalLink = <a href='#' className='beaverorange' onClick={openProModal(PRO_MODAL_ID+'-'+project.id)}><strong>{project.Name}</strong></a>
+  // PRO_MODAL_ID+'-'+project.id won't work until ProjectModal() uses the id arg to
+  // initialize the id at line 60 (i.e. project-modal-1, project-modal-2, etc.)
+  const modalLink = <a href='#' className='beaverorange' onClick={openProModal(PRO_MODAL_ID+'-'+'1')}><strong>{project.Name}</strong></a>
 
   return (
     <>
@@ -42,6 +44,10 @@ const ProjectEntry = ({ project }) => {
   )
 }
 
+// the argument 'id' is not being used here yet, so when testing this modal,
+// it'll fail to open as the {id} in the div id at line 60 is not being initialized.
+// i've set it to 1 for the time being (remember to change it back to {id}), but as a side
+// effect, the modal will only show the embed for 'River Level Forecasting' until fixed.
 const ProjectModal = (Name, projectLink, Description, id) => {
 
   const stopVideo = () => {
@@ -51,7 +57,7 @@ const ProjectModal = (Name, projectLink, Description, id) => {
   const modalTitle = <h5 class='modal-title'>{Name}</h5>
   const modalProjectLink = <iframe className='embed-responsive-item' src={projectLink} allowFullScreen> </iframe>
   return (
-    <div className='modal' id='project-modal-{id}' data-bs-backdrop='static' tabindex='-1'>
+    <div className='modal' id='project-modal-1' data-bs-backdrop='static' tabindex='-1'>
     <div className='modal-dialog modal-dialog-centered modal-lg'>
       <div className='modal-content'>
         <div className='modal-header'>
