@@ -37,7 +37,7 @@ const ProjectEntry = ({ project }) => {
         <p className='text-muted'>{project.formattedInitialPublishedDate}</p>
       </div>
     </article>
-    {ProjectModal(project.Name, project.projectLink, project.Description)}
+    {ProjectModal(project.Name, project.projectLink, project.Description, project.id)}
       </>
   )
 }
