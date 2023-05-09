@@ -41,17 +41,22 @@ const ProjectEntry = ({ project }) => {
 }
 
 const ProjectModal = (Name, projectLink, Description) => {
-  const modalTitle = <h5 class="modal-title">{Name}</h5>
+
+  const stopVideo = () => {
+  $('iframe').attr('src', projectLink)
+  }
+
+  const modalTitle = <h5 class='modal-title'>{Name}</h5>
   const modalProjectLink = <iframe className='embed-responsive-item' src={projectLink} allowFullScreen> </iframe>
   return (
-    <div class="modal" id="project-modal" data-bs-backdrop="static" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
+    <div className='modal' id='project-modal' data-bs-backdrop='static' tabindex='-1'>
+    <div className='modal-dialog modal-dialog-centered modal-lg'>
+      <div className='modal-content'>
+        <div className='modal-header'>
           {modalTitle}
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <button type='button' className='btn-close' data-bs-dismiss='modal' onClick={stopVideo} aria-label='Close'></button>
         </div>
-        <div class="modal-body">
+        <div className='modal-body'>
         <div className='embed-responsive embed-responsive-16by9'>
           {modalProjectLink}
         </div>
@@ -61,8 +66,8 @@ const ProjectModal = (Name, projectLink, Description) => {
           </p>
         </div>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <div className='modal-footer'>
+          <button type='button' className='btn btn-secondary' data-bs-dismiss='modal' onClick={stopVideo}>Close</button>
         </div>
       </div>
     </div>
