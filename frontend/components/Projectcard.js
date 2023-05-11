@@ -1,5 +1,6 @@
 import style from '../styles/Projectcard.module.css'
 import $ from 'jquery'
+import { Modal } from 'bootstrap' // import modal library, we don't need anything else from Bootstrap
 
 const PRO_MODAL_ID = '#project-modal'
 
@@ -7,7 +8,9 @@ const ProjectCard = ({ project }) => {
   const openProModal = (modalId) => {
     return () => {
       // linter says bootstrap is undefined, but if I import it the page crashes
-      const myModal = bootstrap.Modal.getOrCreateInstance($(modalId)[0]) // eslint-disable-line
+      // Can be fixed by only importing the modal library from Bootstrap (line 3)
+      const myModal = Modal.getOrCreateInstance($(modalId)[0]) // eslint-disable-line
+      $('iframe').attr('src', project.projectLink) // set up the embed on modal open
       myModal.show()
     }
   }
@@ -32,8 +35,10 @@ const ProjectCard = ({ project }) => {
 const ProjectModal = (Name, projectLink, Description, id) => {
   // refreshes src when modal is closed so video starts over (and stops playing)
   // known bug: causes video to be one onClick behind
+  // Setting the embed source to none on close, and project.projectlink when
+  //  reopening the modal fixes this
   const stopVideo = () => {
-  //  $('iframe').attr('src', projectLink)
+    $('iframe').attr('src', '')
   }
 
   const modalIdName = 'project-modal-' + id
