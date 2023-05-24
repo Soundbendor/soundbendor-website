@@ -35,6 +35,7 @@ function sortData (data, kwargs, sortByKey, sortByDirectionKey) {
 
 const FilterFunctions = {
   eq: (key, value, obj) => obj[key] === value,
+  eqstr: (key, value, obj) => obj[key].toString() === value.toString(),
   neq: (key, value, obj) => obj[key] !== value,
   lt: (key, value, obj) => obj[key] < value,
   lte: (key, value, obj) => obj[key] <= value,

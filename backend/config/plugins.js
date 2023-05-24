@@ -19,5 +19,9 @@ module.exports = ({ env }) => ({
   },
   'import-export-entries': {
     enabled: true
+  },
+  'link-me': {
+    enabled: true,
+    resolve: './src/plugins/link-me'
   }
 })

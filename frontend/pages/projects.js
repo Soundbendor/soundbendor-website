@@ -20,7 +20,8 @@ const createProjectYearListDisplay = (projectYears) => {
 }
 
 const Projects = () => {
-  const projects = ProjectService.getProjects()
+  const presortFilter = { presortBy: 'InitialPublishedDate', presortDirection: -1 }
+  const projects = ProjectService.getProjects(presortFilter)
   const projectSearchPlaceholder = '(e.g., ' + projects[0].Name + ')'
   const [projectListDisplay, setProjectListDisplay] = useState(createProjectListDisplay(projects))
   const projectYearListDisplay = createProjectYearListDisplay(ProjectService.getProjectYears())
@@ -29,7 +30,7 @@ const Projects = () => {
     event.preventDefault()
     const searchField = document.getElementById('project-search')
     const yearField = document.getElementById('project-year')
-    const filters = {}
+    const filters = presortFilter
     if (searchField.value) {
       filters.x__searchNameAndDescription = searchField.value
     }

@@ -1,10 +1,12 @@
 import BaseService from './__base'
+import ImageService from './images'
 
 // Constructor -- decorates the data
 function Project (rawData) {
   const p = BaseService.defaultDataConstructor(rawData)
   const myDate = new Date(p.InitialPublishedDate)
   p.formattedInitialPublishedDate = (myDate.getMonth() + 1) + '/' + myDate.getDate() + '/' + myDate.getFullYear()
+  p.FeaturedImg = ImageService.getImage({ id__eq: p.FeaturedImg })
   return p
 }
 

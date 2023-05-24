@@ -16,7 +16,7 @@ const News = () => {
   const pageSize = 3
   const paginationHandler = async (event) => {
     event.preventDefault()
-    const filters = { pageSize }
+    const filters = { pageSize, presortBy: 'EventTime', presortDirection: -1 }
     if (event.target.innerText === 'Next' || event.target.innerText === 'Previous') {
       filters.page = parseInt($(event.target).attr('value'))
     } else {
@@ -26,7 +26,7 @@ const News = () => {
     setEventListDisplay(generateEventListDisplay(currentEvents))
     setPaginationDisplay(generatePaginationDisplay(currentEvents, paginationHandler))
   }
-  const events = EventService.getEvents({ page: 1, pageSize })
+  const events = EventService.getEvents({ page: 1, pageSize, presortBy: 'EventTime', presortDirection: -1 })
   const [eventListDisplay, setEventListDisplay] = useState(generateEventListDisplay(events))
   const [paginationDisplay, setPaginationDisplay] = useState(generatePaginationDisplay(events, paginationHandler))
 

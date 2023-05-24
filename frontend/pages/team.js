@@ -7,7 +7,7 @@ const createCurrentTeamListDisplay = (people) => {
   if (people.length === 0) {
     return (<p className='w-100 text-center fw-bold'>There are no team members matching that criteria.</p>)
   } else {
-    people = sortPeople(people)
+    people = sortProfessor(people)
     return people.map((person) =>
       trimTeamMember(0, person)
     )
@@ -18,24 +18,21 @@ const createAlumniListDisplay = (people) => {
   if (people.length === 0) {
     return (<p className='w-100 text-center fw-bold'>There are no Alumni matching that criteria.</p>)
   } else {
-    people = sortPeople(people)
+    people = sortProfessor(people)
     return people.map((person) =>
       trimTeamMember(1, person)
     )
   }
 }
 
-function sortPeople (people) {
-  people = people.sort(function (a, b) {
-    return (a.LastName < b.LastName) ? -1 : (a.LastName > b.LastName) ? 1 : 0
-  })
+const sortProfessor = (people) => {
   people = people.sort(function (a, b) {
     return a.personClass.Name === 'Professor' ? -1 : b.personClass.Name === 'Professor' ? 1 : 0
   })
   return people
 }
 
-function trimTeamMember (filter, person) {
+const trimTeamMember = (filter, person) => {
   const parse = person.personClass.Name.toLocaleLowerCase()
 
   if (!filter) {
@@ -56,7 +53,8 @@ const createClassListDisplay = (peopleClasses) => {
 }
 
 const Team = () => {
-  const people = PersonService.getPeople()
+  const presortFilter = { presortBy: 'LastName' }
+  const people = PersonService.getPeople(presortFilter)
   const [currentTeamListDisplay, setCurrentTeamListDisplay] = useState(createCurrentTeamListDisplay(people))
   const [alumniListDisplay, setAlumniListDisplay] = useState(createAlumniListDisplay(people))
   const classListDisplay = createClassListDisplay(PersonService.getClasses())
@@ -66,8 +64,8 @@ const Team = () => {
     const searchField = document.getElementById('team-search')
     const classField = document.getElementById('class-select')
     const alumniSearchField = document.getElementById('alumni-search')
-    const filters = {}
-    filters.alumni = {}
+    const filters = presortFilter
+    filters.alumni = presortFilter
     if (searchField.value) {
       filters.x__searchNameAndClass = searchField.value
     }

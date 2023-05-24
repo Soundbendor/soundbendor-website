@@ -5,6 +5,7 @@ const PROJ_MODAL_TITLE = PROJ_MODAL_ID + ' .modal-user'
 const PROJ_MODAL_TEXT = PROJ_MODAL_ID + ' .modal-body'
 
 const PersonCard = ({ person }) => {
+  const placeholder = ' '
   // returns an array of project titles of projects the team member
   // has participated in
   const listProjects = () => {
@@ -54,7 +55,7 @@ const PersonCard = ({ person }) => {
         <div className='card-back d-flex flex-column'>
           <div className='card-body d-flex flex-column'>
             <h5 className='card-title beaverorange'>{person.formattedPersonName}</h5>
-            <p className='card-subtitle mb-2 text-muted mt-auto'>About Me?</p>
+            <p className='card-subtitle mb-2 text-muted mt-auto'>{placeholder}</p>
             {projectModalButton}
             <button id='publications-button' className='btn btn-link mt-1'>Publications</button>
           </div>

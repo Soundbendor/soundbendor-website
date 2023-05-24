@@ -31,4 +31,4 @@ the Strapi admin panel will now be running at <http://localhost:8058/admin>
 
 (you will need your email and password to log in)
 
-### Oregon State University - Capstone Project - Winter 2023
+### Oregon State University - Capstone Project - Spring 2023
