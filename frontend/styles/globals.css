@@ -145,8 +145,7 @@ ul.bulleted {
 }
 
 .project-link:hover {
-  background-color: rgba(215, 63, 9, 0.1) !important;
-
+  background-color: rgba(215 63 9 / 10%) !important;
 }
 
 .project-link img {
