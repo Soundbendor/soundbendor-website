@@ -121,40 +121,31 @@ const PersonCard = ({ person }) => (
   </div>
 )
 
+const ModalBase = ({ modalId, userClass, bodyClass, size }) => (
+  <>
+    <div id={modalId} className='modal fade' tabIndex='-1'>
+      <div className={'modal-dialog ' + size}>
+        <div className='modal-content'>
+          <div className='modal-header'>
+            <p className='modal-title'><strong className={userClass}>?</strong></p>
+            <button type='button' className='btn-close' data-bs-dismiss='modal' aria-label='Close' />
+          </div>
+          <div className={bodyClass}>
+            <p>?</p>
+          </div>
+          <div className='modal-footer'>
+            <button type='button' className='btn btn-secondary' data-bs-dismiss='modal'>Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </>
+)
+
 const PersonModal = () => (
   <>
-    <div id={PROJ_MODAL_ID} className='modal fade' tabIndex='-1'>
-      <div className='modal-dialog'>
-        <div className='modal-content'>
-          <div className='modal-header'>
-            <p className='modal-title'><strong className={PROJ_MODAL_USER_CLASS}>?</strong></p>
-            <button type='button' className='btn-close' data-bs-dismiss='modal' aria-label='Close' />
-          </div>
-          <div className={PROJ_MODAL_BODY_CLASS}>
-            <p>?</p>
-          </div>
-          <div className='modal-footer'>
-            <button type='button' className='btn btn-secondary' data-bs-dismiss='modal'>Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div id={PUB_MODAL_ID} className='modal fade' tabIndex='-1'>
-      <div className='modal-dialog modal-lg'>
-        <div className='modal-content'>
-          <div className='modal-header'>
-            <p className='modal-title'><strong className={PUB_MODAL_USER_CLASS}>?</strong></p>
-            <button type='button' className='btn-close' data-bs-dismiss='modal' aria-label='Close' />
-          </div>
-          <div className={PUB_MODAL_BODY_CLASS}>
-            <p>?</p>
-          </div>
-          <div className='modal-footer'>
-            <button type='button' className='btn btn-secondary' data-bs-dismiss='modal'>Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
+    <ModalBase modalId={PROJ_MODAL_ID} userClass={PROJ_MODAL_USER_CLASS} bodyClass={PROJ_MODAL_BODY_CLASS} />
+    <ModalBase modalId={PUB_MODAL_ID} userClass={PUB_MODAL_USER_CLASS} bodyClass={PUB_MODAL_BODY_CLASS} size='modal-xl' />
     <Script src='/sb.js' />
   </>
 )
