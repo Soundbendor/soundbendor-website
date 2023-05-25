@@ -15,6 +15,8 @@ function Person (rawData) {
   p.getProjects = function () {
     return ProjectService.getProjects({ id__in: p.projects })
   }
+  p.isAlumni = p.personClass.Name.toLocaleLowerCase() === 'alumni'
+  p.isProfessor = p.personClass.Name.toLocaleLowerCase() === 'professor'
   return p
 }
 

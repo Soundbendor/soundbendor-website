@@ -1,63 +1,39 @@
 import { useState } from 'react'
 import { PersonCard, PersonModal } from '../components/Personcard'
-import { AlumniCard } from '../components/Alumnicard'
 import PersonService from '../models/people'
 
-const createCurrentTeamListDisplay = (people) => {
+const createTeamListDisplay = (people, isAlumni) => {
   if (people.length === 0) {
-    return (<p className='w-100 text-center fw-bold'>There are no team members matching that criteria.</p>)
+    return (<p className='w-100 text-center fw-bold'>There are no {isAlumni ? 'Alumni' : 'team members'} matching that criteria.</p>)
   } else {
     people = sortProfessor(people)
     return people.map((person) =>
-      trimTeamMember(0, person)
-    )
-  }
-}
-
-const createAlumniListDisplay = (people) => {
-  if (people.length === 0) {
-    return (<p className='w-100 text-center fw-bold'>There are no Alumni matching that criteria.</p>)
-  } else {
-    people = sortProfessor(people)
-    return people.map((person) =>
-      trimTeamMember(1, person)
+      trimTeamMember((isAlumni ? 1 : 0), person)
     )
   }
 }
 
 const sortProfessor = (people) => {
   people = people.sort(function (a, b) {
-    return a.personClass.Name === 'Professor' ? -1 : b.personClass.Name === 'Professor' ? 1 : 0
+    return a.isProfessor ? -1 : b.isProfessor ? 1 : 0
   })
   return people
 }
 
 const trimTeamMember = (filter, person) => {
-  const parse = person.personClass.Name.toLocaleLowerCase()
-
-  if (!filter) {
-    if (parse === 'alumni') { return }
-  } else if (filter) {
-    if (parse !== 'alumni') { return }
-  }
-  if (parse === 'alumni') {
-    return <AlumniCard key={person.id} person={person} />
-  }
+  if ((!filter && person.isAlumni) || (filter && !person.isAlumni)) return
   return <PersonCard key={person.id} person={person} />
 }
 
-const createClassListDisplay = (peopleClasses) => {
-  return peopleClasses.map((className) =>
-    <option key={className} value={className}>{className}</option>
-  )
-}
+const ClassListDisplay = ({ peopleClasses }) => peopleClasses.map(
+  (className) => <option key={className} value={className}>{className}</option>
+)
 
 const Team = () => {
   const presortFilter = { presortBy: 'LastName' }
   const people = PersonService.getPeople(presortFilter)
-  const [currentTeamListDisplay, setCurrentTeamListDisplay] = useState(createCurrentTeamListDisplay(people))
-  const [alumniListDisplay, setAlumniListDisplay] = useState(createAlumniListDisplay(people))
-  const classListDisplay = createClassListDisplay(PersonService.getClasses())
+  const [currentTeamListDisplay, setCurrentTeamListDisplay] = useState(createTeamListDisplay(people, false))
+  const [alumniListDisplay, setAlumniListDisplay] = useState(createTeamListDisplay(people, true))
 
   const searchHandler = async (event) => {
     event.preventDefault()
@@ -65,7 +41,7 @@ const Team = () => {
     const classField = document.getElementById('class-select')
     const alumniSearchField = document.getElementById('alumni-search')
     const filters = presortFilter
-    filters.alumni = presortFilter
+    const filtersAlumni = presortFilter
     if (searchField.value) {
       filters.x__searchNameAndClass = searchField.value
     }
@@ -73,10 +49,10 @@ const Team = () => {
       filters.x__filterClass = classField.value
     }
     if (alumniSearchField.value) {
-      filters.alumni.x__searchNameAndClass = alumniSearchField.value
+      filtersAlumni.x__searchNameAndClass = alumniSearchField.value
     }
-    setAlumniListDisplay(createAlumniListDisplay(PersonService.getPeople(filters.alumni)))
-    setCurrentTeamListDisplay(createCurrentTeamListDisplay(PersonService.getPeople(filters)))
+    setCurrentTeamListDisplay(createTeamListDisplay(PersonService.getPeople(filters), false))
+    setAlumniListDisplay(createTeamListDisplay(PersonService.getPeople(filtersAlumni), true))
   }
 
   return (
@@ -98,7 +74,7 @@ const Team = () => {
             <label htmlFor='class-select' className='form-label'>Sort by Class</label>
             <select className='form-select' id='class-select' onChange={searchHandler}>
               <option defaultValue value=''>All Classes</option>
-              {classListDisplay}
+              <ClassListDisplay peopleClasses={PersonService.getClasses()} />
             </select>
           </div>
         </div>
@@ -128,7 +104,7 @@ const Team = () => {
           {alumniListDisplay}
         </div>
       </div>
-      {PersonModal()}
+      <PersonModal />
     </>
   )
 }
