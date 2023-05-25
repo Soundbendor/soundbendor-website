@@ -1,23 +1,24 @@
 import ProjectService from '../../models/projects'
 import PersonService from '../../models/people'
+import ImageService from '../../models/images'
 import { PersonCard, PersonModal } from '../../components/Personcard'
 import { useRouter } from 'next/router'
 
 function TeamMembers ({ p }) {
-  if ('people' in p && p.people.length > 0) {
+  if ('people' in p && Array.isArray(p.people) && p.people.length > 0) {
     return PersonService
       .getPeople({ id__in: p.people })
-      .map((person) => <li key={'student' + person.id} className='col-12 col-sm-6 col-lg-4 col-xl-3 col-xxl-3'><PersonCard person={person} /></li>)
+      .map((person) => <li key={'student-' + person.id} className='col-12 col-sm-6 col-lg-4 col-xl-3 col-xxl-3'><PersonCard person={person} /></li>)
   }
   return <li><em>Currently No Team Members Listed</em></li>
 }
 
 function Artifacts ({ p }) {
-  /* if('people' in p && p.people.length > 0){
-    return PersonService
-      .getPeople({id__in: p.people})
-      .map((person) => <li key={"student"+person.id}>{person.formattedPersonName}</li>)
-  } */
+  if ('Media' in p && Array.isArray(p.Media) && p.Media.length > 0) {
+    return ImageService
+      .getImages({ id__in: p.Media })
+      .map((media) => <li key={'media-' + media.id}><a href={media.url}>{media.mime} | {media.name}</a></li>)
+  }
   return <li><em>Currently No Artifacts</em></li>
 }
 
