@@ -7,49 +7,51 @@ const PUB_MODAL_ID = '#publication-modal'
 const PUB_MODAL_SAVE_CLASS = PUB_MODAL_ID + ' .saveBibtex'
 const PUB_MODAL_TITLE = PUB_MODAL_ID + ' .publicationTitle'
 
+const saveBibtex = async (fileName, content, event) => {
+  const myContent = new Blob([content])
+  $(PUB_MODAL_SAVE_CLASS).off('click.' + PUBNAMESPACE)
+  saveAs(myContent, fileName + '.bib')
+  event.preventDefault()
+}
+
+const askToSaveBibtex = async (fileName, title, content, event) => {
+  const { Modal } = require('bootstrap')
+  const myModal = Modal.getOrCreateInstance($(PUB_MODAL_ID)[0])
+  $(PUB_MODAL_SAVE_CLASS).on('click.' + PUBNAMESPACE, saveBibtex.bind(fileName, content, event))
+  $(PUB_MODAL_TITLE).text(title)
+  myModal.show()
+  event.preventDefault()
+}
+
 // template publication entry
 // args: publication obj data from Strapi API
-const Publicationentry = ({ publication }) => {
+const Publicationentry = ({ publication, simpleView }) => {
   // we don't want the full date, so only keep the year
   let yearTrim = publication.publishedDate
   yearTrim = yearTrim.split('-')[0]
   const fileTitle = publication.title.replace(/[^\w\s]/gi, '').replace(/\W/gi, '-').substring(0, 50)
-
-  const saveBibtex = async (fileName, content, event) => {
-    const myContent = new Blob([content])
-    $(PUB_MODAL_SAVE_CLASS).off('click.' + PUBNAMESPACE)
-    saveAs(myContent, fileName + '.bib')
-    event.preventDefault()
-  }
-
-  const askToSaveBibtex = async (fileName, title, content, event) => {
-    const { Modal } = require('bootstrap')
-    const myModal = Modal.getOrCreateInstance($(PUB_MODAL_ID)[0])
-    $(PUB_MODAL_SAVE_CLASS).on('click.' + PUBNAMESPACE, saveBibtex.bind(fileName, content, event))
-    $(PUB_MODAL_TITLE).text(title)
-    myModal.show()
-    event.preventDefault()
-  }
-
   const bibTex = <a href='#' className='beaverorange' onClick={askToSaveBibtex.bind(null, publication.bibtext, publication.title, 'soundbendor-' + fileTitle)}>Cite</a>
+
+  const cols = []
+  cols.push(<td key='year'>{yearTrim}</td>)
+  if (!simpleView) cols.push(<td key='bibtex'>{publication.bibtext && bibTex}</td>)
+  cols.push(<td key='title'><a href={publication.url} className='beaverorange'>{publication.title}</a></td>)
+  if (!simpleView) cols.push(<td key='venue'>{publication.venue}</td>)
 
   return (
     <tr>
-      <td>{yearTrim}</td>
-      <td>{publication.bibtext && bibTex}</td>
-      <td><a href={publication.url} className='beaverorange'>{publication.title}</a></td>
-      <td>{publication.venue}</td>
+      {cols}
     </tr>
   )
 }
 
-const PublicationHeader = () => {
+const PublicationHeader = ({ simpleView }) => {
   return (
     <tr>
       <th className='col-sm-1'>YEAR</th>
-      <th className='col-sm-1'>BibTeX</th>
+      {!simpleView ? <th className='col-sm-1'>BibTeX</th> : ''}
       <th className='col'>PAPER</th>
-      <th className='col-sm-2'>VENUE</th>
+      {!simpleView ? <th className='col-sm-2'>VENUE</th> : ''}
     </tr>
   )
 }

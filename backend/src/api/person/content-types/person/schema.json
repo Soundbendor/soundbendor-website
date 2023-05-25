@@ -62,6 +62,12 @@
       "relation": "manyToMany",
       "target": "api::project.project",
       "mappedBy": "people"
+    },
+    "publications": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::publication.publication",
+      "mappedBy": "authors"
     }
   }
 }
