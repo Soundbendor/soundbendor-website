@@ -67,6 +67,11 @@ ul {
   padding-left: 0;
 }
 
+ul.bulleted {
+  list-style-type: disc;
+  padding-left: 2em;
+}
+
 .newscard {
   width: 100%;
 }
@@ -134,5 +139,17 @@ ul {
 }
 
 .project-link {
+  display: block;
+  padding: 5px;
   text-decoration: none;
+}
+
+.project-link:hover {
+  background-color: rgba(215 63 9 / 10%) !important;
+}
+
+.project-link img {
+  max-height: 175px;
+  text-align: center;
+  margin: 0 auto;
 }

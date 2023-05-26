@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import style from '../styles/Team.module.css'
 import { ProjectCard } from '../components/Projectcard'
 import ProjectService from '../models/projects'
 
@@ -67,12 +66,8 @@ const Projects = () => {
         </div>
       </div>
       <div className='container py-5'>
-        <div className='row'>
-          <div className='col'>
-            <div className={style.personcontainer} id='projectListDisplay'>
-              {projectListDisplay}
-            </div>
-          </div>
+        <div className='row justify-content-start' id='projectListDisplay'>
+          {projectListDisplay}
         </div>
       </div>
     </>

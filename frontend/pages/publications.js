@@ -115,7 +115,7 @@ const Publications = () => {
       <div className='container'>
         <table className='table table-striped table-hover'>
           <thead>
-            {PublicationHeader()}
+            <PublicationHeader />
           </thead>
           <tbody>
             {publicationsListDisplay}

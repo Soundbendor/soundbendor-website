@@ -3,6 +3,8 @@ import ImageService from './images'
 import PersonClassService from './person-classes'
 import GroupService from './groups'
 import DegreeService from './degrees'
+import ProjectService from './projects'
+import PublicationService from './publications'
 
 function Person (rawData) {
   const p = BaseService.defaultDataConstructor(rawData)
@@ -11,6 +13,14 @@ function Person (rawData) {
   p.groups = GroupService.getGroups({ id__eq: p.groups })
   p.degrees = DegreeService.getDegrees({ id__eq: p.degrees })
   p.formattedPersonName = p.RawData.FirstName + ' ' + p.RawData.LastName
+  p.getProjects = function () {
+    return ProjectService.getProjects({ id__in: p.projects })
+  }
+  p.getPublications = function () {
+    return PublicationService.getPublications({ id__in: p.publications })
+  }
+  p.isAlumni = p.personClass.Name.toLocaleLowerCase() === 'alumni'
+  p.isProfessor = p.personClass.Name.toLocaleLowerCase() === 'professor'
   return p
 }
 
