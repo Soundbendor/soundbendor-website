@@ -56,14 +56,15 @@ const CreateProjectButton = ({ person }) => {
 // if the person doesn't have publications, this will return the projects button
 // with the "disabled" attribute
 const CreatePublicationButton = ({ person }) => {
-  const isDisabled = person.publications.length === 0
+  const pubs = person.getPublications()
+  const isDisabled = pubs.length === 0
   const myProps = {
     id: 'publication-button-' + person.id,
     type: 'button',
     className: 'btn btn-link mt-1',
     disabled: isDisabled
   }
-  if (person.publications.length > 0) {
+  if (pubs.length > 0) {
     myProps['data-bs-title'] = 'Click to see a list of ' + person.formattedPersonName + '\'s  publications.'
     myProps.onClick = (event) => {
       const { Modal } = require('bootstrap')
@@ -71,7 +72,7 @@ const CreatePublicationButton = ({ person }) => {
       $(PUB_MODAL_TITLE_SEL).text(person.formattedPersonName + "'s Publications")
       $(PUB_MODAL_TEXT_SEL).html(
         '<table class="table table-striped table-hover"><thead>' + renderToStaticMarkup(<PublicationHeader simpleView />) + '</thead><tbody>' +
-        renderToStaticMarkup(person.getPublications().map((p) => <Publicationentry key={'publication-' + p.id} publication={p} simpleView />)) +
+        renderToStaticMarkup(pubs.map((p) => <Publicationentry key={'publication-' + p.id} publication={p} simpleView />)) +
         '</tbody></table'
       )
       myModal.show()
