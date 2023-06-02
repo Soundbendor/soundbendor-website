@@ -9,7 +9,6 @@ const Page = ({ page, pageCustomContent }) => {
 }
 
 const Row = ({ row, pageCustomContent }) => {
-  console.log(row)
   let content = ''
   const topLevelClassArray = []
   if (row.HasVerticalPadding) {
@@ -81,7 +80,6 @@ const TwoColumn = function ({ row }) {
 const Column = ({ column }) => {
   const className = column.colClass + ' text-' + column.textAlignClass
   const imageStyles = {}
-  console.log(column)
   if (column.PagePartImageMaxHeight !== undefined && column.PagePartImageMaxHeight !== null && column.PagePartImageMaxHeight !== 0) {
     imageStyles.maxHeight = column.PagePartImageMaxHeight + 'px'
   }
