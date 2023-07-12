@@ -19,7 +19,7 @@ const nextConfig = {
 /*  i18n: {
     locales: ['en-US'],
     defaultLocale: 'en-US'
-  },*/
+  }, */
   rewrites: getRewrites,
   trailingSlash: true,
   reactStrictMode: true

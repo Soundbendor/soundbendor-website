@@ -1,4 +1,3 @@
-
 function sortData (data, kwargs, sortByKey, sortByDirectionKey) {
   if (sortByKey in kwargs && kwargs[sortByKey] in data[0]) {
     // defaulting the presort direction to ascending
