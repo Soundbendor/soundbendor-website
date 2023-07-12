@@ -68,6 +68,12 @@
       "relation": "manyToMany",
       "target": "api::publication.publication",
       "mappedBy": "authors"
+    },
+    "FullName": {
+      "type": "string"
+    },
+    "Role": {
+      "type": "string"
     }
   }
 }
