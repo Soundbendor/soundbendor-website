@@ -11,13 +11,15 @@ function Person (rawData) {
   p.photoImage = ImageService.getImage({ id__eq: p.Photo })
   p.personClass = PersonClassService.getPersonClass({ id__eq: p.person_class })
   p.groups = GroupService.getGroups({ id__eq: p.groups })
-  p.degrees = DegreeService.getDegrees({ id__eq: p.degrees })
   p.formattedPersonName = p.RawData.FirstName + ' ' + p.RawData.LastName
   p.getProjects = function () {
     return ProjectService.getProjects({ id__in: p.projects })
   }
   p.getPublications = function () {
     return PublicationService.getPublications({ id__in: p.publications })
+  }
+  p.getDegrees = function () {
+    return DegreeService.getDegrees({ id__in: p.degrees })
   }
   p.isAlumni = p.personClass.Name.toLocaleLowerCase() === 'alumni'
   p.isProfessor = p.personClass.Name.toLocaleLowerCase() === 'professor'

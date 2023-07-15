@@ -95,6 +95,15 @@ const CardFront = ({ person }) => (
 const CardBack = ({ person }) => (
   <>
     <h5 className='card-title beaverorange'>{person.formattedPersonName}</h5>
+    {person.isAlumni && person.degrees.length > 0 ? (
+      person.getDegrees().map((degree, index) => (
+        <p className='card-subtitle mb-2 text-muted mt-auto' key={index}>
+          {degree.Suffix} {degree.Name}
+        </p>
+      ))
+    ) : (
+      <p className='card-subtitle mb-2 text-muted mt-auto'>{PLACEHOLDER}</p>
+    )}
     <p className='card-subtitle mb-2 text-muted mt-auto'>{person.isAlumni ? person.CurrentJob : PLACEHOLDER}</p>
     <CreateProjectButton person={person} />
     <CreatePublicationButton person={person} />
