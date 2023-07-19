@@ -21,8 +21,8 @@ function Person (rawData) {
   p.getDegrees = function () {
     return DegreeService.getDegrees({ id__in: p.degrees })
   }
-  p.isAlumni = p.personClass.Name.toLocaleLowerCase() === 'alumni'
-  p.isProfessor = p.personClass.Name.toLocaleLowerCase() === 'professor'
+  p.isAlumni = p.personClass && p.personClass.Name.toLocaleLowerCase() === 'alumni';
+  p.isProfessor = p.personClass && p.personClass.Name.toLocaleLowerCase() === 'professor';
   return p
 }
 
