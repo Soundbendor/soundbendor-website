@@ -6,6 +6,7 @@ const PUBNAMESPACE = 'publication'
 const PUB_MODAL_ID = '#publication-modal'
 const PUB_MODAL_SAVE_CLASS = PUB_MODAL_ID + ' .saveBibtex'
 const PUB_MODAL_TITLE = PUB_MODAL_ID + ' .publicationTitle'
+const PUB_MODAL_TEXT = PUB_MODAL_ID + ' .publicationBibtex'
 
 const saveBibtex = async (fileName, content, event) => {
   const myContent = new Blob([content])
@@ -17,8 +18,9 @@ const saveBibtex = async (fileName, content, event) => {
 const askToSaveBibtex = async (fileName, title, content, event) => {
   const { Modal } = require('bootstrap')
   const myModal = Modal.getOrCreateInstance($(PUB_MODAL_ID)[0])
-  $(PUB_MODAL_SAVE_CLASS).on('click.' + PUBNAMESPACE, saveBibtex.bind(fileName, content, event))
+  $(PUB_MODAL_SAVE_CLASS).on('click.' + PUBNAMESPACE, saveBibtex.bind(event, fileName, content))
   $(PUB_MODAL_TITLE).text(title)
+  $(PUB_MODAL_TEXT).text(content)
   myModal.show()
   event.preventDefault()
 }
@@ -30,8 +32,8 @@ const Publicationentry = ({ publication, simpleView }) => {
   let yearTrim = publication.publishedDate
   yearTrim = yearTrim.split('-')[0]
   const fileTitle = publication.title.replace(/[^\w\s]/gi, '').replace(/\W/gi, '-').substring(0, 50)
-  const bibTex = <a href='#' className='beaverorange' onClick={askToSaveBibtex.bind(null, publication.bibtext, publication.title, 'soundbendor-' + fileTitle)}>Cite</a>
-
+  // const bibTex = <a href='#' className='beaverorange' onClick={askToSaveBibtex.bind(null, publication.bibtext, publication.title, 'soundbendor-' + fileTitle)}>Cite</a>
+  const bibTex = <a href='#' className='beaverorange' onClick={askToSaveBibtex.bind(null, 'soundbendor-' + fileTitle, publication.title, publication.bibtext)}>Cite</a>
   const cols = []
   cols.push(<td key='year'>{yearTrim}</td>)
   if (!simpleView) cols.push(<td key='bibtex'>{publication.bibtext && bibTex}</td>)
@@ -67,6 +69,7 @@ const PublicationModal = () => {
           </div>
           <div className='modal-body'>
             <p>Are you sure you want to download the BibTex citation for:<br /> <strong className='publicationTitle' />?</p>
+            <p className='publicationBibtex' />
           </div>
           <div className='modal-footer'>
             <button type='button' className='btn btn-secondary' data-bs-dismiss='modal'>Close</button>

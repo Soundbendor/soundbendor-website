@@ -3,26 +3,24 @@ import { PersonCard, PersonModal } from '../components/Personcard'
 import PersonService from '../models/people'
 
 const createTeamListDisplay = (people, isAlumni) => {
-  if (people.length === 0) {
-    return (<p className='w-100 text-center fw-bold'>There are no {isAlumni ? 'Alumni' : 'team members'} matching that criteria.</p>)
+  const filteredPeople = people.filter((person) => person.isAlumni === isAlumni);
+  if (filteredPeople.length === 0) {
+    return (
+      <p className='w-100 text-center fw-bold'>
+        There are no {isAlumni ? 'alumni' : 'team members'} matching that criteria.
+      </p>
+    );
   } else {
-    people = sortProfessor(people)
-    return people.map((person) =>
-      trimTeamMember((isAlumni ? 1 : 0), person)
-    )
+    const sortedPeople = sortProfessor(filteredPeople);
+    return sortedPeople.map((person) => <PersonCard key={person.id} person={person} />);
   }
-}
+};
 
 const sortProfessor = (people) => {
   people = people.sort(function (a, b) {
     return a.isProfessor ? -1 : b.isProfessor ? 1 : 0
   })
   return people
-}
-
-const trimTeamMember = (filter, person) => {
-  if ((!filter && person.isAlumni) || (filter && !person.isAlumni)) return
-  return <PersonCard key={person.id} person={person} />
 }
 
 const ClassListDisplay = ({ peopleClasses }) => peopleClasses.map(
@@ -35,24 +33,23 @@ const Team = () => {
   const [currentTeamListDisplay, setCurrentTeamListDisplay] = useState(createTeamListDisplay(people, false))
   const [alumniListDisplay, setAlumniListDisplay] = useState(createTeamListDisplay(people, true))
 
-  const searchHandler = async (event) => {
+  const searchHandler = async (event, isAlumni) => {
     event.preventDefault()
-    const searchField = document.getElementById('team-search')
+    const searchField = document.getElementById(isAlumni ? 'alumni-search' : 'team-search')
     const classField = document.getElementById('class-select')
-    const alumniSearchField = document.getElementById('alumni-search')
-    const filters = presortFilter
-    const filtersAlumni = presortFilter
+    const filters = { ...presortFilter }
     if (searchField.value) {
       filters.x__searchNameAndClass = searchField.value
     }
     if (classField.value) {
       filters.x__filterClass = classField.value
     }
-    if (alumniSearchField.value) {
-      filtersAlumni.x__searchNameAndClass = alumniSearchField.value
+    
+    if (isAlumni) {
+      setAlumniListDisplay(createTeamListDisplay(PersonService.getPeople(filters), true))
+    } else {
+      setCurrentTeamListDisplay(createTeamListDisplay(PersonService.getPeople(filters), false))
     }
-    setCurrentTeamListDisplay(createTeamListDisplay(PersonService.getPeople(filters), false))
-    setAlumniListDisplay(createTeamListDisplay(PersonService.getPeople(filtersAlumni), true))
   }
 
   return (
@@ -68,7 +65,7 @@ const Team = () => {
         <div className='row '>
           <div className='col-sm-4'>
             <label htmlFor='team-search' className='form-label'>Search</label>
-            <input type='search' className='form-control' id='team-search' onChange={searchHandler} placeholder='Search by name' />
+            <input type='search' className='form-control' id='team-search' onChange={(event) => searchHandler(event, false)} placeholder='Search by name' />
           </div>
           <div className='col-sm-4'>
             <label htmlFor='class-select' className='form-label'>Sort by Class</label>
@@ -95,7 +92,7 @@ const Team = () => {
         <div className='row justify-content-between'>
           <div className='col-sm-4'>
             <label htmlFor='alumni-search' className='form-label'>Search</label>
-            <input type='search' className='form-control' id='alumni-search' onChange={searchHandler} placeholder='Search by name' />
+            <input type='search' className='form-control' id='alumni-search' onChange={(event) => searchHandler(event, true)} placeholder='Search by name' />
           </div>
         </div>
       </div>
