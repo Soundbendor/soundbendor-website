@@ -30,6 +30,7 @@ async function handler (req, res) {
             // if not equal, copy the temporary file contents to the live datafile
             fs.copyFile(myFileName, databaseFileName, function () {
               res.status(200).json({ status: 'Import Completed: Data Updated' })
+              fs.unlink(myFileName, function () { resolve() })
               resolve()
             })
           }

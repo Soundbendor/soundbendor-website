@@ -3,7 +3,7 @@ import { PersonCard, PersonModal } from '../components/Personcard'
 import PersonService from '../models/people'
 
 const createTeamListDisplay = (people, isAlumni) => {
-  const filteredPeople = people.filter((person) => person.isAlumni === isAlumni);
+  const filteredPeople = people.filter((person) => person.isAlumni === isAlumni && person.Role !== "Capstone");
   if (filteredPeople.length === 0) {
     return (
       <p className='w-100 text-center fw-bold'>
