@@ -72,8 +72,10 @@
     "FullName": {
       "type": "string"
     },
-    "Role": {
-      "type": "string"
+    "person_roles": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::person-role.person-role"
     }
   }
 }

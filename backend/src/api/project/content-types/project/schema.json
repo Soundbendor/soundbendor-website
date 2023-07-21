@@ -53,6 +53,20 @@
     },
     "projectLink": {
       "type": "string"
+    },
+    "project_target_type": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::project-target-type.project-target-type"
+    },
+    "videoLink": {
+      "type": "string"
+    },
+    "gitHubLink": {
+      "type": "string"
+    },
+    "websiteLink": {
+      "type": "string"
     }
   }
 }

@@ -1,0 +1,19 @@
+{
+  "kind": "collectionType",
+  "collectionName": "project_target_types",
+  "info": {
+    "singularName": "project-target-type",
+    "pluralName": "project-target-types",
+    "displayName": "Project Target Type",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Name": {
+      "type": "string"
+    }
+  }
+}
