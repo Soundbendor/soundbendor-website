@@ -1,6 +1,7 @@
 import BaseService from './__base'
 import ImageService from './images'
 import PersonClassService from './person-classes'
+import PersonRoleService from './person-roles'
 import GroupService from './groups'
 import DegreeService from './degrees'
 import ProjectService from './projects'
@@ -20,6 +21,9 @@ function Person (rawData) {
   }
   p.getDegrees = function () {
     return DegreeService.getDegrees({ id__in: p.degrees })
+  }
+  p.getRoles = function () {
+    return PersonRoleService.getPersonRoles({ id__in: p.person_roles })
   }
   p.isAlumni = p.personClass?.Name.toLocaleLowerCase() === 'alumni';
   p.isProfessor = p.personClass?.Name.toLocaleLowerCase() === 'professor';
