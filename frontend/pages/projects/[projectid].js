@@ -3,6 +3,7 @@ import PersonService from '../../models/people'
 import ImageService from '../../models/images'
 import { PersonCard, PersonModal } from '../../components/Personcard'
 import { useRouter } from 'next/router'
+import React from 'react';
 
 function TeamMembers ({ p }) {
   if ('people' in p && Array.isArray(p.people) && p.people.length > 0) {
@@ -21,6 +22,28 @@ function Artifacts ({ p }) {
   }
   return <li><em>Currently No Artifacts</em></li>
 }
+
+function Links ({ p }) {
+  const links = [
+    { key: 'GitHub', value: p.gitHubLink },
+    { key: 'Website', value: p.websiteLink }
+  ];
+
+  return (
+    <>
+      {links.map((link) =>
+        link.value ? (
+          <React.Fragment key={link.key}>
+            <dt>{link.key}:</dt>
+            <dd>
+              <a href={link.value}>{link.value}</a>
+            </dd>
+          </React.Fragment>
+        ) : null
+      )}
+    </>
+  );
+};
 
 export default function Project ({ projectid }) {
   const p = ProjectService.getProject({ id__eqstr: projectid })
@@ -45,6 +68,7 @@ export default function Project ({ projectid }) {
                 <dd>{p.Description}</dd>
                 <dt>Published date:</dt>
                 <dd>{p.formattedInitialPublishedDate}</dd>
+                <Links p={p} />
               </dl>
             </div>
           </div>
