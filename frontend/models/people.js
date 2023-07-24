@@ -25,8 +25,8 @@ function Person (rawData) {
   p.getRoles = function () {
     return PersonRoleService.getPersonRoles({ id__in: p.person_roles })
   }
-  p.isAlumni = p.personClass?.Name.toLocaleLowerCase() === 'alumni';
-  p.isProfessor = p.personClass?.Name.toLocaleLowerCase() === 'professor';
+  p.isAlumni = p.personClass?.Name?.toLocaleLowerCase() === 'alumni';
+  p.isProfessor = p.personClass?.Name?.toLocaleLowerCase() === 'professor';
   return p
 }
 
