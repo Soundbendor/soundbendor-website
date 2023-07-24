@@ -4,7 +4,7 @@
   "info": {
     "singularName": "project-target-type",
     "pluralName": "project-target-types",
-    "displayName": "Project Target Type",
+    "displayName": "Project Type",
     "description": ""
   },
   "options": {

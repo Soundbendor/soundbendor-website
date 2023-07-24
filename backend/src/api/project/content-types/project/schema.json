@@ -29,11 +29,6 @@
     "InitialPublishedDate": {
       "type": "datetime"
     },
-    "project_type": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::project-type.project-type"
-    },
     "Media": {
       "type": "media",
       "multiple": true,
@@ -51,7 +46,7 @@
       "target": "api::person.person",
       "inversedBy": "projects"
     },
-    "projectLink": {
+    "projectLink_deprecated": {
       "type": "string"
     },
     "project_target_type": {

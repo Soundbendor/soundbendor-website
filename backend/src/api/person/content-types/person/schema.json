@@ -76,6 +76,9 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::person-role.person-role"
+    },
+    "Link": {
+      "type": "string"
     }
   }
 }
