@@ -79,6 +79,11 @@
     },
     "Link": {
       "type": "string"
+    },
+    "campus_tag": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::campus-tag.campus-tag"
     }
   }
 }

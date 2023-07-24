@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "campus_tags",
+  "info": {
+    "singularName": "campus-tag",
+    "pluralName": "campus-tags",
+    "displayName": "Campus Tag"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Name": {
+      "type": "string"
+    }
+  }
+}
