@@ -98,7 +98,7 @@ const CardBack = ({ person }) => (
     {person.isAlumni && person.degrees.length > 0 ? (
       person.getDegrees().map((degree, index) => (
         <p className='card-subtitle mb-2 text-muted mt-auto' key={index}>
-          {degree.Suffix} {degree.Name}
+          {degree.Suffix} {degree.Field}
         </p>
       ))
     ) : (

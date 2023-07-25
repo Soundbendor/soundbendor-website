@@ -9,6 +9,7 @@ const generatePaginationDisplay = (data, onClick) => {
 }
 
 const createPublicationYearListDisplay = (publicationYears) => {
+  publicationYears.sort((a, b) => a - b);
   return publicationYears.map((year) =>
     <option key={year} value={year}>{year}</option>
   )

@@ -13,7 +13,7 @@ function Project (rawData) {
 const projectFilterFunctions = {
   searchNameAndDescription: (key, value, obj) => {
     const lValue = value.toLowerCase()
-    return obj.Name.toLowerCase().includes(lValue) || obj.Description.toLowerCase().includes(lValue)
+    return obj.Name?.toLowerCase().includes(lValue) || obj.Description?.toLowerCase().includes(lValue)
   }
 }
 

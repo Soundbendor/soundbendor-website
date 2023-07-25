@@ -34,15 +34,15 @@ const peopleFilterFunctions = {
   searchNameAndClass: (key, value, obj) => {
     const lValue = value.toLowerCase()
     const fullName = (obj.FirstName + ' ' + obj.LastName).toLowerCase()
-    const className = PersonClassService.getPersonClass({ id__eq: obj.person_class }).Name.toLowerCase()
-    return (fullName.includes(lValue) ||
-    className.includes(lValue))
+    const className = PersonClassService.getPersonClass({ id__eq: obj.person_class })?.Name?.toLowerCase()
+    return (fullName?.includes(lValue) ||
+    className?.includes(lValue))
   },
 
   filterClass: (key, value, obj) => {
     const lValue = value.toLowerCase()
-    const className = PersonClassService.getPersonClass({ id__eq: obj.person_class }).Name.toLowerCase()
-    return (className.includes(lValue))
+    const className = PersonClassService.getPersonClass({ id__eq: obj.person_class })?.Name?.toLowerCase()
+    return (className?.includes(lValue))
   }
 }
 

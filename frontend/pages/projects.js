@@ -13,6 +13,7 @@ const createProjectListDisplay = (projects) => {
 }
 
 const createProjectYearListDisplay = (projectYears) => {
+  projectYears.sort((a, b) => a - b);
   return projectYears.map((year) =>
     <option key={year} value={year}>{year}</option>
   )
