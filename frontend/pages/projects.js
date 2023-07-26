@@ -48,9 +48,7 @@ const Projects = () => {
       filters.InitialPublishedDate__sw = yearField.value
     }
     if (typeField.value) {
-      if (typeField.value) {
-        filters.project_target_type__eq = parseInt(typeField.value);
-      }
+      filters.project_target_type__eq = parseInt(typeField.value);
     }
     setProjectListDisplay(createProjectListDisplay(ProjectService.getProjects(filters)))
   }

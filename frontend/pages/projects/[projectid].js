@@ -3,7 +3,37 @@ import PersonService from '../../models/people'
 import ImageService from '../../models/images'
 import { PersonCard, PersonModal } from '../../components/Personcard'
 import { useRouter } from 'next/router'
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { pdfjs } from 'react-pdf'; 
+pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
+
+function Thumbnail({ url }) {
+  const [thumbnailUrl, setThumbnailUrl] = useState(null);
+
+  useEffect(() => {
+    const loadingTask = pdfjs.getDocument(url);
+    loadingTask.promise.then((pdf) => {
+      pdf.getPage(1).then((page) => {
+        const viewport = page.getViewport({ scale: 0.2 });
+        const canvas = document.createElement('canvas');
+        const context = canvas.getContext('2d');
+        canvas.width = viewport.width;
+        canvas.height = viewport.height;
+
+        const renderContext = {
+          canvasContext: context,
+          viewport: viewport,
+        };
+        page.render(renderContext).promise.then(() => {
+          const thumbUrl = canvas.toDataURL('image/jpeg');
+          setThumbnailUrl(thumbUrl);
+        });
+      });
+    });
+  }, [url]);
+
+  return thumbnailUrl ? <img src={thumbnailUrl} alt="Thumbnail" className='w-50'/> : <p>Loading Thumbnail...</p>;
+}
 
 function TeamMembers ({ p }) {
   if ('people' in p && Array.isArray(p.people) && p.people.length > 0) {
@@ -18,7 +48,16 @@ function Artifacts ({ p }) {
   if ('Media' in p && Array.isArray(p.Media) && p.Media.length > 0) {
     return ImageService
       .getImages({ id__in: p.Media })
-      .map((media) => <li key={'media-' + media.id}><a href={media.url}>{media.mime} | {media.name}</a></li>)
+      .map((media) => (
+        <li key={'media-' + media.id} className='col-12 col-sm-12 col-lg-6 col-xl-4 col-xxl-4'>
+          <div className="text-center">
+            {media.url && media.mime === "application/pdf" && <Thumbnail url={media.url} />}
+          </div>
+          <div className='text-center'>
+            <a href={media.url}>{media.mime} | {media.name}</a>
+          </div>
+        </li>
+      ))
   }
   return <li><em>Currently No Artifacts</em></li>
 }
@@ -75,20 +114,22 @@ export default function Project ({ projectid }) {
         </div>
       </div>
       <div className='container'>
+        {p.videoLink && (
         <div className='row py-4'>
           <div className='col'>
             <div className='embed-responsive embed-responsive-16by9'>
-              <iframe className='embed-responsive-item' src={p.projectLink} allowFullScreen> </iframe>
+              <iframe className='embed-responsive-item' src={p.videoLink} allowFullScreen> </iframe>
             </div>
           </div>
         </div>
+        )}
         <div className='row'>
           <div className='col'>
             <dl>
               <dt>Team Members:</dt>
               <dd><ul className='row'><TeamMembers p={p} /></ul></dd>
               <dt>Artifacts</dt>
-              <dd><ul className='bulleted'><Artifacts p={p} /></ul></dd>
+              <dd><ul className='row'><Artifacts p={p} /></ul></dd>
             </dl>
           </div>
         </div>
