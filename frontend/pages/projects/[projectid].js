@@ -14,7 +14,7 @@ function Thumbnail({ url }) {
     const loadingTask = pdfjs.getDocument(url);
     loadingTask.promise.then((pdf) => {
       pdf.getPage(1).then((page) => {
-        const viewport = page.getViewport({ scale: 0.2 });
+        const viewport = page.getViewport({ scale: 1 });
         const canvas = document.createElement('canvas');
         const context = canvas.getContext('2d');
         canvas.width = viewport.width;
