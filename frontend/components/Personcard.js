@@ -2,6 +2,7 @@ import $ from 'jquery'
 import { Publicationentry, PublicationHeader } from './Publicationentry'
 import { renderToStaticMarkup } from 'react-dom/server'
 import Script from 'next/script'
+import  { AiFillLinkedin } from 'react-icons/ai'
 
 const PROJ_MODAL_ID = 'project-modal'
 const PROJ_MODAL_USER_CLASS = 'modal-user'
@@ -94,7 +95,18 @@ const CardFront = ({ person }) => (
 
 const CardBack = ({ person }) => (
   <>
-    <h5 className='card-title beaverorange'>{person.formattedPersonName}</h5>
+    <div className='d-flex align-items-center'>
+      <h5 className='card-title beaverorange flex-grow-1'>
+        {person.formattedPersonName}
+      </h5>
+      <div className='d-flex align-items-center justify-content-center px-2'
+        style={{ fontSize: '110%' }}
+      >
+        <a href={person.Link} target='_blank' rel='noopener noreferrer' className='text-decoration-none text-dark'>
+          <AiFillLinkedin className='icon' style={{ fontSize: '110%' }} />
+        </a>
+      </div>
+    </div>
     {person.isAlumni && person.degrees.length > 0 ? (
       person.getDegrees().map((degree, index) => (
         <p className='card-subtitle mb-2 text-muted mt-auto' key={index}>
