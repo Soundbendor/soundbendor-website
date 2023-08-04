@@ -5,8 +5,8 @@ import PersonService from '../models/people'
 const createTeamListDisplay = (people, isAlumni) => {
   const filteredPeople = people.filter((person) => {
     const roles = person.getRoles();
-    const isNotCapstone = !(roles.length === 1 && roles[0].Title === "Capstone");
-    return person.isAlumni === isAlumni && isNotCapstone
+    const isLab = roles.some((role) => role.Title === "Lab");
+    return person.isAlumni === isAlumni && isLab;
   });
   if (filteredPeople.length === 0) {
     return (
