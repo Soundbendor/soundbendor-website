@@ -84,6 +84,32 @@ function Links ({ p }) {
   );
 };
 
+function FeaturedMedia ({ p }) {
+  if (p.videoLink) {
+    return (
+      <div className='row py-4'>
+        <div className='col'>
+          <div className='embed-responsive embed-responsive-16by9'>
+            <iframe className='embed-responsive-item' src={p.videoLink} allowFullScreen></iframe>
+          </div>
+        </div>
+      </div>
+    );
+  } else if ('Media' in p && Array.isArray(p.Media) && p.Media.length > 0) {
+    const media = ImageService.getImages({ id__in: p.Media })[0]
+    return (
+      <div className='row'>
+        <div className='col'>
+          <div className="text-center">
+            {media.url && media.mime === "application/pdf" && <Thumbnail url={media.url} />}
+          </div>
+        </div>
+      </div>
+    );
+  }
+  return null;
+}
+
 export default function Project ({ projectid }) {
   const p = ProjectService.getProject({ id__eqstr: projectid })
   const router = useRouter()
@@ -114,15 +140,7 @@ export default function Project ({ projectid }) {
         </div>
       </div>
       <div className='container'>
-        {p.videoLink && (
-        <div className='row py-4'>
-          <div className='col'>
-            <div className='embed-responsive embed-responsive-16by9'>
-              <iframe className='embed-responsive-item' src={p.videoLink} allowFullScreen> </iframe>
-            </div>
-          </div>
-        </div>
-        )}
+        <FeaturedMedia p={p} />
         <div className='row'>
           <div className='col'>
             <dl>
