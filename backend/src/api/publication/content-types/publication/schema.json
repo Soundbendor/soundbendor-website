@@ -52,6 +52,38 @@
     },
     "cityCountry": {
       "type": "string"
+    },
+    "slides": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    },
+    "videoLink": {
+      "type": "string"
+    },
+    "paperPoster": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    },
+    "demoLink": {
+      "type": "string"
+    },
+    "abstract": {
+      "type": "text"
+    },
+    "thesis": {
+      "type": "boolean"
     }
   }
 }
