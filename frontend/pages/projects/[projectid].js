@@ -4,7 +4,7 @@ import ImageService from '../../models/images'
 import { PersonCard, PersonModal } from '../../components/Personcard'
 import { useRouter } from 'next/router'
 import React, { useState, useEffect } from 'react';
-import { pdfjs } from 'react-pdf'; 
+import { pdfjs } from 'react-pdf';
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
 function Thumbnail({ url }) {
@@ -32,10 +32,10 @@ function Thumbnail({ url }) {
     });
   }, [url]);
 
-  return thumbnailUrl ? <img src={thumbnailUrl} alt="Thumbnail" className='w-50'/> : <p>Loading Thumbnail...</p>;
+  return thumbnailUrl ? <img src={thumbnailUrl} alt="Thumbnail" className='w-50 h-100 image-fluid' /> : <p>Loading Thumbnail...</p>;
 }
 
-function TeamMembers ({ p }) {
+function TeamMembers({ p }) {
   if ('people' in p && Array.isArray(p.people) && p.people.length > 0) {
     return PersonService
       .getPeople({ id__in: p.people })
@@ -44,14 +44,16 @@ function TeamMembers ({ p }) {
   return <li><em>Currently No Team Members Listed</em></li>
 }
 
-function Artifacts ({ p }) {
+function Artifacts({ p }) {
   if ('Media' in p && Array.isArray(p.Media) && p.Media.length > 0) {
     return ImageService
       .getImages({ id__in: p.Media })
       .map((media) => (
-        <li key={'media-' + media.id} className='col-12 col-sm-12 col-lg-6 col-xl-4 col-xxl-4'>
-          <div className="text-center">
-            {media.url && media.mime === "application/pdf" && <Thumbnail url={media.url} />}
+        <li key={'media-' + media.id} className='col-12 col-sm-12 col-lg-6 col-xl-4 col-xxl-4 d-flex flex-column my-3'>
+          <div className="flex-grow-1 d-flex flex-column justify-content-center">
+            <div className="text-center h-100">
+              {media.url && media.mime === "application/pdf" && <Thumbnail url={media.url} />}
+            </div>
           </div>
           <div className='text-center'>
             <a href={media.url}>{media.mime} | {media.name}</a>
@@ -62,7 +64,7 @@ function Artifacts ({ p }) {
   return <li><em>Currently No Artifacts</em></li>
 }
 
-function Links ({ p }) {
+function Links({ p }) {
   const links = [
     { key: 'GitHub', value: p.gitHubLink },
     { key: 'Website', value: p.websiteLink }
@@ -84,7 +86,7 @@ function Links ({ p }) {
   );
 };
 
-function FeaturedMedia ({ p }) {
+function FeaturedMedia({ p }) {
   if (p.videoLink) {
     return (
       <div className='row py-4'>
@@ -110,7 +112,7 @@ function FeaturedMedia ({ p }) {
   return null;
 }
 
-export default function Project ({ projectid }) {
+export default function Project({ projectid }) {
   const p = ProjectService.getProject({ id__eqstr: projectid })
   const router = useRouter()
 
@@ -146,8 +148,8 @@ export default function Project ({ projectid }) {
             <dl>
               <dt>Team Members:</dt>
               <dd><ul className='row'><TeamMembers p={p} /></ul></dd>
-              <dt>Artifacts</dt>
-              <dd><ul className='row'><Artifacts p={p} /></ul></dd>
+              <dt className='text-center'>Artifacts</dt>
+              <dd><ul className='row my-3 d-flex justify-content-center'><Artifacts p={p} /></ul></dd>
             </dl>
           </div>
         </div>
@@ -157,7 +159,7 @@ export default function Project ({ projectid }) {
   )
 }
 
-export async function getStaticPaths () {
+export async function getStaticPaths() {
   const projects = ProjectService.getProjects()
   const paths = []
   for (const i in projects) {
@@ -170,6 +172,6 @@ export async function getStaticPaths () {
   }
 }
 
-export async function getStaticProps (context) {
+export async function getStaticProps(context) {
   return { props: { projectid: context.params.projectid } }
 }
