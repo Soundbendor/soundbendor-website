@@ -54,27 +54,29 @@
       "type": "string"
     },
     "slides": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": true
+      ]
     },
     "videoLink": {
       "type": "string"
     },
     "paperPoster": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": true
+      ]
     },
     "demoLink": {
       "type": "string"
@@ -84,6 +86,11 @@
     },
     "thesis": {
       "type": "boolean"
+    },
+    "awards": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::award.award"
     }
   }
 }

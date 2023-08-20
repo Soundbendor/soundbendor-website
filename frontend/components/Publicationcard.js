@@ -1,4 +1,5 @@
 import PersonService from '../models/people'
+import ImageService from '../models/images'
 import React, { useState } from 'react'
 import { saveAs } from 'file-saver'
 import Blob from 'cross-blob'
@@ -10,7 +11,7 @@ function Authors({ p }) {
     return (
       <div>
         {authors.map((person, index) => (
-          <span key={'author-' + person.id}>
+          <span key={'author-' + person.id} className='text-muted'>
             {index !== 0 && <span>, </span>}
             {person.formattedPersonName}
           </span>
@@ -36,16 +37,22 @@ const PublicationCard = ({ publication }) => {
     toggleModal()
   }
 
+  let media = null
+  if ('file' in publication && Array.isArray(publication.file) && publication.file.length > 0) {
+    media = ImageService.getImages({ id__in: publication.file })[0]
+  }
+
   return (
-    <div className='card my-2 ms-2'>
+    <div className='card pub-card my-2 ms-2'>
       <div className='card-body'>
-        <p className='fw-bold'>{publication.title}</p>
-        <Authors p={publication} />
+        <p className='fw-bold mb-2'>{publication.title}</p>
+        <Authors p={publication}/>
         <div className='mt-2'>
-          <a href='#'className='beaverorange me-1'>Paper</a>
-          <a href='#'className='beaverorange me-1'>Slides</a>
-          <a href='publication.demoLink'className='beaverorange me-1'>Demo</a>
-          <a href='#' className='beaverorange me-1' onClick={toggleModal}>Cite</a>
+          <span className='me-2'>{publication.venue} {new Date(publication.publishedDate).getFullYear()}</span> 
+          {media && (<span className='me-1'>(<a href={media.url} className='beaverorange' target='_blank' rel='noopener noreferrer'>Paper</a>)</span>)}
+          {publication.slides && (<span className='me-1'>(<a href={publication.slides} className='beaverorange'>Slides</a>)</span>)}
+          {publication.demoLink && (<span className='me-1'>(<a href={publication.demoLink} className='beaverorange'>Demo</a>)</span>)}
+          <span>(<a href='#' className='beaverorange' onClick={toggleModal}>Cite</a>)</span>
         </div>
         {showModal && (
           <>

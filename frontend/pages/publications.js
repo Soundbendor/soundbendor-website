@@ -18,18 +18,18 @@ const Publications = () => {
       <div className='container py-5'>
         {publications.map((publication) => {
 
-          const publicationYear = new Date(publication.publishedDate).getFullYear();
+          const publicationYear = new Date(publication.publishedDate).getFullYear()
           const yearLabel = publicationYear !== currentYear ? (
-            <h2 className='beaverorange'>{publicationYear}</h2>
-          ) : null;
-          currentYear = publicationYear;
+            <h2 className='beaverorange mt-3'>{publicationYear}</h2>
+          ) : null
+          currentYear = publicationYear
 
           return (
             <div key={publication.id}>
               {yearLabel}
               <PublicationCard publication={publication}/>
             </div>
-          );
+          )
         })}
       </div>
     </>
