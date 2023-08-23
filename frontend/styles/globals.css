@@ -204,15 +204,15 @@ ul.bulleted {
   box-shadow: 0 0 0 0.125rem #d7400950;
 }
 
+.year-btn:active,
+.year-btn:focus,
 .year-btn {
   font-weight: 500;
-  color: #f23801;
+  color: #f23801 !important;
   border: 1px solid transparent;
 }
 
-.year-btn:hover,
-.year-btn.active,
-.year-btn:focus {
+.selected-year-btn {
   border-color: #d73f09 !important;
   font-weight: 500;
   color: #f23801 !important;

@@ -13,11 +13,19 @@ const createProjectListDisplay = (projects) => {
   }
 }
 
-const createProjectYearListDisplay = (projectYears, searchHandler) => {
+const createProjectYearListDisplay = (projectYears, selectedYear, searchHandler) => {
   projectYears.sort((a, b) => b - a);
-  return projectYears.map((year) =>
-    <button key={year} className='btn year-btn me-1 mb-1 rounded-pill' onClick={(event) => searchHandler(event, year)}>{year}</button>
-  )
+  return projectYears.map((year) => (
+    <button
+      key={year}
+      className={`btn year-btn me-1 mb-1 rounded-pill ${
+        selectedYear === year ? 'selected-year-btn' : ''
+      }`}
+      onClick={(event) => searchHandler(event, year)}
+    >
+      {year}
+    </button>
+  ))
 }
 
 const createProjectTypeListDisplay = (projectTypes) => {
@@ -27,32 +35,40 @@ const createProjectTypeListDisplay = (projectTypes) => {
 }
 
 const Projects = () => {
+  const [selectedYear, setSelectedYear] = useState("All")
   const searchHandler = async (event, year) => {
     if (event) {
-      event.preventDefault();
+      event.preventDefault()
     }
-
+    if (year === undefined) {
+      year = "All"
+    }
+    setSelectedYear(year);
     const searchField = document.getElementById('project-search');
     const typeField = document.getElementById('project-type');
-
-    const filters = { ...presortFilter };
+  
+    const filters = { ...presortFilter }
     if (searchField.value) {
       filters.x__searchNameAndDescription = searchField.value;
     }
-    if (year) { // Use the selected year if it's provided
-      filters.InitialPublishedDate__sw = year;
+    if (year !== "All") { // Only apply the year filter if it's not "All"
+      filters.InitialPublishedDate__sw = year
     }
     if (typeField.value) {
-      filters.project_target_type__eq = parseInt(typeField.value);
+      filters.project_target_type__eq = parseInt(typeField.value)
     }
-    setProjectListDisplay(createProjectListDisplay(ProjectService.getProjects(filters)));
-  };
+    setProjectListDisplay(createProjectListDisplay(ProjectService.getProjects(filters)))
+  }
 
   const presortFilter = { presortBy: 'InitialPublishedDate', presortDirection: -1 }
   const projects = ProjectService.getProjects(presortFilter)
   const projectSearchPlaceholder = '(e.g., ' + projects[0].Name + ')'
   const [projectListDisplay, setProjectListDisplay] = useState(createProjectListDisplay(projects))
-  const projectYearListDisplay = createProjectYearListDisplay(ProjectService.getProjectYears(), searchHandler)
+  const projectYearListDisplay = createProjectYearListDisplay(
+    ProjectService.getProjectYears(),
+    selectedYear,
+    searchHandler
+  )
   const projectTypeListDisplay = createProjectTypeListDisplay(ProjectTypeService.getProjectTypes())
 
   return (
@@ -70,7 +86,12 @@ const Projects = () => {
         <div className='row justify-content-between'>
           <div className='col-sm-6 d-flex align-items-end'>
             <div className='d-flex flex-wrap'>
-              <button key='All' className='btn year-btn me-1 mb-1 rounded-pill' onClick={(event) => searchHandler(event)}>All</button>
+              <button key='All' className={
+                `btn year-btn me-1 mb-1 rounded-pill
+                ${selectedYear === "All" ? 'selected-year-btn' : ''
+                }`}
+                onClick={(event) => searchHandler(event)}>All
+              </button>
               {projectYearListDisplay}
             </div>
           </div>
