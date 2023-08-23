@@ -24,7 +24,8 @@
         "White",
         "Light",
         "Dark",
-        "Special"
+        "Special",
+        "Light-2"
       ],
       "required": false,
       "default": "White"
@@ -47,6 +48,15 @@
       "type": "boolean",
       "default": true,
       "required": false
+    },
+    "ButtonColor": {
+      "type": "enumeration",
+      "enum": [
+        "Orange",
+        "White",
+        "Gray",
+        "Black"
+      ]
     }
   }
 }
