@@ -13,7 +13,7 @@ const generateEventListDisplay = (events) => {
 }
 
 const News = () => {
-  const pageSize = 3
+  const pageSize = 5
   const paginationHandler = async (event) => {
     event.preventDefault()
     const filters = { pageSize, presortBy: 'EventTime', presortDirection: -1 }

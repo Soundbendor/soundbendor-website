@@ -36,8 +36,8 @@ const Footer = () => {
         </div>
       </section>
 
-      <div className='text-center pt-2 pb-4'>
-        © 2021 Copyright: 2020-2022 Soundbendor Lab - All Rights Reserved
+      <div className='text-center pt-2 pb-4 '>
+        <strong>© Copyright 2020-2023 Soundbendor Lab - All Rights Reserved</strong>
       </div>
     </footer>
   )

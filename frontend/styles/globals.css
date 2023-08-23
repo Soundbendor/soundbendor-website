@@ -17,6 +17,10 @@
   background-color: #d73f09 !important;
 }
 
+.text-bg-light-2.btn-dark {
+	background-color: #d73f09 !important;
+}
+
 .pagination > li > a {
   background-color: white;
   color: black;
@@ -166,4 +170,29 @@ ul.bulleted {
   max-height: 175px;
   text-align: center;
   margin: 0 auto;
+}
+
+.form-control:focus {
+  border-color: #d73f09;
+  box-shadow: 0 0 0 0.125rem #d7400950;
+}
+
+.form-select:focus {
+  border-color: #d73f09;
+  box-shadow: 0 0 0 0.125rem #d7400950;
+}
+
+.year-btn {
+  font-weight: 500;
+  color: #f23801;
+  border: 1px solid transparent;
+}
+
+.year-btn:hover,
+.year-btn.active,
+.year-btn:focus {
+  border-color: #d73f09 !important;
+  font-weight: 500;
+  color: #f23801 !important;
+  transition: 500ms;
 }

@@ -10,7 +10,10 @@ const Newscard = ({ event }) => {
             <div className='small text-muted'>{event.formattedEventTime}</div>
             <h2 className='card-title h4 beaverorange'>{event.Name}</h2>
             <p className='card-text'>{event.Content}</p>
-            <a className='btn btn-dark' href={event.EventURL}>Read more →</a>
+            <span className='d-flex justify-content-between align-items-center'>
+              <a className='btn btn-dark' target='_blank' rel='noopener noreferrer' href={event.EventURL}>Read more →</a>
+              {event.Source && (<a className='ml-auto' style={{ textDecoration: 'none' }}>{event.Source}</a>)}
+            </span>   
           </div>
         </div>
       </div>

@@ -8,14 +8,14 @@ const Publications = () => {
 
   return (
     <>
-      <div className='container py-5'>
+      <div className='container pt-5'>
         <div className='row'>
           <div className='col text-center'>
             <h1>Publications</h1>
           </div>
         </div>
       </div>
-      <div className='container py-5'>
+      <div className='container pt-4 pb-5'>
         {publications.map((publication) => {
 
           const publicationYear = new Date(publication.publishedDate).getFullYear()

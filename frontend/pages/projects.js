@@ -13,10 +13,10 @@ const createProjectListDisplay = (projects) => {
   }
 }
 
-const createProjectYearListDisplay = (projectYears) => {
-  projectYears.sort((a, b) => a - b);
+const createProjectYearListDisplay = (projectYears, searchHandler) => {
+  projectYears.sort((a, b) => b - a);
   return projectYears.map((year) =>
-    <option key={year} value={year}>{year}</option>
+    <button key={year} className='btn year-btn me-1 mb-1 rounded-pill' onClick={(event) => searchHandler(event, year)}>{year}</button>
   )
 }
 
@@ -27,31 +27,33 @@ const createProjectTypeListDisplay = (projectTypes) => {
 }
 
 const Projects = () => {
-  const presortFilter = { presortBy: 'InitialPublishedDate', presortDirection: -1 }
-  const projects = ProjectService.getProjects(presortFilter)
-  const projectSearchPlaceholder = '(e.g., ' + projects[0].Name + ')'
-  const [projectListDisplay, setProjectListDisplay] = useState(createProjectListDisplay(projects))
-  const projectYearListDisplay = createProjectYearListDisplay(ProjectService.getProjectYears())
-  const projectTypeListDisplay = createProjectTypeListDisplay(ProjectTypeService.getProjectTypes())
-
-  const searchHandler = async (event) => {
-    event.preventDefault()
-    const searchField = document.getElementById('project-search')
-    const yearField = document.getElementById('project-year')
-    const typeField = document.getElementById('project-type')
-    
-    const filters = presortFilter
-    if (searchField.value) {
-      filters.x__searchNameAndDescription = searchField.value
+  const searchHandler = async (event, year) => {
+    if (event) {
+      event.preventDefault();
     }
-    if (yearField.value) {
-      filters.InitialPublishedDate__sw = yearField.value
+
+    const searchField = document.getElementById('project-search');
+    const typeField = document.getElementById('project-type');
+
+    const filters = { ...presortFilter };
+    if (searchField.value) {
+      filters.x__searchNameAndDescription = searchField.value;
+    }
+    if (year) { // Use the selected year if it's provided
+      filters.InitialPublishedDate__sw = year;
     }
     if (typeField.value) {
       filters.project_target_type__eq = parseInt(typeField.value);
     }
-    setProjectListDisplay(createProjectListDisplay(ProjectService.getProjects(filters)))
-  }
+    setProjectListDisplay(createProjectListDisplay(ProjectService.getProjects(filters)));
+  };
+
+  const presortFilter = { presortBy: 'InitialPublishedDate', presortDirection: -1 }
+  const projects = ProjectService.getProjects(presortFilter)
+  const projectSearchPlaceholder = '(e.g., ' + projects[0].Name + ')'
+  const [projectListDisplay, setProjectListDisplay] = useState(createProjectListDisplay(projects))
+  const projectYearListDisplay = createProjectYearListDisplay(ProjectService.getProjectYears(), searchHandler)
+  const projectTypeListDisplay = createProjectTypeListDisplay(ProjectTypeService.getProjectTypes())
 
   return (
     <>
@@ -66,16 +68,15 @@ const Projects = () => {
       </div>
       <div className='container'>
         <div className='row justify-content-between'>
-          <div className='col-sm-6'>
-            <label htmlFor='project-search' className='form-label'>Search by Name</label>
-            <input type='search' className='form-control' id='project-search' onChange={searchHandler} placeholder={projectSearchPlaceholder} />
+          <div className='col-sm-6 d-flex align-items-end'>
+            <div className='d-flex flex-wrap'>
+              <button key='All' className='btn year-btn me-1 mb-1 rounded-pill' onClick={(event) => searchHandler(event)}>All</button>
+              {projectYearListDisplay}
+            </div>
           </div>
           <div className='col-sm-3'>
-            <label htmlFor='project-year' className='form-label'>Year Published</label>
-            <select className='form-select' id='project-year' onChange={searchHandler}>
-              <option defaultValue value=''>All Years</option>
-              {projectYearListDisplay}
-            </select>
+            <label htmlFor='project-search' className='form-label'>Search by Name</label>
+            <input type='search' className='form-control' id='project-search' onChange={searchHandler} placeholder={projectSearchPlaceholder} />
           </div>
           <div className='col-sm-3'>
             <label htmlFor='project-type' className='form-label'>Project Type</label>
