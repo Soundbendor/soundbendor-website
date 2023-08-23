@@ -79,6 +79,10 @@ const TwoColumn = function ({ row }) {
 
 const Column = ({ column }) => {
   const className = column.colClass + ' text-' + column.textAlignClass
+  let buttonClass = 'btn btn-dark'
+  if (column.ButtonColor !== undefined && column.ButtonColor !== null && column.ButtonColor !== 0) {
+    buttonClass = 'btn btn-' + column.ButtonColor.toLowerCase()
+  }
   const imageStyles = {}
   if (column.PagePartImageMaxHeight !== undefined && column.PagePartImageMaxHeight !== null && column.PagePartImageMaxHeight !== 0) {
     imageStyles.maxHeight = column.PagePartImageMaxHeight + 'px'
@@ -94,7 +98,7 @@ const Column = ({ column }) => {
       {column.content && column.PagePartContent.trim().length > 0 && <div dangerouslySetInnerHTML={{ __html: column.content }} />}
       {
         column.PagePartButtonLink && column.PagePartButtonText &&
-          <Link className='btn btn-dark' href={column.PagePartButtonLink}>{column.PagePartButtonText}</Link>
+          <Link className={buttonClass} href={column.PagePartButtonLink}>{column.PagePartButtonText}</Link>
       }
     </div>
   )

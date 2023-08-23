@@ -17,8 +17,30 @@
   background-color: #d73f09 !important;
 }
 
-.text-bg-light-2.btn-dark {
-	background-color: #d73f09 !important;
+.btn-orange {
+	background-color: #d73f09;
+  border-color: #d73f09;
+  color:#fff;
+}
+
+.btn-orange:active,
+.btn-orange:hover {
+	background-color:#a83207 !important;
+  border-color: #a83207 !important;
+  color:#fff !important;
+}
+
+.btn-black {
+  color: #fff;
+  background-color: #000000;
+  border-color: #000000;
+}
+
+.btn-black:active,
+.btn-black:hover {
+  color: #fff !important;
+  background-color: #141414 !important;
+  border-color: #141414 !important;
 }
 
 .pagination > li > a {

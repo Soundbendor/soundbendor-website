@@ -48,15 +48,6 @@
       "type": "boolean",
       "default": true,
       "required": false
-    },
-    "ButtonColor": {
-      "type": "enumeration",
-      "enum": [
-        "Orange",
-        "White",
-        "Gray",
-        "Black"
-      ]
     }
   }
 }
