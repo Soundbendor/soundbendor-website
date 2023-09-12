@@ -61,7 +61,7 @@ const Team = () => {
       <div className='container py-5'>
         <div className='row'>
           <div className='col text-center'>
-            <h1>Team Members</h1>
+            <h1><span style={{borderBottom: '3px solid #d73f09', fontWeight: 'bold'}}>Team Members</span></h1>
           </div>
         </div>
       </div>
@@ -88,7 +88,7 @@ const Team = () => {
       <div className='container'>
         <div className='row'>
           <div className='col text-center'>
-            <h1>Alumni</h1>
+            <h1><span style={{borderBottom: '3px solid #d73f09', fontWeight: 'bold'}}>Alumni</span></h1>
           </div>
         </div>
       </div>

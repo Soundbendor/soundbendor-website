@@ -20,7 +20,7 @@ const Footer = () => {
             <div className='col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-3'>
               <h6 className='text-uppercase fw-bold mb-3'>Contact</h6>
               <p>donnellp@oregonstate.edu</p>
-              <p>(514) 706 2071</p>
+              <p>541.706.2071</p>
             </div>
 
             <div className='col-md-4 col-lg-3 col-xl-3 mx-auto mb-3'>

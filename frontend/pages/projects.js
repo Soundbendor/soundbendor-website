@@ -18,9 +18,8 @@ const createProjectYearListDisplay = (projectYears, selectedYear, searchHandler)
   return projectYears.map((year) => (
     <button
       key={year}
-      className={`btn year-btn me-1 mb-1 rounded-pill ${
-        selectedYear === year ? 'selected-year-btn' : ''
-      }`}
+      className={`btn year-btn me-1 mb-1 rounded-pill ${selectedYear === year ? 'selected-year-btn' : ''
+        }`}
       onClick={(event) => searchHandler(event, year)}
     >
       {year}
@@ -40,24 +39,25 @@ const Projects = () => {
     if (event) {
       event.preventDefault()
     }
-    if (year === undefined) {
-      year = "All"
+
+    if (!year) {
+      year = selectedYear
+    } else {
+      setSelectedYear(year)
     }
-    setSelectedYear(year);
-    const searchField = document.getElementById('project-search');
-    const typeField = document.getElementById('project-type');
-  
-    const filters = { ...presortFilter }
+    const searchField = document.getElementById('project-search')
+    const typeField = document.getElementById('project-type')
+    const newFilters = { ...presortFilter }
+
     if (searchField.value) {
-      filters.x__searchNameAndDescription = searchField.value;
-    }
-    if (year !== "All") { // Only apply the year filter if it's not "All"
-      filters.InitialPublishedDate__sw = year
+      newFilters.x__searchNameAndDescription = searchField.value
     }
     if (typeField.value) {
-      filters.project_target_type__eq = parseInt(typeField.value)
+      newFilters.project_target_type__eq = parseInt(typeField.value)
     }
-    setProjectListDisplay(createProjectListDisplay(ProjectService.getProjects(filters)))
+    newFilters.InitialPublishedDate__sw = year === "All" ? '' : year
+
+    setProjectListDisplay(createProjectListDisplay(ProjectService.getProjects(newFilters)))
   }
 
   const presortFilter = { presortBy: 'InitialPublishedDate', presortDirection: -1 }
@@ -77,7 +77,7 @@ const Projects = () => {
         <div className='row'>
           <div className='col'>
             <div className='text-center'>
-              <h1>Student Projects</h1>
+            <h1><span style={{borderBottom: '3px solid #d73f09', fontWeight: 'bold'}}>Student Projects</span></h1>
             </div>
           </div>
         </div>
@@ -88,9 +88,8 @@ const Projects = () => {
             <div className='d-flex flex-wrap'>
               <button key='All' className={
                 `btn year-btn me-1 mb-1 rounded-pill
-                ${selectedYear === "All" ? 'selected-year-btn' : ''
-                }`}
-                onClick={(event) => searchHandler(event)}>All
+                ${selectedYear === "All" ? 'selected-year-btn' : ''}`}
+                onClick={(event) => searchHandler(event, "All")}>All
               </button>
               {projectYearListDisplay}
             </div>

@@ -24,8 +24,7 @@
         "White",
         "Light",
         "Dark",
-        "Special",
-        "Light-2"
+        "Special"
       ],
       "required": false,
       "default": "White"

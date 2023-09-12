@@ -36,7 +36,7 @@ const News = () => {
         <div className='row'>
           <div className='col'>
             <div className='text-center'>
-              <h1>News</h1>
+              <h1><span style={{borderBottom: '3px solid #d73f09', fontWeight: 'bold'}}>News</span></h1>
             </div>
           </div>
         </div>

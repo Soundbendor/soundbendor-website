@@ -53,7 +53,7 @@ const Row = ({ row, pageCustomContent }) => {
         <>
           <div className={topLevelClasses}>
             <div className='container'>
-              <div className='row'>
+              <div className='row two-column'>
                 <TwoColumn row={row} />
               </div>
             </div>
@@ -78,7 +78,7 @@ const TwoColumn = function ({ row }) {
 }
 
 const Column = ({ column }) => {
-  const className = column.colClass + ' text-' + column.textAlignClass
+  const className = column.colClass + ' text-' + column.textAlignClass 
   let buttonClass = 'btn btn-dark'
   if (column.ButtonColor !== undefined && column.ButtonColor !== null && column.ButtonColor !== 0) {
     buttonClass = 'btn btn-' + column.ButtonColor.toLowerCase()
@@ -90,11 +90,31 @@ const Column = ({ column }) => {
   if (column.PagePartImageMaxWidth !== undefined && column.PagePartImageMaxWidth !== null && column.PagePartImageMaxWidth !== 0) {
     imageStyles.maxWidth = column.PagePartImageMaxWidth + 'px'
   }
+  let imageDivClass = 'mx-auto'
+  let wrapperDivClass = ''
+  let wrapperDivStyle = {}
+  //Add some margin to the top of the image if there is a title
+  if (column.PagePartTitle)
+  {
+    imageDivClass = 'mx-auto mt-4'
+  }
+  //If only an image, center the image within the parent div
+  else if (!column.PagePartTitle && !column.PagePartSubtitle && !column.PagePartContent)
+  {
+    wrapperDivClass = 'd-flex justify-content-center align-items-center'
+    wrapperDivStyle = { minHeight: '100%' }
+  }
   return (
     <div className={className}>
       {column.PagePartTitle && <h2>{column.PagePartTitle}</h2>}
-      {column.PagePartSubtitle && <h3>{column.PagePartSubtitle}</h3>}
-      {column.PagePartImage && <div className='mx-auto' style={imageStyles}><img className='w-100' src={column.getImage().url} /></div>}
+      {column.PagePartSubtitle && <h4 className='text-secondary'>{column.PagePartSubtitle}</h4>}
+      {column.PagePartImage && (
+        <div className={wrapperDivClass} style={wrapperDivStyle}>  
+          <div className={imageDivClass} style={imageStyles}>
+            <img className='w-100' src={column.getImage().url} />
+          </div>
+        </div>
+      )}
       {column.content && column.PagePartContent.trim().length > 0 && <div dangerouslySetInnerHTML={{ __html: column.content }} />}
       {
         column.PagePartButtonLink && column.PagePartButtonText &&

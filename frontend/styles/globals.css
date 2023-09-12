@@ -12,9 +12,21 @@
   background-color: #fff !important;
 }
 
+.text-bg-white p a {
+  color: #d73f09 !important;
+}
+
+.text-bg-light p a {
+  color: #d73f09 !important;
+}
+
 .text-bg-special {
   color: #fff !important;
   background-color: #d73f09 !important;
+}
+
+.text-bg-special p a {
+  color: #000000;
 }
 
 .btn-orange {
@@ -41,6 +53,19 @@
   color: #fff !important;
   background-color: #141414 !important;
   border-color: #141414 !important;
+}
+
+.btn-white {
+  color:#a83207;
+  background-color: #fff;
+  border-color: #fff;
+}
+
+.btn-white:active,
+.btn-white:hover {
+  color:#d73f09;
+  background-color: #b6b6b6 !important;
+  border-color: #b6b6b6 !important;
 }
 
 .pagination > li > a {
@@ -160,7 +185,15 @@ ul.bulleted {
 }
 
 .pub-card {
-  border: solid 1px #d740094f !Important;
+  border: solid 1px #d740094f !important;
+  box-shadow: 0px 4px 8px rgba(215, 64, 9, 0.15);
+  transition: transform 0.15s ease-in-out;
+  transform-origin: center bottom;
+}
+
+.pub-card:hover {
+  transform: scale(1.025);
+  
 }
 
 .embed-responsive {
@@ -178,20 +211,38 @@ ul.bulleted {
   height: 100%;
 }
 
-.project-link {
-  display: block;
-  padding: 5px;
+.project-card-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  align-items: stretch;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.project-card-container > a {
   text-decoration: none;
+  display: flex;
+  flex-direction: column;
 }
 
-.project-link:hover {
-  background-color: rgba(215 63 9 / 10%) !important;
+.project-card-container:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
-.project-link img {
-  max-height: 175px;
-  text-align: center;
-  margin: 0 auto;
+.img-container {
+  flex: 0 0 auto;
+  overflow: hidden;
+  position: relative;
+  height: 200px;
+}
+
+.project-card-img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.project-card-content {
+  padding: 10px;
 }
 
 .form-control:focus {
@@ -217,4 +268,23 @@ ul.bulleted {
   font-weight: 500;
   color: #f23801 !important;
   transition: 500ms;
+}
+
+
+@media screen and (max-width: 1000px) {
+  .row.two-column {
+    flex-direction: column;
+  }
+
+  .row.two-column [class^="col-"] {
+    width: 100%;
+    flex: 0 0 100%;
+    padding-bottom: 2rem;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .text-start {
+    text-align: center!important;
+  }
 }
