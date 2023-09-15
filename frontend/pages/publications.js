@@ -2,6 +2,8 @@ import { PublicationCard } from '../components/Publicationcard'
 import PublicationService from '../models/publications'
 import React, { useState } from 'react'
 import { saveAs } from 'file-saver'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSave, faCopy } from '@fortawesome/free-solid-svg-icons';
 
 const Publications = () => {
   const presortFilter = { presortBy: 'publishedDate', presortDirection: -1 }
@@ -71,7 +73,9 @@ const Publications = () => {
               </div>
               <div className='modal-footer'>
                 <button type='button' className='btn btn-secondary' onClick={toggleModal}>Close</button>
-                <button type='button' className='btn btn-orange' onClick={saveBibtex}>Save BibTeX</button>
+                <button type='button' className='btn btn-orange' onClick={saveBibtex}>
+                  <FontAwesomeIcon icon={faSave} />
+                </button>
                 <button
                   type='button'
                   className='btn btn-orange'
@@ -82,7 +86,7 @@ const Publications = () => {
                       console.error('Failed to copy BibTeX: ', error)
                     }
                   }}>
-                  Copy BibTeX
+                  <FontAwesomeIcon icon={faCopy} />
                 </button>
               </div>
             </div>

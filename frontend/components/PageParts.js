@@ -11,7 +11,11 @@ const Page = ({ page, pageCustomContent }) => {
 const Row = ({ row, pageCustomContent }) => {
   let content = ''
   const topLevelClassArray = []
-  if (row.HasVerticalPadding) {
+  if (row.OnlyTopPadding) {
+    topLevelClassArray.push('pt-5')
+  } else if (row.OnlyBottomPadding) {
+    topLevelClassArray.push('pb-5')
+  } else if (row.HasVerticalPadding) {
     topLevelClassArray.push('py-5')
   }
   if (row.colorThemeClass !== undefined && row.colorThemeClass !== null) {
