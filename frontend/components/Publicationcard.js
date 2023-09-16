@@ -28,19 +28,21 @@ const PublicationCard = ({ publication, onOpenModal }) => {
   }
   let slides = null
   if ('slides' in publication && Array.isArray(publication.slides) && publication.slides.length > 0) {
-    slides = ImageService.getImages({id__in: publication.slides})[0]
+    slides = ImageService.getImages({ id__in: publication.slides })[0]
   }
   return (
     <div className='card pub-card my-2 ms-2'>
       <div className='card-body'>
-        <p className='fw-bold mb-2'>{publication.title}</p>
-        <Authors p={publication}/>
+        <a href={publication.url} target='_blank' className='enlarge-on-hover'>
+          <p className='fw-bold mb-2'>{publication.title}</p>
+        </a>
+        <Authors p={publication} />
         <div className='mt-2'>
-          <span className='me-2'>{publication.conferenceName} {new Date(publication.publishedDate).getFullYear()}</span> 
+          <span className='me-2'>{publication.conferenceName} {new Date(publication.publishedDate).getFullYear()}</span>
           {media && (<span className='me-1'>(<a href={media.url} className='beaverorange' target='_blank' rel='noopener noreferrer'>Paper</a>)</span>)}
           {slides && (<span className='me-1'>(<a href={slides.url} className='beaverorange' target='_blank' rel='noopener noreferrer'>Slides</a>)</span>)}
           {publication.demoLink && (<span className='me-1'>(<a href={publication.demoLink} className='beaverorange' target='_blank' rel='noopener noreferrer'>Demo</a>)</span>)}
-          <span>(<a href='#' className='beaverorange' onClick={() => onOpenModal()}>Cite</a>)</span>
+          <span>(<a href='#' className='beaverorange' onClick={(event) => onOpenModal(event)}>Cite</a>)</span>
         </div>
       </div>
     </div>
