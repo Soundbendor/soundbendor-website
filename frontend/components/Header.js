@@ -2,7 +2,7 @@ import Head from 'next/head'
 const Header = () => {
   return (
     <Head>
-      <meta name='viewport' contents='width=device-width, initial-scale=1' />
+      <meta name='viewport' content='width=device-width, initial-scale=1' />
       <style>{
         /* This fixes the footer to the bottom of the page when the content is less than the height of the browser window */
         `#__next {

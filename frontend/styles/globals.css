@@ -127,11 +127,6 @@ ul.bulleted {
   width: 100%;
 }
 
-@media only screen and (min-width: 768px) {
-  .newscard {
-    width: 50%;
-  }
-}
 
 .card-flip > div {
   backface-visibility: hidden;
@@ -281,6 +276,12 @@ ul.bulleted {
   font-weight: 500;
   color: #f23801 !important;
   transition: 500ms;
+}
+
+@media only screen and (min-width: 768px) {
+  .newscard {
+    width: 50%;
+  }
 }
 
 @media screen and (max-width: 1000px) {
