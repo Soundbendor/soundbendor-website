@@ -3,7 +3,8 @@
   max-height: 274px !important;
 }
 
-a:hover {
+.pub-card a:hover,
+p a:hover {
   color:#003b5c!important;
 }
 
@@ -78,6 +79,10 @@ a:hover {
   color:#d73f09;
   background-color: #b6b6b6 !important;
   border-color: #b6b6b6 !important;
+}
+
+.btn-dark a:hover {
+  color: white!important;
 }
 
 .pagination > li > a {
