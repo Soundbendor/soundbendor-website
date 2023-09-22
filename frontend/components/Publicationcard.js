@@ -42,7 +42,7 @@ const PublicationCard = ({ publication, onOpenModal }) => {
           {media && (<span className='me-1'>(<a href={media.url} className='beaverorange' target='_blank' rel='noopener noreferrer'>Paper</a>)</span>)}
           {slides && (<span className='me-1'>(<a href={slides.url} className='beaverorange' target='_blank' rel='noopener noreferrer'>Slides</a>)</span>)}
           {publication.demoLink && (<span className='me-1'>(<a href={publication.demoLink} className='beaverorange' target='_blank' rel='noopener noreferrer'>Demo</a>)</span>)}
-          <span>(<a href='#' className='beaverorange' onClick={(event) => onOpenModal(event)}>Cite</a>)</span>
+          {publication.bibtext && (<span>(<a href='#' className='beaverorange' onClick={(event) => onOpenModal(event)}>Cite</a>)</span>)}
         </div>
       </div>
     </div>

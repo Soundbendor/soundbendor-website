@@ -95,19 +95,17 @@ const CardFront = ({ person }) => (
 
 const CardBack = ({ person }) => (
   <>
-    <div className='d-flex align-items-center'>
+    <div className='d-flex align-items-start justify-content-between'>
       <h5 className='card-title beaverorange flex-grow-1'>
         {person.formattedPersonName}
       </h5>
-      <div className='d-flex align-items-center justify-content-center px-2'
-        style={{ fontSize: '110%' }}
-      >
-        {person.Link && (
-        <a href={person.Link} target='_blank' rel='noopener noreferrer' className='text-decoration-none text-dark'>
-          <AiFillLinkedin className='icon' style={{ fontSize: '110%' }} />
-        </a>
-        )}
-      </div>
+      {person.Link && (
+        <div className='d-flex align-items-start' style={{ marginLeft: '10px' }}>
+          <a href={person.Link} target='_blank' rel='noopener noreferrer' className='text-decoration-none text-dark'>
+            <AiFillLinkedin className='icon' style={{ fontSize: '125%' }} />
+          </a>
+        </div>
+      )}
     </div>
     {person.isAlumni && person.degrees.length > 0 ? (
       person.getDegrees().map((degree, index) => (

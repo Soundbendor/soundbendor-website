@@ -1,6 +1,6 @@
 const Newscard = ({ event }) => {
   return (
-    <div className='card mb-4'>
+    <div className='card mb-4 news-card-main'>
       <div className='card-body'>
         <div className='row align-items-center'>
           <div className='col-6 newscard'>

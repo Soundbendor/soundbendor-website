@@ -20,7 +20,7 @@ const Carousel = ({ id, props, children, maxHeight }) => {
 
 const CarouselItem = ({ isActive, name, bg, title, description, imgSrc, height, props }) => {
   let ciclassname = 'carousel-item w-100 text-bg-special ' + (isActive === '1' ? 'active' : '')
-  let containerClassNames = 'mx-auto d-flex carousel-text-container'
+  let containerClassNames = 'mx-auto d-flex carousel-text-container h-100'
   const myStyles = { width: 'auto', height }
   if ('TextColor' in props && props.TextColor !== undefined && props.TextColor !== null) {
     ciclassname += ' text-' + props.TextColor.toLowerCase()
@@ -36,7 +36,6 @@ const CarouselItem = ({ isActive, name, bg, title, description, imgSrc, height, 
     if (props.TextLocation.includes('Bottom')) {
       containerClassNames += ' align-items-end'
     }
-
     if (props.TextLocation.includes('Left')) {
       containerClassNames += ' justify-content-start'
     }
