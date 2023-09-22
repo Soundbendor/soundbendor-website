@@ -48,33 +48,44 @@ function TeamMembers({ p }) {
 }
 
 function Artifacts({ p }) {
-  return (
-    <>
-      <dt className="text-center pt-2" style={{color: '#404040'}}>Artifacts</dt>
-      <dd>
-        <ul className="row d-flex justify-content-center">
-          {p.Media.map((mediaId) => {
-            const media = ImageService.getImages({ id__eq: mediaId });
-            if (media.length > 0) {
-              return (
-                <li key={`media-${media[0].id}`} className="col-12 col-sm-12 col-lg-6 col-xl-4 col-xxl-4 d-flex flex-column my-3">
-                  <div className="flex-grow-1 d-flex flex-column justify-content-center">
-                    <div className="text-center h-100">
-                      {media[0].url && media[0].mime === "application/pdf" && <Thumbnail url={media[0].url} />}
+  if ('Media' in p && Array.isArray(p.Media) && p.Media.length > 0) {
+    return (
+      <>
+        <dt className="text-center pt-2" style={{ color: '#404040' }}>Artifacts</dt>
+        <dd>
+          <ul className="row d-flex justify-content-center">
+            {p.Media.map((mediaId) => {
+              const media = ImageService.getImages({ id__eq: mediaId });
+              if (media && media.length > 0) {
+                return (
+                  <li
+                    key={`media-${media[0].id}`}
+                    className="col-12 col-sm-12 col-lg-6 col-xl-4 col-xxl-4 d-flex flex-column my-3"
+                  >
+                    <div className="flex-grow-1 d-flex flex-column justify-content-center">
+                      <div className="text-center h-100">
+                        {media[0].url && media[0].mime === 'application/pdf' && (
+                          <Thumbnail url={media[0].url} />
+                        )}
+                      </div>
                     </div>
-                  </div>
-                  <div className="text-center">
-                    <a href={media[0].url}>{media[0].mime} | {media[0].name}</a>
-                  </div>
-                </li>
-              );
-            }
-            return null;
-          })}
-        </ul>
-      </dd>
-    </>
-  );
+                    <div className="text-center">
+                      <a href={media[0].url}>
+                        {media[0].mime} | {media[0].name}
+                      </a>
+                    </div>
+                  </li>
+                );
+              }
+              return null;
+            })}
+          </ul>
+        </dd>
+      </>
+    );
+  }
+
+  return null
 }
 
 function Links({ p }) {
@@ -100,33 +111,51 @@ function Links({ p }) {
 }
 
 function FeaturedMedia({ p }) {
-  return (
-    <div className="row py-5">
-      <div className="col-md-4 d-flex flex-column justify-content-between">
-        <div className="text-center">
-          <h3 style={{color: '#404040'}}>Description:</h3>
-          <p>{p.Description}</p>
+  if (p.videoLink) {
+    return (
+      <div className="row py-5">
+        <div className="col-md-4 d-flex flex-column justify-content-between">
+          <div className="text-center">
+            <h3 style={{color: '#404040'}}>Description:</h3>
+            <p>{p.Description}</p>
+          </div>
         </div>
-      </div>
-      <div className="col-md-8">
-        <div className="text-center">
-          {p.videoLink ? (
+        <div className="col-md-8">
+          <div className="text-center">
             <div className="embed-responsive embed-responsive-16by9">
               <iframe className="embed-responsive-item" src={p.videoLink} allowFullScreen></iframe>
             </div>
-          ) : (
-            p.Media.map((mediaId) => {
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  else if ('Media' in p && Array.isArray(p.Media) && p.Media.length > 0) {
+    return (
+      <div className="row py-5">
+        <div className="col-md-4 d-flex flex-column justify-content-between">
+          <div className="text-center">
+            <h3 style={{color: '#404040'}}>Description:</h3>
+            <p>{p.Description}</p>
+          </div>
+        </div>
+        <div className="col-md-8">
+          <div className="text-center">
+            {p.Media.map((mediaId) => {
               const media = ImageService.getImages({ id__eq: mediaId });
               if (media.length > 0 && media[0].url && media[0].mime === "application/pdf") {
                 return <Thumbnail key={`media-${media[0].id}`} url={media[0].url} />;
               }
               return null;
-            })
-          )}
+            })}
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
+
+  return null;
 }
 
 export default function Project({ projectid }) {
