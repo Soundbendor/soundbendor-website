@@ -17,7 +17,7 @@ const Publications = () => {
   }
 
   const openModal = (publication, event) => {
-    event.preventDefault();
+    event.preventDefault()
     setSelectedPublication(publication)
     toggleModal()
   }

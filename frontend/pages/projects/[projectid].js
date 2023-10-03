@@ -1,39 +1,39 @@
-import ProjectService from '../../models/projects';
-import PersonService from '../../models/people';
-import ImageService from '../../models/images';
-import { PersonCard, PersonModal } from '../../components/Personcard';
-import { useRouter } from 'next/router';
-import React, { useState, useEffect } from 'react';
-import { pdfjs } from 'react-pdf';
+import ProjectService from '../../models/projects'
+import PersonService from '../../models/people'
+import ImageService from '../../models/images'
+import { PersonCard, PersonModal } from '../../components/Personcard'
+import { useRouter } from 'next/router'
+import React, { useState, useEffect } from 'react'
+import { pdfjs } from 'react-pdf'
 
-pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
+pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`
 
 function Thumbnail({ url }) {
-  const [thumbnailUrl, setThumbnailUrl] = useState(null);
+  const [thumbnailUrl, setThumbnailUrl] = useState(null)
 
   useEffect(() => {
-    const loadingTask = pdfjs.getDocument(url);
+    const loadingTask = pdfjs.getDocument(url)
     loadingTask.promise.then((pdf) => {
       pdf.getPage(1).then((page) => {
-        const viewport = page.getViewport({ scale: 1 });
-        const canvas = document.createElement('canvas');
-        const context = canvas.getContext('2d');
-        canvas.width = viewport.width;
-        canvas.height = viewport.height;
+        const viewport = page.getViewport({ scale: 1 })
+        const canvas = document.createElement('canvas')
+        const context = canvas.getContext('2d')
+        canvas.width = viewport.width
+        canvas.height = viewport.height
 
         const renderContext = {
           canvasContext: context,
           viewport: viewport,
-        };
+        }
         page.render(renderContext).promise.then(() => {
-          const thumbUrl = canvas.toDataURL('image/jpeg');
-          setThumbnailUrl(thumbUrl);
-        });
-      });
-    });
-  }, [url]);
+          const thumbUrl = canvas.toDataURL('image/jpeg')
+          setThumbnailUrl(thumbUrl)
+        })
+      })
+    })
+  }, [url])
 
-  return thumbnailUrl ? <img src={thumbnailUrl} alt="Thumbnail" className="w-100 h-100 image-fluid" /> : <p>Loading Thumbnail...</p>;
+  return thumbnailUrl ? <img src={thumbnailUrl} alt="Thumbnail" className="w-100 h-100 image-fluid" /> : <p>Loading Thumbnail...</p>
 }
 
 function TeamMembers({ p }) {
@@ -42,9 +42,9 @@ function TeamMembers({ p }) {
       <li key={'student-' + person.id} className="col-12 col-sm-6 col-lg-4 col-xl-3 col-xxl-3">
         <PersonCard person={person} />
       </li>
-    ));
+    ))
   }
-  return <li><em>Currently No Team Members Listed</em></li>;
+  return <li><em>Currently No Team Members Listed</em></li>
 }
 
 function Artifacts({ p }) {
@@ -55,7 +55,7 @@ function Artifacts({ p }) {
         <dd>
           <ul className="row d-flex justify-content-center">
             {p.Media.map((mediaId) => {
-              const media = ImageService.getImages({ id__eq: mediaId });
+              const media = ImageService.getImages({ id__eq: mediaId })
               if (media && media.length > 0) {
                 return (
                   <li
@@ -75,14 +75,14 @@ function Artifacts({ p }) {
                       </a>
                     </div>
                   </li>
-                );
+                )
               }
-              return null;
+              return null
             })}
           </ul>
         </dd>
       </>
-    );
+    )
   }
 
   return null
@@ -92,7 +92,7 @@ function Links({ p }) {
   const links = [
     { key: 'GitHub', value: p.gitHubLink },
     { key: 'Website', value: p.websiteLink }
-  ];
+  ]
 
   return (
     <>
@@ -107,7 +107,7 @@ function Links({ p }) {
         ) : null
       )}
     </>
-  );
+  )
 }
 
 function FeaturedMedia({ p }) {
@@ -128,7 +128,7 @@ function FeaturedMedia({ p }) {
           </div>
         </div>
       </div>
-    );
+    )
   }
 
   else if ('Media' in p && Array.isArray(p.Media) && p.Media.length > 0) {
@@ -143,24 +143,24 @@ function FeaturedMedia({ p }) {
         <div className="col-md-8">
           <div className="text-center">
             {p.Media.map((mediaId) => {
-              const media = ImageService.getImages({ id__eq: mediaId });
+              const media = ImageService.getImages({ id__eq: mediaId })
               if (media.length > 0 && media[0].url && media[0].mime === "application/pdf") {
-                return <Thumbnail key={`media-${media[0].id}`} url={media[0].url} />;
+                return <Thumbnail key={`media-${media[0].id}`} url={media[0].url} />
               }
-              return null;
+              return null
             })}
           </div>
         </div>
       </div>
-    );
+    )
   }
 
-  return null;
+  return null
 }
 
 export default function Project({ projectid }) {
-  const p = ProjectService.getProject({ id__eqstr: projectid });
-  const router = useRouter();
+  const p = ProjectService.getProject({ id__eqstr: projectid })
+  const router = useRouter()
 
   return (
     <>
@@ -168,7 +168,7 @@ export default function Project({ projectid }) {
         <div className="row">
           <div className="col">
             <div className="text-left">
-              <button type="button" className="btn btn-dark" onClick={() => router.back()}>&larr; Back to Previous Page</button>
+              <button type="button" className="btn btn-dark" onClick={() => router.back()}>&larr Back to Previous Page</button>
             </div>
           </div>
         </div>
@@ -198,18 +198,18 @@ export default function Project({ projectid }) {
       </div>
       <PersonModal />
     </>
-  );
+  )
 }
 
 export async function getStaticPaths() {
-  const projects = ProjectService.getProjects();
-  const paths = projects.map((project) => ({ params: { projectid: project.id.toString() } }));
+  const projects = ProjectService.getProjects()
+  const paths = projects.map((project) => ({ params: { projectid: project.id.toString() } }))
   return {
     paths,
     fallback: true
-  };
+  }
 }
 
 export async function getStaticProps(context) {
-  return { props: { projectid: context.params.projectid } };
+  return { props: { projectid: context.params.projectid } }
 }

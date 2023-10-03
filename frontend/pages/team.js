@@ -4,21 +4,21 @@ import PersonService from '../models/people'
 
 const createTeamListDisplay = (people, isAlumni) => {
   const filteredPeople = people.filter((person) => {
-    const roles = person.getRoles();
-    const isLab = roles.some((role) => role.Title === "Lab");
-    return person.isAlumni === isAlumni && isLab;
-  });
+    const roles = person.getRoles()
+    const isLab = roles.some((role) => role.Title === "Lab")
+    return person.isAlumni === isAlumni && isLab
+  })
   if (filteredPeople.length === 0) {
     return (
       <p className='w-100 text-center fw-bold'>
         There are no {isAlumni ? 'alumni' : 'team members'} matching that criteria.
       </p>
-    );
+    )
   } else {
-    const sortedPeople = sortProfessor(filteredPeople);
-    return sortedPeople.map((person) => <PersonCard key={person.id} person={person} />);
+    const sortedPeople = sortProfessor(filteredPeople)
+    return sortedPeople.map((person) => <PersonCard key={person.id} person={person} />)
   }
-};
+}
 
 const sortProfessor = (people) => {
   people = people.sort(function (a, b) {

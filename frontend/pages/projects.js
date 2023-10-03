@@ -14,7 +14,7 @@ const createProjectListDisplay = (projects) => {
 }
 
 const createProjectYearListDisplay = (projectYears, selectedYear, searchHandler) => {
-  projectYears.sort((a, b) => b - a);
+  projectYears.sort((a, b) => b - a)
   return projectYears.map((year) => (
     <button
       key={year}
