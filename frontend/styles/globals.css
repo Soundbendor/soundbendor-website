@@ -43,9 +43,9 @@ p a:hover {
 }
 
 .btn-orange {
-	background-color: #d73f09;
-  border-color: #d73f09;
-  color:#fff;
+	background-color: #d73f09!important;
+  border-color: #d73f09!important;
+  color:#fff!important;
 }
 
 .btn-orange:active,
