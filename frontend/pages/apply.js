@@ -27,7 +27,7 @@ function Apply() {
 
       if (response.ok) {
         const contents = [
-          '<div class="alert alert-success alert-dismissible" role="alert">',
+          '<div className="alert alert-success alert-dismissible" role="alert">',
           'Your request has been sent!',
           '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
           '</div>'
@@ -49,7 +49,7 @@ function Apply() {
           <div class="col-10 col-md-8 col-lg-6 col-xl-4 col-xxl-3">
             <form id="applyForm" onSubmit={handleSubmit}>
               <div class="form-group text-center mb-3">
-                <h5 for="name">Name</h5>
+                <h5 htmlFor="name">Name</h5>
                 <input
                   type="text"
                   class="form-control"
