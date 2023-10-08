@@ -17,7 +17,7 @@ function Apply() {
     event.preventDefault()
 
     try {
-      const response = await fetch('http://localhost:8058/api/send-mail', {
+      const response = await fetch('https://soundbendor.org/api/send-mail', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
