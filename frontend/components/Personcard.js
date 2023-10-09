@@ -54,8 +54,6 @@ const CreateProjectButton = ({ person }) => {
   return <div><button {...myProps}>Projects</button></div>
 }
 
-// if the person doesn't have publications, this will return the projects button
-// with the "disabled" attribute
 const CreatePublicationButton = ({ person }) => {
   const pubs = person.getPublications()
   const isDisabled = pubs.length === 0
@@ -119,7 +117,6 @@ const CardBack = ({ person }) => (
     <p className='card-subtitle mb-2 text-muted mt-auto'>{person.isAlumni ? person.CurrentJob : PLACEHOLDER}</p>
     <CreateProjectButton person={person} />
     <CreatePublicationButton person={person} />
-    {/* <button id='publications-button' className='btn btn-link mt-1'>Publications</button> */}
   </>
 )
 

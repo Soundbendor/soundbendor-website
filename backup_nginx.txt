@@ -1,0 +1,61 @@
+
+server {
+
+    listen 80 default_server;
+
+
+    server_name _;
+
+
+    return 301 https://$host$request_uri;
+
+}
+
+
+server {
+    listen 443 ssl;
+    server_name soundbendor.org;
+    ssl_certificate /home/ubuntu/ssl/certificate.crt;
+    ssl_certificate_key /home/ubuntu/ssl/private.key;
+
+    location / {
+        proxy_set_header   X-Forwarded-For $remote_addr;
+        proxy_set_header   Host $http_host;
+        proxy_pass         "http://127.0.0.1:8080";
+   }
+}
+
+For API updates with ssl
+
+server {
+    listen 80;
+    server_name soundbendor.org;
+    return 301 https://$host$request_uri;
+}
+
+server {
+    listen 443 ssl;
+    server_name soundbendor.org;
+
+    ssl_certificate /home/ubuntu/ssl/certificate.crt;
+    ssl_certificate_key /home/ubuntu/ssl/private.key;
+
+    location /api/import {
+        proxy_set_header   X-Forwarded-For $remote_addr;
+        proxy_set_header   Host $http_host;
+        proxy_pass         http://127.0.0.1:8080;
+    }
+
+    location /api {
+        proxy_set_header   X-Forwarded-For $remote_addr;
+        proxy_set_header   Host $http_host;
+        proxy_pass         http://127.0.0.1:8058/api;
+    }
+
+    location / {
+        proxy_set_header   X-Forwarded-For $remote_addr;
+        proxy_set_header   Host $http_host;
+        proxy_pass         http://127.0.0.1:8080;
+    }
+}
+

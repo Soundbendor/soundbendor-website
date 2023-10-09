@@ -299,6 +299,18 @@ ul.bulleted {
   transition: 500ms;
 }
 
+.card-back {
+  max-height: 100%;
+  overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+  -ms-overflow-style: none;
+}
+
+.card-back::-webkit-scrollbar {
+  width: 0px;
+}
+
 @media only screen and (min-width: 768px) {
   .newscard {
     width: 50%;
@@ -325,5 +337,19 @@ ul.bulleted {
 @media screen and (max-width: 500px) {
   .pb-5 {
     padding-bottom: 0rem!important; 
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .custom-lg-cols > * {
+    flex: 0 0 20%;
+    max-width: 20%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .custom-lg-cols > * {
+    flex: 0 0 16.66667%;
+    max-width: 16.66667%;
   }
 }

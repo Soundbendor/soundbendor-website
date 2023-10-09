@@ -1,4 +1,3 @@
-import $ from 'jquery'
 import React, { useState } from 'react'
 
 function Apply() {
@@ -8,6 +7,7 @@ function Apply() {
     comments: ''
   })
 
+  const [formSubmitted, setFormSubmitted] = useState(false)
   const handleInputChange = (event) => {
     const { name, value } = event.target
     setFormState({ ...formState, [name]: value })
@@ -26,14 +26,8 @@ function Apply() {
       })
 
       if (response.ok) {
-        const contents = [
-          '<div className="alert alert-success alert-dismissible" role="alert">',
-          'Your request has been sent!',
-          '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
-          '</div>'
-        ]
-        $('#form-alert-container').html(contents.join(''))
-        $('#applyForm')[0].reset()
+        setFormState({ name: '', email: '', comments: '' })
+        setFormSubmitted(true)
       } else {
         console.error('Error sending email:', response.statusText)
       }
@@ -44,15 +38,15 @@ function Apply() {
 
   return (
     <>
-      <div class="container">
-        <div class="row justify-content-center text-center py-5">
-          <div class="col-10 col-md-8 col-lg-6 col-xl-4 col-xxl-3">
+      <div className="container">
+        <div className="row justify-content-center text-center py-5">
+          <div className="col-10 col-md-8 col-lg-6 col-xl-4 col-xxl-3">
             <form id="applyForm" onSubmit={handleSubmit}>
-              <div class="form-group text-center mb-3">
+              <div className="form-group text-center mb-3">
                 <h5 htmlFor="name">Name</h5>
                 <input
                   type="text"
-                  class="form-control"
+                  className="form-control"
                   id="name"
                   name="name"
                   value={formState.name}
@@ -60,11 +54,11 @@ function Apply() {
                   required
                 />
               </div>
-              <div class="form-group text-center mb-3">
-                <h5 for="email">Email</h5>
+              <div className="form-group text-center mb-3">
+                <h5 htmlFor="email">Email</h5>
                 <input
                   type="email"
-                  class="form-control"
+                  className="form-control"
                   id="email"
                   name="email"
                   value={formState.email}
@@ -72,10 +66,10 @@ function Apply() {
                   required
                 />
               </div>
-              <div class="form-group text-center mb-3">
-                <h5 for="comments">Comments</h5>
+              <div className="form-group text-center mb-3">
+                <h5 htmlFor="comments">Comments</h5>
                 <textarea
-                  class="form-control"
+                  className="form-control"
                   id="comments"
                   name="comments"
                   rows="3"
@@ -84,11 +78,24 @@ function Apply() {
                   required
                 ></textarea>
               </div>
-              <div class="text-center">
-                <button type="submit" class="btn btn-orange">Submit</button>
+              <div className="text-center">
+                <button type="submit" className="btn btn-orange">Submit</button>
               </div>
             </form>
-            <div className="my-4" id="form-alert-container"></div>
+            {formSubmitted && (
+              <div className='py-4'>
+                <div className="alert alert-success alert-dismissible fade show" role="alert">
+                  Information successfully sent!
+                  <button
+                    type="button"
+                    className="btn-close"
+                    data-bs-dismiss="alert"
+                    aria-label="Close"
+                    onClick={() => setFormSubmitted(false)}
+                  ></button>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>

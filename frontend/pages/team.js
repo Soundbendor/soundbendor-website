@@ -101,7 +101,7 @@ const Team = () => {
         </div>
       </div>
       <div className='container py-5'>
-        <div className='row row-cols-3 row-cols-sm-4 row-cols-md-5 row-cols-lg-6 g-4' id='alumniListDisplay'>
+        <div className='row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-6 custom-lg-cols g-4' id='alumniListDisplay'>
           {alumniListDisplay}
         </div>
       </div>
