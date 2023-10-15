@@ -168,7 +168,7 @@ export default function Project({ projectid }) {
         <div className="row">
           <div className="col">
             <div className="text-left">
-              <button type="button" className="btn btn-dark" onClick={() => router.back()}>&larr Back to Previous Page</button>
+              <button type="button" className="btn btn-dark" onClick={() => router.back()}>Back to Previous Page</button>
             </div>
           </div>
         </div>
